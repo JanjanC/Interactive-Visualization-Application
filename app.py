@@ -126,7 +126,14 @@ app.layout = dbc.Container([ #we can access html components through html.xxx
         html.Button('Times Higher Education Rankings', id='btn-times-home'),
         html.Button('Academic Ranking of World Universities', id='btn-shanghai-home'),
         html.Button('Center for World University Rankings', id='btn-cwur-home'),
-    ]),    
+    ]),
+
+    html.Div([
+        dcc.Slider(2011, 2023, 1,
+               value=2012,
+               id='my-slider'
+        ),
+    ]),
 
     html.Div([
         dash_table.DataTable(
@@ -145,6 +152,13 @@ app.layout = dbc.Container([ #we can access html components through html.xxx
         html.Button('Times Higher Education Rankings', id='btn-times-university'),
         html.Button('Academic Ranking of World Universities', id='btn-shanghai-university'),
         html.Button('Center for World University Rankings', id='btn-cwur-university'),
+    ]),
+
+    html.Div([
+        dcc.Slider(2011, 2023, 1,
+               value=2012,
+               id='my-slider'
+        ),
     ]),
 
     html.Div([

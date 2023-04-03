@@ -1,7 +1,7 @@
 import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
-from jupyter_dash import JupyterDash
+# from jupyter_dash import JupyterDash
 from dash import Dash, dcc, html, dash_table, Input, Output
 import dash_bootstrap_components as dbc
 import pandas as pd
@@ -27,6 +27,17 @@ for column in rank_columns:
 
 #Main Dashboard
 #TODO: load your dashboards here
+
+
+
+# Bar Chart
+times_bar_data = times_df[['university_name', 'teaching', 'international', 'research', 'citations', 'income']]
+times_bar_x = 'university_name'
+times_bar_y = ['teaching','international']
+times_bar_fig = px.bar(times_bar_data[0:5], x=times_bar_y, y=times_bar_x, barmode='group', labels=times_columns)
+times_bar_fig.update_layout(yaxis=dict(autorange="reversed"))
+times_bar_fig.update_layout(dict(template="plotly_white"))
+times_bar_fig.update_layout(title="Times Ranking Top 5 Universities", xaxis_title="Score", yaxis_title="University Name")
 
 
 
@@ -133,6 +144,12 @@ app.layout = dbc.Container([ #we can access html components through html.xxx
             data = times_df.to_dict('records'), 
             columns = [{"name": i, "id": i} for i in ['world_rank', 'university_name', 'country']]
         )
+    ]),
+
+    html.Div([
+        html.Div([
+            dcc.Graph(id='bar-chart', figure=times_bar_fig)
+        ])
     ]),
 
     html.Div([

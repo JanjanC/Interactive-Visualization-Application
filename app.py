@@ -126,7 +126,7 @@ app.layout = dbc.Container([ #we can access html components through html.xxx
         html.Button('Times Higher Education Rankings', id='btn-times-home'),
         html.Button('Academic Ranking of World Universities', id='btn-shanghai-home'),
         html.Button('Center for World University Rankings', id='btn-cwur-home'),
-    ]),
+    ]),    
 
     html.Div([
         dash_table.DataTable(
@@ -134,6 +134,10 @@ app.layout = dbc.Container([ #we can access html components through html.xxx
             columns = [{"name": i, "id": i} for i in ['world_rank', 'university_name', 'country']]
         )
     ]),
+
+    html.Div([
+        html.Div([dcc.Graph(id='top-shanghai', figure=top5_fig)], className='col-12'),        
+    ], className='row'),
 
     html.H1('University Home Page'),
 
@@ -144,18 +148,14 @@ app.layout = dbc.Container([ #we can access html components through html.xxx
     ]),
 
     html.Div([
-        html.Div([dcc.Graph(id='radar-times', figure=times_radar_fig)], className='col-4'),
-        html.Div([dcc.Graph(id='radar-shanghai', figure=shanghai_radar_fig)], className='col-4'),
-        html.Div([dcc.Graph(id='radaw-cwur', figure=cwur_radar_fig)], className='col-4')
-    ], className='row'),
-
-    html.Div([
         html.Div([dcc.Graph(id='specific-times', figure=specific_fig)], className='col-12'),        
     ], className='row'),
 
     html.Div([
-        html.Div([dcc.Graph(id='top-shanghai', figure=top5_fig)], className='col-12'),        
-    ], className='row'),
+        html.Div([dcc.Graph(id='radar-times', figure=times_radar_fig)], className='col-4'),
+        html.Div([dcc.Graph(id='radar-shanghai', figure=shanghai_radar_fig)], className='col-4'),
+        html.Div([dcc.Graph(id='radaw-cwur', figure=cwur_radar_fig)], className='col-4')
+    ], className='row'),        
 ])
 
 if __name__ == '__main__':

@@ -5,7 +5,9 @@ from jupyter_dash import JupyterDash
 from dash import Dash, dcc, html, dash_table, Input, Output
 import dash_bootstrap_components as dbc
 import pandas as pd
+import geopandas as gpd
 from datetime import date
+import requests
 
 times_df = pd.read_csv('datasets/times_2011_2023.csv')
 times_columns = ['teaching', 'international', 'research', 'citations', 'income']
@@ -24,12 +26,28 @@ for column in rank_columns:
         column_min = cwur_2012_df[column].min()
         column_max = cwur_2012_df[column].max()
         cwur_2012_df[column] = (column_max - cwur_2012_df[column]) / (column_max - column_min) * 100
+        
+cont = requests.get(
+    "https://gist.githubusercontent.com/hrbrmstr/91ea5cc9474286c72838/raw/59421ff9b268ff0929b051ddafafbeb94a4c1910/continents.json"
+)
+gdf = gpd.GeoDataFrame.from_features(cont.json())
+
+countries = gpd.read_file("datasets/world_countries.json")
+countries_csv = gpd.read_file("datasets/countries.csv")
+school = pd.read_csv("datasets/school_and_country_table.csv")
+
+countries_csv = countries_csv.drop(['geometry', 'country', 'latitude', 'longitude'], axis = 1)
+countries = countries.join(countries_csv.set_index('name'), on = 'name', how = 'left')
+school.join(countries.set_index('name'), on = 'country', how = 'left')
+school.join(countries.set_index('name'), on = 'country', how = 'left')
+school.groupby('country').count()
+school_count = school.groupby('country').count()
+countries = countries.join(school_count, on = 'name', how = "left")
+countries.rename(columns = {'school_name':'school_count'}, inplace = True)
 
 #Main Dashboard
 #TODO: load your dashboards here
-
-
-
+choropleth_fig = px.choropleth(countries, locations = countries['name'], labels = countries['name'], locationmode = "country names", scope = "world", color = countries['school_count'], geojson = gdf, color_continuous_scale = ['#eff3ff','#bdd7e7','#6baed6','#3182bd','#08519c'])
 
 # University Page
 #Selected University
@@ -121,6 +139,10 @@ app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 app.layout = dbc.Container([ #we can access html components through html.xxx
     html.H1('Main Dashboard'), #automatically placed inside the HTML body
+    
+    html.Div([
+        html.Div([dcc.Graph(id='choropleth_map', figure=choropleth_fig)], className='col-4'),
+    ], className='row'),
     
     html.Div([
         html.Button('Times Higher Education Rankings', id='btn-times-home'),

@@ -5,7 +5,9 @@ from plotly.subplots import make_subplots
 from dash import Dash, dcc, html, dash_table, Input, Output
 import dash_bootstrap_components as dbc
 import pandas as pd
+import geopandas as gpd
 from datetime import date
+import requests
 
 times_df = pd.read_csv('datasets/times_2011_2023.csv')
 times_columns = ['teaching', 'international', 'research', 'citations', 'income']
@@ -24,11 +26,29 @@ for column in rank_columns:
         column_min = cwur_2012_df[column].min()
         column_max = cwur_2012_df[column].max()
         cwur_2012_df[column] = (column_max - cwur_2012_df[column]) / (column_max - column_min) * 100
+        
+cont = requests.get(
+    "https://gist.githubusercontent.com/hrbrmstr/91ea5cc9474286c72838/raw/59421ff9b268ff0929b051ddafafbeb94a4c1910/continents.json"
+)
+gdf = gpd.GeoDataFrame.from_features(cont.json())
+
+countries = gpd.read_file("datasets/world_countries.json")
+countries_csv = gpd.read_file("datasets/countries.csv")
+school = pd.read_csv("datasets/school_and_country_table.csv")
+
+countries_csv = countries_csv.drop(['geometry', 'country', 'latitude', 'longitude'], axis = 1)
+countries = countries.join(countries_csv.set_index('name'), on = 'name', how = 'left')
+school.join(countries.set_index('name'), on = 'country', how = 'left')
+school.join(countries.set_index('name'), on = 'country', how = 'left')
+school.groupby('country').count()
+school_count = school.groupby('country').count()
+countries = countries.join(school_count, on = 'name', how = "left")
+countries.rename(columns = {'school_name':'school_count'}, inplace = True)
+
 
 #Main Dashboard
 #TODO: load your dashboards here
-
-
+choropleth_fig = px.choropleth(countries, locations = countries['name'], labels = countries['name'], locationmode = "country names", scope = "world", color = countries['school_count'], geojson = gdf, color_continuous_scale = ['#eff3ff','#bdd7e7','#6baed6','#3182bd','#08519c'])
 
 # Bar Chart
 times_bar_data = times_df[['university_name', 'teaching', 'international', 'research', 'citations', 'income']]
@@ -38,8 +58,6 @@ times_bar_fig = px.bar(times_bar_data[0:5], x=times_bar_y, y=times_bar_x, barmod
 times_bar_fig.update_layout(yaxis=dict(autorange="reversed"))
 times_bar_fig.update_layout(dict(template="plotly_white"))
 times_bar_fig.update_layout(title="Times Ranking Top 5 Universities", xaxis_title="Score", yaxis_title="University Name")
-
-
 
 
 # University Page
@@ -134,10 +152,21 @@ app.layout = dbc.Container([ #we can access html components through html.xxx
     html.H1('Main Dashboard'), #automatically placed inside the HTML body
     
     html.Div([
+        html.Div([dcc.Graph(id='choropleth_map', figure=choropleth_fig)], className='col-4'),
+    ], className='row'),
+    
+    html.Div([
         html.Button('Times Higher Education Rankings', id='btn-times-home'),
         html.Button('Academic Ranking of World Universities', id='btn-shanghai-home'),
         html.Button('Center for World University Rankings', id='btn-cwur-home'),
-    ]),    
+    ]),
+
+    html.Div([
+        dcc.Slider(2011, 2023, 1,
+               value=2012,
+               id='main-slider'
+        ),
+    ]),
 
     html.Div([
         dash_table.DataTable(
@@ -162,6 +191,13 @@ app.layout = dbc.Container([ #we can access html components through html.xxx
         html.Button('Times Higher Education Rankings', id='btn-times-university'),
         html.Button('Academic Ranking of World Universities', id='btn-shanghai-university'),
         html.Button('Center for World University Rankings', id='btn-cwur-university'),
+    ]),
+
+    html.Div([
+        dcc.Slider(2011, 2023, 1,
+               value=2012,
+               id='university-slider'
+        ),
     ]),
 
     html.Div([

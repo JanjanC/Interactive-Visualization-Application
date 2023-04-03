@@ -2,7 +2,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 from jupyter_dash import JupyterDash
-from dash import Dash, dcc, html, Input, Output
+from dash import Dash, dcc, html, dash_table, Input, Output
 import dash_bootstrap_components as dbc
 import pandas as pd
 from datetime import date
@@ -27,6 +27,7 @@ for column in rank_columns:
 
 #Main Dashboard
 #TODO: load your dashboards here
+
 
 
 
@@ -125,6 +126,13 @@ app.layout = dbc.Container([ #we can access html components through html.xxx
         html.Button('Times Higher Education Rankings', id='btn-times-home'),
         html.Button('Academic Ranking of World Universities', id='btn-shanghai-home'),
         html.Button('Center for World University Rankings', id='btn-cwur-home'),
+    ]),
+
+    html.Div([
+        dash_table.DataTable(
+            data = times_df.to_dict('records'), 
+            columns = [{"name": i, "id": i} for i in ['world_rank', 'university_name', 'country']]
+        )
     ]),
 
     html.H1('University Home Page'),

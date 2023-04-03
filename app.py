@@ -171,7 +171,8 @@ app.layout = dbc.Container([ #we can access html components through html.xxx
     html.Div([
         dash_table.DataTable(
             data = times_df.to_dict('records'), 
-            columns = [{"name": i, "id": i} for i in ['world_rank', 'university_name', 'country']]
+            columns = [{"name": i, "id": i} for i in ['world_rank', 'university_name', 'country']],
+            page_size=10
         )
     ]),
 

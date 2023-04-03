@@ -72,7 +72,6 @@ criteria = ["World_Rank", "Total_Score", "Teaching", "International", "Research"
 specific_fig = make_subplots(rows=4, cols=2, subplot_titles=criteria)
 x_count = 1
 y_count = 1
-
 univ_name = "Harvard University"
 temp = times_df[times_df["university_name"] == univ_name].sort_values(by=["year"], ascending=True)
 
@@ -81,8 +80,7 @@ for criterion in criteria:
     temp_criteria = temp[criterion.lower()].values.tolist()
     if criterion == "World_Rank":
         temp_criteria = [-int(x) for x in temp_criteria]
-        specific_fig.update_yaxes(range=[0, 100])
-    
+        specific_fig.update_yaxes(range=[0, 100])    
     specific_fig.add_trace(go.Scatter(x=temp_year, y=temp_criteria, name=criterion, mode='lines'), row=x_count, col=y_count)
     
     if y_count == 2:
@@ -93,6 +91,29 @@ for criterion in criteria:
 
 specific_fig.update_yaxes(range=[-10, -1], row=1, col=1)
 specific_fig.update_layout(height=600, width=1200, title_text="Times Ranking of Harvard University")    
+
+# Aaron Top 5 Front
+year = 2022
+s_head_df = shanghai_df[shanghai_df["year"] == year].head(5)
+
+top5_fig = make_subplots(rows=5, cols=1, subplot_titles=s_head_df["university_name"].values.tolist())
+
+x_count = 1
+y_count = 1
+
+for idx in s_head_df.index:        
+    univ_name = s_head_df["university_name"][idx]
+    temp = shanghai_df[shanghai_df["university_name"] == univ_name].sort_values(by=["year"], ascending=True)
+    temp_year = temp["year"].values.tolist()
+    temp_criteria = temp["total_score"].values.tolist()
+    
+    top5_fig.add_trace(go.Scatter(x=temp_year, y=temp_criteria, name=univ_name, mode='lines', line=dict(color="#EF553B")), row=x_count, col=1)
+    
+    x_count += 1
+
+top5_fig.update_yaxes(range=[0, 100])
+top5_fig.update_layout(showlegend=False)
+top5_fig.update_layout(height=700, width=1200, title_text="Shanghai Ranking of Top 5 Universities Score")    
 
 #initialize application
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
@@ -122,6 +143,10 @@ app.layout = dbc.Container([ #we can access html components through html.xxx
 
     html.Div([
         html.Div([dcc.Graph(id='specific-times', figure=specific_fig)], className='col-12'),        
+    ], className='row'),
+
+    html.Div([
+        html.Div([dcc.Graph(id='top-shanghai', figure=top5_fig)], className='col-12'),        
     ], className='row'),
 ])
 

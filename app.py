@@ -1,6 +1,8 @@
 import plotly.express as px
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
 from jupyter_dash import JupyterDash
-from dash import Dash, dcc, html, Input, Output
+from dash import Dash, dcc, html, dash_table, Input, Output
 import dash_bootstrap_components as dbc
 import pandas as pd
 from datetime import date
@@ -25,6 +27,7 @@ for column in rank_columns:
 
 #Main Dashboard
 #TODO: load your dashboards here
+
 
 
 
@@ -62,6 +65,57 @@ shanghai_radar_fig.update_layout(
     showlegend=True
 )
 
+# Aaron University Specific
+times_df["world_rank"] = times_df["world_rank"].str.removeprefix("=")
+year = 2023
+t_head_df = times_df[times_df["year"] == year].head(10)
+criteria = ["World_Rank", "Total_Score", "Teaching", "International", "Research", "Citations", "Income"]
+specific_fig = make_subplots(rows=4, cols=2, subplot_titles=criteria)
+x_count = 1
+y_count = 1
+univ_name = "Harvard University"
+temp = times_df[times_df["university_name"] == univ_name].sort_values(by=["year"], ascending=True)
+
+for criterion in criteria:            
+    temp_year = temp["year"].values.tolist()
+    temp_criteria = temp[criterion.lower()].values.tolist()
+    if criterion == "World_Rank":
+        temp_criteria = [-int(x) for x in temp_criteria]
+        specific_fig.update_yaxes(range=[0, 100])    
+    specific_fig.add_trace(go.Scatter(x=temp_year, y=temp_criteria, name=criterion, mode='lines'), row=x_count, col=y_count)
+    
+    if y_count == 2:
+        x_count += 1
+        y_count = 1
+    else:
+        y_count += 1
+
+specific_fig.update_yaxes(range=[-10, -1], row=1, col=1)
+specific_fig.update_layout(height=600, width=1200, title_text="Times Ranking of Harvard University")    
+
+# Aaron Top 5 Front
+year = 2022
+s_head_df = shanghai_df[shanghai_df["year"] == year].head(5)
+
+top5_fig = make_subplots(rows=5, cols=1, subplot_titles=s_head_df["university_name"].values.tolist())
+
+x_count = 1
+y_count = 1
+
+for idx in s_head_df.index:        
+    univ_name = s_head_df["university_name"][idx]
+    temp = shanghai_df[shanghai_df["university_name"] == univ_name].sort_values(by=["year"], ascending=True)
+    temp_year = temp["year"].values.tolist()
+    temp_criteria = temp["total_score"].values.tolist()
+    
+    top5_fig.add_trace(go.Scatter(x=temp_year, y=temp_criteria, name=univ_name, mode='lines', line=dict(color="#EF553B")), row=x_count, col=1)
+    
+    x_count += 1
+
+top5_fig.update_yaxes(range=[0, 100])
+top5_fig.update_layout(showlegend=False)
+top5_fig.update_layout(height=700, width=1200, title_text="Shanghai Ranking of Top 5 Universities Score")    
+
 #initialize application
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
@@ -74,6 +128,24 @@ app.layout = dbc.Container([ #we can access html components through html.xxx
         html.Button('Center for World University Rankings', id='btn-cwur-home'),
     ]),
 
+    html.Div([
+        dcc.Slider(2011, 2023, 1,
+               value=2012,
+               id='main-slider'
+        ),
+    ]),
+
+    html.Div([
+        dash_table.DataTable(
+            data = times_df.to_dict('records'), 
+            columns = [{"name": i, "id": i} for i in ['world_rank', 'university_name', 'country']]
+        )
+    ]),
+
+    html.Div([
+        html.Div([dcc.Graph(id='top-shanghai', figure=top5_fig)], className='col-12'),        
+    ], className='row'),
+
     html.H1('University Home Page'),
 
     html.Div([
@@ -83,10 +155,21 @@ app.layout = dbc.Container([ #we can access html components through html.xxx
     ]),
 
     html.Div([
+        dcc.Slider(2011, 2023, 1,
+               value=2012,
+               id='university-slider'
+        ),
+    ]),
+
+    html.Div([
+        html.Div([dcc.Graph(id='specific-times', figure=specific_fig)], className='col-12'),        
+    ], className='row'),
+
+    html.Div([
         html.Div([dcc.Graph(id='radar-times', figure=times_radar_fig)], className='col-4'),
         html.Div([dcc.Graph(id='radar-shanghai', figure=shanghai_radar_fig)], className='col-4'),
         html.Div([dcc.Graph(id='radaw-cwur', figure=cwur_radar_fig)], className='col-4')
-    ], className='row'),
+    ], className='row'),        
 ])
 
 if __name__ == '__main__':

@@ -131,7 +131,7 @@ app.layout = dbc.Container([ #we can access html components through html.xxx
     html.Div([
         dcc.Slider(2011, 2023, 1,
                value=2012,
-               id='my-slider'
+               id='main-slider'
         ),
     ]),
 
@@ -157,7 +157,7 @@ app.layout = dbc.Container([ #we can access html components through html.xxx
     html.Div([
         dcc.Slider(2011, 2023, 1,
                value=2012,
-               id='my-slider'
+               id='university-slider'
         ),
     ]),
 

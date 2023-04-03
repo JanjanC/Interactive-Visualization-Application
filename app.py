@@ -18,7 +18,19 @@ shanghai_columns = ['alumni', 'award', 'hici', 'ns', 'pub', 'pcp']
 cwur_df = pd.read_csv('datasets/cwur_2012_2022.csv')
 
 cwur_2012_df = cwur_df[cwur_df['year'] == 2012]
-cwur_2012_columns = ['quality_of_education', 'alumni_employment', 'quality_of_faculty', 'publications', 'influence', 'citations', 'patents']
+cwur_columns = {
+    '2012': ['quality_of_education', 'alumni_employment', 'quality_of_faculty', 'publications', 'influence', 'citations', 'patents'],
+    '2013': ['quality_of_education', 'alumni_employment', 'quality_of_faculty', 'publications', 'influence', 'citations', 'patents'],
+    '2014': ['quality_of_education', 'alumni_employment', 'quality_of_faculty', 'publications', 'influence', 'citations', 'broad_impact', 'patents'],
+    '2015': ['quality_of_education', 'alumni_employment', 'quality_of_faculty', 'publications', 'influence', 'citations', 'broad_impact', 'patents'],
+    '2016': ['quality_of_education', 'alumni_employment', 'quality_of_faculty', 'publications', 'influence', 'citations', 'broad_impact', 'patents'],
+    '2017': ['quality_of_education', 'alumni_employment', 'quality_of_faculty', 'publications', 'influence', 'citations', 'research_output'],
+    '2018': ['quality_of_education', 'alumni_employment', 'quality_of_faculty', 'research_performance'],
+    '2019': ['quality_of_education', 'alumni_employment', 'quality_of_faculty', 'research_performance'],
+    '2020': ['quality_of_education', 'alumni_employment', 'quality_of_faculty', 'research_performance'],
+    '2021': ['quality_of_education', 'alumni_employment', 'quality_of_faculty', 'research_performance'],
+    '2022': ['quality_of_education', 'alumni_employment', 'quality_of_faculty', 'research_performance'],
+} 
 
 rank_columns = ['quality_of_education', 'alumni_employment', 'quality_of_faculty', 'publications', 'influence', 'citations', 'patents', 'broad_impact', 'research_output']
 for column in rank_columns:
@@ -76,7 +88,7 @@ times_radar_fig.update_layout(
     showlegend=True
 )
 
-cwur_radar_fig = px.line_polar(cwur_university, r=cwur_university[cwur_2012_columns], theta=cwur_2012_columns, line_close=True)
+cwur_radar_fig = px.line_polar(cwur_university, r=cwur_university[cwur_columns['2012']], theta=cwur_columns['2012'], line_close=True)
 cwur_radar_fig.update_traces(fill='toself')
 # cwur_fig.update_layout(title={'text': "2012 Center for World University Rankings", 'x': 0.5})
 cwur_radar_fig.update_layout(

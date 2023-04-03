@@ -1,4 +1,6 @@
 import plotly.express as px
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
 from jupyter_dash import JupyterDash
 from dash import Dash, dcc, html, Input, Output
 import dash_bootstrap_components as dbc
@@ -62,6 +64,36 @@ shanghai_radar_fig.update_layout(
     showlegend=True
 )
 
+# Aaron University Specific
+times_df["world_rank"] = times_df["world_rank"].str.removeprefix("=")
+year = 2023
+t_head_df = times_df[times_df["year"] == year].head(10)
+criteria = ["World_Rank", "Total_Score", "Teaching", "International", "Research", "Citations", "Income"]
+specific_fig = make_subplots(rows=4, cols=2, subplot_titles=criteria)
+x_count = 1
+y_count = 1
+
+univ_name = "Harvard University"
+temp = times_df[times_df["university_name"] == univ_name].sort_values(by=["year"], ascending=True)
+
+for criterion in criteria:            
+    temp_year = temp["year"].values.tolist()
+    temp_criteria = temp[criterion.lower()].values.tolist()
+    if criterion == "World_Rank":
+        temp_criteria = [-int(x) for x in temp_criteria]
+        specific_fig.update_yaxes(range=[0, 100])
+    
+    specific_fig.add_trace(go.Scatter(x=temp_year, y=temp_criteria, name=criterion, mode='lines'), row=x_count, col=y_count)
+    
+    if y_count == 2:
+        x_count += 1
+        y_count = 1
+    else:
+        y_count += 1
+
+specific_fig.update_yaxes(range=[-10, -1], row=1, col=1)
+specific_fig.update_layout(height=600, width=1200, title_text="Times Ranking of Harvard University")    
+
 #initialize application
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
@@ -86,6 +118,10 @@ app.layout = dbc.Container([ #we can access html components through html.xxx
         html.Div([dcc.Graph(id='radar-times', figure=times_radar_fig)], className='col-4'),
         html.Div([dcc.Graph(id='radar-shanghai', figure=shanghai_radar_fig)], className='col-4'),
         html.Div([dcc.Graph(id='radaw-cwur', figure=cwur_radar_fig)], className='col-4')
+    ], className='row'),
+
+    html.Div([
+        html.Div([dcc.Graph(id='specific-times', figure=specific_fig)], className='col-12'),        
     ], className='row'),
 ])
 

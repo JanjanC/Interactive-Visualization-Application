@@ -32,13 +32,21 @@ cwur_columns = {
     '2022': ['quality_of_education', 'alumni_employment', 'quality_of_faculty', 'research_performance'],
 } 
 
-rank_columns = ['quality_of_education', 'alumni_employment', 'quality_of_faculty', 'publications', 'influence', 'citations', 'patents', 'broad_impact', 'research_output']
-for column in rank_columns:
-    if column in cwur_df[cwur_df['year'] == 2012].columns:
-        column_min = cwur_2012_df[column].min()
-        column_max = cwur_2012_df[column].max()
-        cwur_2012_df[column] = (column_max - cwur_2012_df[column]) / (column_max - column_min) * 100
-        
+#preprocess ranks to score
+rank_columns = ['quality_of_education', 'alumni_employment', 'quality_of_faculty', 'publications', 'influence', 'citations', 'patents', 'broad_impact', 'research_output', 'research_performance']
+cwur_years = []
+for year in range(2012, 2023):
+    cwur_year_df = cwur_df[cwur_df['year'] == year]
+    for column in rank_columns:
+        column_min = cwur_year_df[column].min()
+        column_max = cwur_year_df[column].max()
+        print(column, year, cwur_year_df.shape, column_min, column_max)
+        cwur_year_df[column] = (column_max - cwur_year_df[column]) / (column_max - column_min) * 100
+        print(cwur_year_df[column].min(), cwur_year_df[column].max())
+        print(cwur_year_df.head())
+        cwur_years.append(cwur_year_df)
+cwur_df = pd.concat(cwur_years)
+
 cont = requests.get(
     "https://gist.githubusercontent.com/hrbrmstr/91ea5cc9474286c72838/raw/59421ff9b268ff0929b051ddafafbeb94a4c1910/continents.json"
 )

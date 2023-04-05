@@ -16,8 +16,6 @@ shanghai_df = pd.read_csv('datasets/shanghai_2012_2022.csv')
 shanghai_columns = ['alumni', 'award', 'hici', 'ns', 'pub', 'pcp']
 
 cwur_df = pd.read_csv('datasets/cwur_2012_2022.csv')
-
-cwur_2012_df = cwur_df[cwur_df['year'] == 2012]
 cwur_columns = {
     '2012': ['quality_of_education', 'alumni_employment', 'quality_of_faculty', 'publications', 'influence', 'citations', 'patents'],
     '2013': ['quality_of_education', 'alumni_employment', 'quality_of_faculty', 'publications', 'influence', 'citations', 'patents'],
@@ -31,21 +29,6 @@ cwur_columns = {
     '2021': ['quality_of_education', 'alumni_employment', 'quality_of_faculty', 'research_performance'],
     '2022': ['quality_of_education', 'alumni_employment', 'quality_of_faculty', 'research_performance'],
 } 
-
-#preprocess ranks to score
-rank_columns = ['quality_of_education', 'alumni_employment', 'quality_of_faculty', 'publications', 'influence', 'citations', 'patents', 'broad_impact', 'research_output', 'research_performance']
-cwur_years = []
-for year in range(2012, 2023):
-    cwur_year_df = cwur_df[cwur_df['year'] == year]
-    for column in rank_columns:
-        column_min = cwur_year_df[column].min()
-        column_max = cwur_year_df[column].max()
-        print(column, year, cwur_year_df.shape, column_min, column_max)
-        cwur_year_df[column] = (column_max - cwur_year_df[column]) / (column_max - column_min) * 100
-        print(cwur_year_df[column].min(), cwur_year_df[column].max())
-        print(cwur_year_df.head())
-        cwur_years.append(cwur_year_df)
-cwur_df = pd.concat(cwur_years)
 
 cont = requests.get(
     "https://gist.githubusercontent.com/hrbrmstr/91ea5cc9474286c72838/raw/59421ff9b268ff0929b051ddafafbeb94a4c1910/continents.json"
@@ -96,7 +79,7 @@ def load_university_radar(university_name, university_year):
         polar=dict(radialaxis=dict(visible=True, range=[0, 100])),
         showlegend=True
     )
-
+    
     cwur_university = cwur_df[(cwur_df["University"] == university_name) & (cwur_df["Year"] == university_year)].squeeze()
     cwur_university.name = "Center for World University Rankings"
     cwur_fig = px.line_polar(cwur_university, r=cwur_university[cwur_columns[str(university_year)]], theta=cwur_columns[str(university_year)], line_close=True)

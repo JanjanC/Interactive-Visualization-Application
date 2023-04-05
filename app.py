@@ -58,17 +58,54 @@ countries.rename(columns = {'school_name':'school_count'}, inplace = True)
 
 
 #Main Dashboard
-choropleth_fig = px.choropleth(countries, locations = countries['name'], labels = countries['name'], locationmode = "country names", scope = "world", color = countries['school_count'], geojson = gdf, color_continuous_scale = ['#eff3ff','#bdd7e7','#6baed6','#3182bd','#08519c'])
+#Chloropleth Map
+def load_choropleth_map():
+    choropleth_fig = px.choropleth(countries, locations = countries['name'], labels = countries['name'], locationmode = "country names", scope = "world", color = countries['school_count'], geojson = gdf, color_continuous_scale = ['#eff3ff','#bdd7e7','#6baed6','#3182bd','#08519c'])
+    return choropleth_fig
 
-# Bar Chart
-times_bar_data = times_df[["University", 'Teaching', 'International', 'Research', 'Citations', 'Income']]
-times_bar_x = "University"
-times_bar_y = ['Teaching','International']
-times_bar_fig = px.bar(times_bar_data[0:5], x=times_bar_y, y=times_bar_x, barmode='group', labels=times_columns)
-times_bar_fig.update_layout(yaxis=dict(autorange="reversed"))
-times_bar_fig.update_layout(dict(template="plotly_white"))
-times_bar_fig.update_layout(title="Times Ranking Top 5 Universities", xaxis_title="Score", yaxis_title="University Name")
+choropleth_fig = load_choropleth_map()
 
+# Bar Chart (Criteria Comparision)
+def load_main_bar_chart():
+    times_bar_data = times_df[["University", 'Teaching', 'International', 'Research', 'Citations', 'Income']]
+    times_bar_x = "University"
+    times_bar_y = ['Teaching','International']
+    times_bar_fig = px.bar(times_bar_data[0:5], x=times_bar_y, y=times_bar_x, barmode='group', labels=times_columns)
+    times_bar_fig.update_layout(yaxis=dict(autorange="reversed"))
+    times_bar_fig.update_layout(dict(template="plotly_white"))
+    times_bar_fig.update_layout(title="Times Ranking Top 5 Universities", xaxis_title="Score", yaxis_title="University Name")
+    return times_bar_fig
+
+times_bar_fig = load_main_bar_chart()
+
+#Line Chart(Trend)
+def load_main_line_chart():
+    year = 2022
+    s_head_df = shanghai_df[shanghai_df["Year"] == year].head(5)
+
+    top5_fig = make_subplots(rows=5, cols=1, subplot_titles=s_head_df["University"].values.tolist())
+
+    x_count = 1
+    y_count = 1
+
+    for idx in s_head_df.index:        
+        university_name = s_head_df["University"][idx]
+        temp = shanghai_df[shanghai_df["University"] == university_name].sort_values(by=["Year"], ascending=True)
+        temp_year = temp["Year"].values.tolist()
+        temp_criteria = temp["total_score"].values.tolist()
+        
+        top5_fig.add_trace(go.Scatter(x=temp_year, y=temp_criteria, name=university_name, mode='lines', line=dict(color="#EF553B")), row=x_count, col=1)
+        
+        x_count += 1
+
+    top5_fig.update_yaxes(range=[0, 100])
+    top5_fig.update_layout(showlegend=False)
+    top5_fig.update_layout(height=700, width=1200, title_text="Shanghai Ranking of Top 5 Universities Score")    
+    return top5_fig
+
+top5_fig = load_main_line_chart()
+
+#Table
 university_table = dash_table.DataTable(
     id='university-table',
     data = times_df.to_dict('records'), 
@@ -110,7 +147,7 @@ def load_university_line_chart(university_rankings, university_name):
 university_trend_fig = load_university_line_chart(current_university_rankings, current_university_name)
 
 #Radar Charts
-def load_university_radar(university_name, university_year):
+def load_university_radar_chart(university_name, university_year):
     times_university = times_df[(times_df["University"] == university_name) & (times_df["Year"] == university_year)].squeeze()
     times_university.name = "Times Higher Education World Rankings"
     times_fig = px.line_polar(times_university, r=times_university[times_columns], theta=times_columns, line_close=True)
@@ -143,30 +180,7 @@ def load_university_radar(university_name, university_year):
 
     return times_fig, cwur_fig, shanghai_fig
 
-times_radar_fig, cwur_radar_fig, shanghai_radar_fig = load_university_radar(current_university_name, current_university_year)
-
-# Aaron Top 5 Front
-year = 2022
-s_head_df = shanghai_df[shanghai_df["Year"] == year].head(5)
-
-top5_fig = make_subplots(rows=5, cols=1, subplot_titles=s_head_df["University"].values.tolist())
-
-x_count = 1
-y_count = 1
-
-for idx in s_head_df.index:        
-    university_name = s_head_df["University"][idx]
-    temp = shanghai_df[shanghai_df["University"] == university_name].sort_values(by=["Year"], ascending=True)
-    temp_year = temp["Year"].values.tolist()
-    temp_criteria = temp["total_score"].values.tolist()
-    
-    top5_fig.add_trace(go.Scatter(x=temp_year, y=temp_criteria, name=university_name, mode='lines', line=dict(color="#EF553B")), row=x_count, col=1)
-    
-    x_count += 1
-
-top5_fig.update_yaxes(range=[0, 100])
-top5_fig.update_layout(showlegend=False)
-top5_fig.update_layout(height=700, width=1200, title_text="Shanghai Ranking of Top 5 Universities Score")    
+times_radar_fig, cwur_radar_fig, shanghai_radar_fig = load_university_radar_chart(current_university_name, current_university_year)
 
 #initialize application
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
@@ -282,7 +296,7 @@ def select_ranking(btn_times, btn_shanghai, btn_cwur):
 )
 def update_radar(slider_value):
     current_university_year = slider_value
-    return load_university_radar(current_university_name, current_university_year)
+    return load_university_radar_chart(current_university_name, current_university_year)
 
 if __name__ == '__main__':
     app.run_server(debug=True) #run server

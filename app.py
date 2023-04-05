@@ -157,7 +157,8 @@ top5_fig.update_layout(height=700, width=1200, title_text="Shanghai Ranking of T
 #initialize application
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
-app.layout = dbc.Container([ #we can access html components through html.xxx
+#HTML for Main Dashboard
+main = html.Div([
     html.H1('Main Dashboard'), #automatically placed inside the HTML body
     
     html.Div([
@@ -194,7 +195,10 @@ app.layout = dbc.Container([ #we can access html components through html.xxx
     html.Div([
         html.Div([dcc.Graph(id='top-shanghai', figure=top5_fig)], className='col-12'),        
     ], className='row'),
+])
 
+#HTML for University Page
+modal =  html.Div([
     html.H1('University Home Page'),
 
     html.Div([
@@ -218,7 +222,12 @@ app.layout = dbc.Container([ #we can access html components through html.xxx
         html.Div([dcc.Graph(id='radar-times', figure=times_radar_fig)], className='col-4'),
         html.Div([dcc.Graph(id='radar-shanghai', figure=shanghai_radar_fig)], className='col-4'),
         html.Div([dcc.Graph(id='radaw-cwur', figure=cwur_radar_fig)], className='col-4')
-    ], className='row'),        
+    ], className='row'),   
+])
+
+app.layout = dbc.Container([
+    main,
+    modal
 ])
 
 @app.callback(

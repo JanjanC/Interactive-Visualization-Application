@@ -184,6 +184,9 @@ main = html.Div([
         dash_table.DataTable(
             data = times_df.to_dict('records'), 
             columns = [{"name": i, "id": i} for i in ['world_rank', "University", 'country']],
+            sort_action='native',
+            filter_action='native',
+            row_selectable='multi',
             page_size=10
         )
     ]),

@@ -66,17 +66,22 @@ def load_choropleth_map():
 choropleth_fig = load_choropleth_map()
 
 # Bar Chart (Criteria Comparision)
-def load_main_bar_chart():
-    times_bar_data = times_df[["University", 'Teaching', 'International', 'Research', 'Citations', 'Income']]
-    times_bar_x = "University"
-    times_bar_y = ['Teaching','International']
-    times_bar_fig = px.bar(times_bar_data[0:5], x=times_bar_y, y=times_bar_x, barmode='group', labels=times_columns)
-    times_bar_fig.update_layout(yaxis=dict(autorange="reversed"))
-    times_bar_fig.update_layout(dict(template="plotly_white"))
-    times_bar_fig.update_layout(title="Times Ranking Top 5 Universities", xaxis_title="Score", yaxis_title="University Name")
-    return times_bar_fig
+current_main_rankings = Rankings.times
+current_main_university_list = pd.DataFrame() 
 
-times_bar_fig = load_main_bar_chart()
+def load_main_bar_chart(university_list):
+    if not university_list.empty:
+        current_df = university_list[["University"] + rankings_columns[current_main_rankings.value]]
+        fig = px.bar(current_df, x=times_columns, y="University", barmode='group', labels=times_columns)
+        fig.update_layout(yaxis=dict(autorange="reversed"))
+        fig.update_layout(dict(template="plotly_white"))
+        fig.update_layout(title="Times Ranking Top 5 Universities", xaxis_title="Score", yaxis_title="University Name")
+    else:
+        fig=px.bar().add_annotation(text="Select a University from the Table", showarrow=False, font={"size":20})
+
+    return fig
+
+main_trend_fig = load_main_bar_chart(current_main_university_list)
 
 #Line Chart(Trend)
 def load_main_line_chart():
@@ -216,7 +221,7 @@ main = html.Div([
 
     html.Div([
         dcc.Tabs(id="tab-graphs", value='criteria-comparison-tab', children=[
-            dcc.Tab(label='Criteria Comparsion', value='criteria-comparison-tab', children=[dcc.Graph(id='main-bar-chart', figure=times_bar_fig)]),
+            dcc.Tab(label='Criteria Comparsion', value='criteria-comparison-tab', children=[dcc.Graph(id='main-bar-chart', figure=main_trend_fig)]),
             dcc.Tab(label='Trends', children=[dcc.Graph(id='trends-tab', figure=top5_fig)]),
         ]),
     ])
@@ -260,14 +265,19 @@ app.layout = dbc.Container([
 ])
 
 #Callback for Main Dashboard
-# @app.callback(
-#     Input(component_id='university-table', component_property="derived_virtual_data"),
-#     Input(component_id='university-table', component_property="derived_virtual_selected_rows")
-# )
-# def update_graphs(rows, derived_virtual_selected_rows):
-#     print(rows)
-#     print(derived_virtual_selected_rows)
-#     pass
+#Tables
+@app.callback(
+    Output(component_id="main-bar-chart", component_property="figure"),
+    Input(component_id='university-table', component_property="derived_virtual_data"),
+    Input(component_id='university-table', component_property="derived_virtual_selected_rows")
+)
+def update_tabs(rows, derived_virtual_selected_rows):
+    if derived_virtual_selected_rows is None:
+        derived_virtual_selected_rows = []
+    
+    current_main_university_list = pd.DataFrame() if rows is None else pd.DataFrame(rows).iloc[derived_virtual_selected_rows]
+
+    return load_main_bar_chart(current_main_university_list)
 
 #Callback for University Overview Page
 @app.callback(

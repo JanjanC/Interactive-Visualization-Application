@@ -199,14 +199,11 @@ main = html.Div([
     ]),
 
     html.Div([
-        html.Div([
-            dcc.Graph(id='main-bar-chart', figure=times_bar_fig)
-        ])
-    ]),
-
-    html.Div([
-        html.Div([dcc.Graph(id='main-line-chart', figure=top5_fig)], className='col-12'),        
-    ], className='row'),
+        dcc.Tabs(id="tab-graphs", value='criteria-comparison-tab', children=[
+            dcc.Tab(label='Criteria Comparsion', value='criteria-comparison-tab', children=[dcc.Graph(id='main-bar-chart', figure=times_bar_fig)]),
+            dcc.Tab(label='Trends', children=[dcc.Graph(id='trends-tab', figure=top5_fig)]),
+        ]),
+    ])
 ])
 
 #HTML for University Page
@@ -245,14 +242,14 @@ app.layout = dbc.Container([
 ])
 
 #Callback for Main Dashboard
-@app.callback(
-    Output(component_id="main-line-chart", component_property="figure"),
-    Input(component_id='university-table', component_property="derived_virtual_data"),
-    Input(component_id='university-table', component_property="derived_virtual_selected_rows")
-)
-def update_graphs(rows, derived_virtual_selected_rows):
-    # print(rows)
-    # print(derived_virtual_selected_rows)
+# @app.callback(
+#     Input(component_id='university-table', component_property="derived_virtual_data"),
+#     Input(component_id='university-table', component_property="derived_virtual_selected_rows")
+# )
+# def update_graphs(rows, derived_virtual_selected_rows):
+#     print(rows)
+#     print(derived_virtual_selected_rows)
+#     pass
 
 #Callback for University Overview Page
 @app.callback(

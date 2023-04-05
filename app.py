@@ -187,7 +187,9 @@ main = html.Div([
 
     html.Div([
         dcc.Slider(
-            2012, 2022,
+            min=2012, 
+            max=2022,
+            step=1,
             value=2012,
             marks={i: '{}'.format(i) for i in range(2012, 2023)},
             id='main-slider'
@@ -218,7 +220,9 @@ modal =  html.Div([
 
     html.Div([
         dcc.Slider(
-            2012, 2022,
+            min=2012, 
+            max=2022,
+            step=1,
             value=2012,
             marks={i: '{}'.format(i) for i in range(2012, 2023)},
             id='university-slider'

@@ -2,15 +2,15 @@ import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 # from jupyter_dash import JupyterDash
-from dash import Dash, dcc, html, dash_table, Input, Output
+from dash import Dash, dcc, html, dash_table, Input, Output, ctx
 import dash_bootstrap_components as dbc
 import pandas as pd
 import geopandas as gpd
-from datetime import date
+import enum
 import requests
 
 times_df = pd.read_csv('datasets/times_2011_2023.csv')
-times_columns = ['teaching', 'international', 'research', 'citations', 'income']
+times_columns = ['Teaching', 'International', 'Research', 'Citations', 'Income']
 
 shanghai_df = pd.read_csv('datasets/shanghai_2012_2022.csv')
 shanghai_columns = ['alumni', 'award', 'hici', 'ns', 'pub', 'pcp']
@@ -28,7 +28,15 @@ cwur_columns = {
     '2020': ['quality_of_education', 'alumni_employment', 'quality_of_faculty', 'research_performance'],
     '2021': ['quality_of_education', 'alumni_employment', 'quality_of_faculty', 'research_performance'],
     '2022': ['quality_of_education', 'alumni_employment', 'quality_of_faculty', 'research_performance'],
-} 
+}
+
+class Rankings(enum.Enum):
+   times = 0
+   shanghai = 1
+   cwur = 2
+
+rankings_df = [times_df, shanghai_df, cwur_df]
+rankings_columns = [times_columns, shanghai_columns, cwur_columns]
 
 cont = requests.get(
     "https://gist.githubusercontent.com/hrbrmstr/91ea5cc9474286c72838/raw/59421ff9b268ff0929b051ddafafbeb94a4c1910/continents.json"
@@ -50,13 +58,12 @@ countries.rename(columns = {'school_name':'school_count'}, inplace = True)
 
 
 #Main Dashboard
-#TODO: load your dashboards here
 choropleth_fig = px.choropleth(countries, locations = countries['name'], labels = countries['name'], locationmode = "country names", scope = "world", color = countries['school_count'], geojson = gdf, color_continuous_scale = ['#eff3ff','#bdd7e7','#6baed6','#3182bd','#08519c'])
 
 # Bar Chart
-times_bar_data = times_df[["University", 'teaching', 'international', 'research', 'citations', 'income']]
+times_bar_data = times_df[["University", 'Teaching', 'International', 'Research', 'Citations', 'Income']]
 times_bar_x = "University"
-times_bar_y = ['teaching','international']
+times_bar_y = ['Teaching','International']
 times_bar_fig = px.bar(times_bar_data[0:5], x=times_bar_y, y=times_bar_x, barmode='group', labels=times_columns)
 times_bar_fig.update_layout(yaxis=dict(autorange="reversed"))
 times_bar_fig.update_layout(dict(template="plotly_white"))
@@ -65,6 +72,8 @@ times_bar_fig.update_layout(title="Times Ranking Top 5 Universities", xaxis_titl
 
 # University Page
 #Selected University
+
+current_university_rankings = Rankings.times
 current_university_name = "Harvard University"
 current_university_year = 2012
 
@@ -105,31 +114,34 @@ def load_university_radar(university_name, university_year):
 times_radar_fig, cwur_radar_fig, shanghai_radar_fig = load_university_radar(current_university_name, current_university_year)
 
 # Aaron University Specific
-times_df["world_rank"] = times_df["world_rank"].str.removeprefix("=")
-year = 2023
-t_head_df = times_df[times_df["Year"] == year].head(10)
-criteria = ["World_Rank", "Total_Score", "Teaching", "International", "Research", "Citations", "Income"]
-specific_fig = make_subplots(rows=4, cols=2, subplot_titles=criteria)
-x_count = 1
-y_count = 1
-temp = times_df[times_df["University"] == current_university_name].sort_values(by=["Year"], ascending=True)
+def load_university_line_chart(university_rankings, university_name):
+    current_df = rankings_df[university_rankings.value]
+    current_df["World Rank"] = current_df["World Rank"].str.removeprefix("=")
+    criteria = ["World Rank", "Overall Score"] + rankings_columns[university_rankings.value]
+    fig = make_subplots(rows=4, cols=2, subplot_titles=criteria)
+    x_count = 1
+    y_count = 1
+    current_df = current_df[current_df["University"] == university_name].sort_values(by=["Year"], ascending=True)
 
-for criterion in criteria:            
-    temp_year = temp["Year"].values.tolist()
-    temp_criteria = temp[criterion.lower()].values.tolist()
-    if criterion == "World_Rank":
-        temp_criteria = [-int(x) for x in temp_criteria]
-        specific_fig.update_yaxes(range=[0, 100])    
-    specific_fig.add_trace(go.Scatter(x=temp_year, y=temp_criteria, name=criterion, mode='lines'), row=x_count, col=y_count)
-    
-    if y_count == 2:
-        x_count += 1
-        y_count = 1
-    else:
-        y_count += 1
+    for criterion in criteria:
+        year_list = current_df["Year"].values.tolist()
+        criteria_list = current_df[criterion].values.tolist()
+        if criterion == "World Rank":
+            criteria_list = [-int(x) for x in criteria_list]
+            fig.update_yaxes(range=[0, 100])
+        fig.add_trace(go.Scatter(x=year_list, y=criteria_list, name=criterion, mode='lines'), row=x_count, col=y_count)
+        
+        if y_count == 2:
+            x_count += 1
+            y_count = 1
+        else:
+            y_count += 1
 
-specific_fig.update_yaxes(range=[-10, -1], row=1, col=1)
-specific_fig.update_layout(height=600, width=1200, title_text="Times Ranking of Harvard University")    
+    fig.update_yaxes(range=[-10, -1], row=1, col=1)
+    fig.update_layout(height=600, width=1200, title_text="Times Ranking of Harvard University")
+    return fig
+
+university_trend_fig = load_university_line_chart(current_university_rankings, current_university_name)
 
 # Aaron Top 5 Front
 year = 2022
@@ -183,10 +195,11 @@ main = html.Div([
     html.Div([
         dash_table.DataTable(
             data = times_df.to_dict('records'), 
-            columns = [{"name": i, "id": i} for i in ['world_rank', "University", 'country']],
+            columns = [{"name": i, "id": i} for i in ['World Rank', "University", 'country']],
             sort_action='native',
             filter_action='native',
             row_selectable='multi',
+            cell_selectable=False,
             page_size=10
         )
     ]),
@@ -222,7 +235,7 @@ modal =  html.Div([
     ]),
 
     html.Div([
-        html.Div([dcc.Graph(id='specific-times', figure=specific_fig)], className='col-12'),        
+        html.Div([dcc.Graph(id='university-line-chart', figure=university_trend_fig)], className='col-12'),        
     ], className='row'),
 
     html.Div([
@@ -236,6 +249,25 @@ app.layout = dbc.Container([
     main,
     modal
 ])
+
+#Callback for University Overview Page
+@app.callback(
+    Output(component_id="university-line-chart", component_property="figure"),
+    Input(component_id="btn-times-university", component_property="n_clicks"),
+    Input(component_id="btn-shanghai-university", component_property="n_clicks"),
+    Input(component_id="btn-cwur-university", component_property="n_clicks"),
+)
+def select_ranking(btn_times, btn_shanghai, btn_cwur):
+    if "btn-times-university" == ctx.triggered_id:
+        current_university_rankings = Rankings.times
+    elif "btn-shanghai-university" == ctx.triggered_id:
+        current_university_rankings = Rankings.shanghai
+    elif "btn-cwur-university" == ctx.triggered_id:
+        current_university_rankings = Rankings.cwur
+    else:
+        current_university_rankings = Rankings.times
+
+    return load_university_line_chart(current_university_rankings, current_university_name)
 
 @app.callback(
     Output(component_id="radar-times", component_property="figure"),

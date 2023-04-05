@@ -71,8 +71,8 @@ countries.rename(columns = {'school_name':'school_count'}, inplace = True)
 choropleth_fig = px.choropleth(countries, locations = countries['name'], labels = countries['name'], locationmode = "country names", scope = "world", color = countries['school_count'], geojson = gdf, color_continuous_scale = ['#eff3ff','#bdd7e7','#6baed6','#3182bd','#08519c'])
 
 # Bar Chart
-times_bar_data = times_df[['university_name', 'teaching', 'international', 'research', 'citations', 'income']]
-times_bar_x = 'university_name'
+times_bar_data = times_df[["University", 'teaching', 'international', 'research', 'citations', 'income']]
+times_bar_x = "University"
 times_bar_y = ['teaching','international']
 times_bar_fig = px.bar(times_bar_data[0:5], x=times_bar_y, y=times_bar_x, barmode='group', labels=times_columns)
 times_bar_fig.update_layout(yaxis=dict(autorange="reversed"))
@@ -82,51 +82,57 @@ times_bar_fig.update_layout(title="Times Ranking Top 5 Universities", xaxis_titl
 
 # University Page
 #Selected University
-times_university = times_df.loc[0] #TODO: update these
-cwur_university = cwur_2012_df.loc[0] 
-shanghai_university = shanghai_df.loc[0]
+current_university_name = "Harvard University"
+current_university_year = 2012
 
-#Radar Charts
-times_radar_fig = px.line_polar(times_university, r=times_university[times_columns], theta=times_columns, line_close=True)
-times_radar_fig.update_traces(fill='toself')
-# times_fig.update_layout(title={'text': "2012 Times Higher Education World University Rankings", 'x': 0.5})
-times_radar_fig.update_layout(
-    font=dict(size=18), 
-    polar=dict(radialaxis=dict(visible=True, range=[0, 100])),
-    showlegend=True
-)
+#radar Charts
+def load_university_radar(university_name, university_year):
+    times_university = times_df[(times_df["University"] == university_name) & (times_df["Year"] == university_year)].squeeze()
+    times_university.name = "Times Higher Education World Rankings"
+    times_fig = px.line_polar(times_university, r=times_university[times_columns], theta=times_columns, line_close=True)
+    times_fig.update_traces(fill='toself')
+    times_fig.update_layout(
+        font=dict(size=18), 
+        polar=dict(radialaxis=dict(visible=True, range=[0, 100])),
+        showlegend=True
+    )
 
-cwur_radar_fig = px.line_polar(cwur_university, r=cwur_university[cwur_columns['2012']], theta=cwur_columns['2012'], line_close=True)
-cwur_radar_fig.update_traces(fill='toself')
-# cwur_fig.update_layout(title={'text': "2012 Center for World University Rankings", 'x': 0.5})
-cwur_radar_fig.update_layout(
-    font=dict(size=18), 
-    polar=dict(radialaxis=dict(visible=True, range=[0, 100])),
-    showlegend=True
-)
+    cwur_university = cwur_df[(cwur_df["University"] == university_name) & (cwur_df["Year"] == university_year)].squeeze()
+    cwur_university.name = "Center for World University Rankings"
+    cwur_fig = px.line_polar(cwur_university, r=cwur_university[cwur_columns[str(university_year)]], theta=cwur_columns[str(university_year)], line_close=True)
+    cwur_fig.update_traces(fill='toself')
+    cwur_fig.update_layout(
+        font=dict(size=18), 
+        polar=dict(radialaxis=dict(visible=True, range=[0, 100])),
+        showlegend=True
+    )
 
-shanghai_radar_fig = px.line_polar(shanghai_university, r=shanghai_university[shanghai_columns], theta=shanghai_columns, line_close=True)
-shanghai_radar_fig.update_traces(fill='toself')
-# shanghai_fig.update_layout(title={'text': "2012 Academic Ranking of World Universities", 'x': 0.5})
-shanghai_radar_fig.update_layout(
-    font=dict(size=18), 
-    polar=dict(radialaxis=dict(visible=True, range=[0, 100])),
-    showlegend=True
-)
+    shanghai_university = shanghai_df[(shanghai_df["University"] == university_name) & (shanghai_df["Year"] == university_year)].squeeze()
+    shanghai_university.name = "Academic Ranking of World Universities"
+    shanghai_fig = px.line_polar(shanghai_university, r=shanghai_university[shanghai_columns], theta=shanghai_columns, line_close=True)
+    shanghai_fig.update_traces(fill='toself')
+    shanghai_fig.update_layout(
+        font=dict(size=18), 
+        polar=dict(radialaxis=dict(visible=True, range=[0, 100])),
+        showlegend=True
+    )
+
+    return times_fig, cwur_fig, shanghai_fig
+
+times_radar_fig, cwur_radar_fig, shanghai_radar_fig = load_university_radar(current_university_name, current_university_year)
 
 # Aaron University Specific
 times_df["world_rank"] = times_df["world_rank"].str.removeprefix("=")
 year = 2023
-t_head_df = times_df[times_df["year"] == year].head(10)
+t_head_df = times_df[times_df["Year"] == year].head(10)
 criteria = ["World_Rank", "Total_Score", "Teaching", "International", "Research", "Citations", "Income"]
 specific_fig = make_subplots(rows=4, cols=2, subplot_titles=criteria)
 x_count = 1
 y_count = 1
-univ_name = "Harvard University"
-temp = times_df[times_df["university_name"] == univ_name].sort_values(by=["year"], ascending=True)
+temp = times_df[times_df["University"] == current_university_name].sort_values(by=["Year"], ascending=True)
 
 for criterion in criteria:            
-    temp_year = temp["year"].values.tolist()
+    temp_year = temp["Year"].values.tolist()
     temp_criteria = temp[criterion.lower()].values.tolist()
     if criterion == "World_Rank":
         temp_criteria = [-int(x) for x in temp_criteria]
@@ -144,20 +150,20 @@ specific_fig.update_layout(height=600, width=1200, title_text="Times Ranking of 
 
 # Aaron Top 5 Front
 year = 2022
-s_head_df = shanghai_df[shanghai_df["year"] == year].head(5)
+s_head_df = shanghai_df[shanghai_df["Year"] == year].head(5)
 
-top5_fig = make_subplots(rows=5, cols=1, subplot_titles=s_head_df["university_name"].values.tolist())
+top5_fig = make_subplots(rows=5, cols=1, subplot_titles=s_head_df["University"].values.tolist())
 
 x_count = 1
 y_count = 1
 
 for idx in s_head_df.index:        
-    univ_name = s_head_df["university_name"][idx]
-    temp = shanghai_df[shanghai_df["university_name"] == univ_name].sort_values(by=["year"], ascending=True)
-    temp_year = temp["year"].values.tolist()
+    university_name = s_head_df["University"][idx]
+    temp = shanghai_df[shanghai_df["University"] == university_name].sort_values(by=["Year"], ascending=True)
+    temp_year = temp["Year"].values.tolist()
     temp_criteria = temp["total_score"].values.tolist()
     
-    top5_fig.add_trace(go.Scatter(x=temp_year, y=temp_criteria, name=univ_name, mode='lines', line=dict(color="#EF553B")), row=x_count, col=1)
+    top5_fig.add_trace(go.Scatter(x=temp_year, y=temp_criteria, name=university_name, mode='lines', line=dict(color="#EF553B")), row=x_count, col=1)
     
     x_count += 1
 
@@ -191,7 +197,7 @@ app.layout = dbc.Container([ #we can access html components through html.xxx
     html.Div([
         dash_table.DataTable(
             data = times_df.to_dict('records'), 
-            columns = [{"name": i, "id": i} for i in ['world_rank', 'university_name', 'country']],
+            columns = [{"name": i, "id": i} for i in ['world_rank', "University", 'country']],
             page_size=10
         )
     ]),
@@ -231,6 +237,17 @@ app.layout = dbc.Container([ #we can access html components through html.xxx
         html.Div([dcc.Graph(id='radaw-cwur', figure=cwur_radar_fig)], className='col-4')
     ], className='row'),        
 ])
+
+@app.callback(
+    #input - dropdown, output - histogram
+    Output(component_id="radar-times", component_property="figure"),\
+    Output(component_id="radar-shanghai", component_property="figure"),
+    Output(component_id="radaw-cwur", component_property="figure"),
+    Input(component_id="university-slider", component_property="value")
+)
+def update_radar(slider_value):
+    current_university_year = slider_value
+    return load_university_radar(current_university_name, current_university_year)
 
 if __name__ == '__main__':
     app.run_server(debug=True) #run server

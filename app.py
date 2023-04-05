@@ -77,7 +77,30 @@ current_university_rankings = Rankings.times
 current_university_name = "Harvard University"
 current_university_year = 2012
 
-#radar Charts
+# Line Charts
+def load_university_line_chart(university_rankings, university_name):
+    current_df = rankings_df[university_rankings.value]
+    #TODO: make it work for other university rankings as well
+    current_df["World Rank"] = current_df["World Rank"].str.removeprefix("=")
+    criteria = ["World Rank", "Overall Score"] + rankings_columns[university_rankings.value]
+    fig = make_subplots(rows=4, cols=2, subplot_titles=criteria)
+    current_df = current_df[current_df["University"] == university_name].sort_values(by=["Year"], ascending=True)
+
+    for index, criterion in enumerate(criteria):
+        year_list = current_df["Year"].values.tolist()
+        criteria_list = current_df[criterion].values.tolist()
+        if criterion == "World Rank":
+            criteria_list = [-int(x) for x in criteria_list]
+            fig.update_yaxes(range=[0, 100])
+        fig.add_trace(go.Scatter(x=year_list, y=criteria_list, name=criterion, mode='lines'), row = index // 2 + 1, col = index % 2 + 1)
+
+    fig.update_yaxes(range=[-10, -1], row=1, col=1)
+    fig.update_layout(height=600, width=1200, title_text="Times Ranking of Harvard University")
+    return fig
+
+university_trend_fig = load_university_line_chart(current_university_rankings, current_university_name)
+
+#Radar Charts
 def load_university_radar(university_name, university_year):
     times_university = times_df[(times_df["University"] == university_name) & (times_df["Year"] == university_year)].squeeze()
     times_university.name = "Times Higher Education World Rankings"
@@ -112,36 +135,6 @@ def load_university_radar(university_name, university_year):
     return times_fig, cwur_fig, shanghai_fig
 
 times_radar_fig, cwur_radar_fig, shanghai_radar_fig = load_university_radar(current_university_name, current_university_year)
-
-# Aaron University Specific
-def load_university_line_chart(university_rankings, university_name):
-    current_df = rankings_df[university_rankings.value]
-    current_df["World Rank"] = current_df["World Rank"].str.removeprefix("=")
-    criteria = ["World Rank", "Overall Score"] + rankings_columns[university_rankings.value]
-    fig = make_subplots(rows=4, cols=2, subplot_titles=criteria)
-    x_count = 1
-    y_count = 1
-    current_df = current_df[current_df["University"] == university_name].sort_values(by=["Year"], ascending=True)
-
-    for criterion in criteria:
-        year_list = current_df["Year"].values.tolist()
-        criteria_list = current_df[criterion].values.tolist()
-        if criterion == "World Rank":
-            criteria_list = [-int(x) for x in criteria_list]
-            fig.update_yaxes(range=[0, 100])
-        fig.add_trace(go.Scatter(x=year_list, y=criteria_list, name=criterion, mode='lines'), row=x_count, col=y_count)
-        
-        if y_count == 2:
-            x_count += 1
-            y_count = 1
-        else:
-            y_count += 1
-
-    fig.update_yaxes(range=[-10, -1], row=1, col=1)
-    fig.update_layout(height=600, width=1200, title_text="Times Ranking of Harvard University")
-    return fig
-
-university_trend_fig = load_university_line_chart(current_university_rankings, current_university_name)
 
 # Aaron Top 5 Front
 year = 2022

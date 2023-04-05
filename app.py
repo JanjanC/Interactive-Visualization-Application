@@ -22,8 +22,8 @@ cwur_columns = {
     '2014': ['quality_of_education', 'alumni_employment', 'quality_of_faculty', 'publications', 'influence', 'citations', 'broad_impact', 'patents'],
     '2015': ['quality_of_education', 'alumni_employment', 'quality_of_faculty', 'publications', 'influence', 'citations', 'broad_impact', 'patents'],
     '2016': ['quality_of_education', 'alumni_employment', 'quality_of_faculty', 'publications', 'influence', 'citations', 'broad_impact', 'patents'],
-    '2017': ['quality_of_education', 'alumni_employment', 'quality_of_faculty', 'publications', 'influence', 'citations', 'research_output'],
-    '2018': ['quality_of_education', 'alumni_employment', 'quality_of_faculty', 'research_performance'],
+    '2017': ['quality_of_education', 'alumni_employment', 'quality_of_faculty', 'publications', 'influence', 'citations', 'broad_impact', 'patents'],
+    '2018': ['quality_of_education', 'alumni_employment', 'quality_of_faculty', 'publications', 'influence', 'citations', 'research_output'],
     '2019': ['quality_of_education', 'alumni_employment', 'quality_of_faculty', 'research_performance'],
     '2020': ['quality_of_education', 'alumni_employment', 'quality_of_faculty', 'research_performance'],
     '2021': ['quality_of_education', 'alumni_employment', 'quality_of_faculty', 'research_performance'],
@@ -172,9 +172,11 @@ main = html.Div([
     ]),
 
     html.Div([
-        dcc.Slider(2011, 2023, 1,
-               value=2012,
-               id='main-slider'
+        dcc.Slider(
+            2012, 2022,
+            value=2012,
+            marks={i: '{}'.format(i) for i in range(2012, 2023)},
+            id='main-slider'
         ),
     ]),
 
@@ -208,9 +210,11 @@ modal =  html.Div([
     ]),
 
     html.Div([
-        dcc.Slider(2011, 2023, 1,
-               value=2012,
-               id='university-slider'
+        dcc.Slider(
+            2012, 2022,
+            value=2012,
+            marks={i: '{}'.format(i) for i in range(2012, 2023)},
+            id='university-slider'
         ),
     ]),
 
@@ -231,8 +235,7 @@ app.layout = dbc.Container([
 ])
 
 @app.callback(
-    #input - dropdown, output - histogram
-    Output(component_id="radar-times", component_property="figure"),\
+    Output(component_id="radar-times", component_property="figure"),
     Output(component_id="radar-shanghai", component_property="figure"),
     Output(component_id="radaw-cwur", component_property="figure"),
     Input(component_id="university-slider", component_property="value")

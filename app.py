@@ -69,10 +69,19 @@ times_bar_fig.update_layout(yaxis=dict(autorange="reversed"))
 times_bar_fig.update_layout(dict(template="plotly_white"))
 times_bar_fig.update_layout(title="Times Ranking Top 5 Universities", xaxis_title="Score", yaxis_title="University Name")
 
+university_table = dash_table.DataTable(
+    id='university-table',
+    data = times_df.to_dict('records'), 
+    columns = [{"name": i, "id": i} for i in ['World Rank', "University", 'country']],
+    sort_action='native',
+    filter_action='native',
+    row_selectable='multi',
+    cell_selectable=False,
+    page_size=10
+)
 
 # University Page
 #Selected University
-
 current_university_rankings = Rankings.times
 current_university_name = "Harvard University"
 current_university_year = 2012
@@ -186,25 +195,17 @@ main = html.Div([
     ]),
 
     html.Div([
-        dash_table.DataTable(
-            data = times_df.to_dict('records'), 
-            columns = [{"name": i, "id": i} for i in ['World Rank', "University", 'country']],
-            sort_action='native',
-            filter_action='native',
-            row_selectable='multi',
-            cell_selectable=False,
-            page_size=10
-        )
+        university_table
     ]),
 
     html.Div([
         html.Div([
-            dcc.Graph(id='bar-chart', figure=times_bar_fig)
+            dcc.Graph(id='main-bar-chart', figure=times_bar_fig)
         ])
     ]),
 
     html.Div([
-        html.Div([dcc.Graph(id='top-shanghai', figure=top5_fig)], className='col-12'),        
+        html.Div([dcc.Graph(id='main-line-chart', figure=top5_fig)], className='col-12'),        
     ], className='row'),
 ])
 
@@ -242,6 +243,16 @@ app.layout = dbc.Container([
     main,
     modal
 ])
+
+#Callback for Main Dashboard
+@app.callback(
+    Output(component_id="main-line-chart", component_property="figure"),
+    Input(component_id='university-table', component_property="derived_virtual_data"),
+    Input(component_id='university-table', component_property="derived_virtual_selected_rows")
+)
+def update_graphs(rows, derived_virtual_selected_rows):
+    # print(rows)
+    # print(derived_virtual_selected_rows)
 
 #Callback for University Overview Page
 @app.callback(

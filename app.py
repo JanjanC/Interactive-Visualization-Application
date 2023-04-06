@@ -204,8 +204,8 @@ main = html.Div([
 
         dash_table.DataTable(
             id='university-table',
-            data = times_df.to_dict('records'), 
-            columns = [{"name": i, "id": i} for i in ['World Rank', "University", 'Country']],
+            data = rankings_df[current_main_rankings.value][rankings_df[current_main_rankings.value]['Year'] == current_main_year].to_dict('records'), 
+            columns = [{"name": i, "id": i} for i in [current_main_criterion, "University", 'Country']],
             sort_action='native',
             filter_action='native',
             row_selectable='multi',
@@ -264,7 +264,7 @@ app.layout = dbc.Container([
 @app.callback(
     Output(component_id="main-bar-chart", component_property="figure"),
     Output(component_id="main-line-chart", component_property="figure"),
-    # Output(component_id="university-table", component_property="data"),
+    Output(component_id="university-table", component_property="data"),
     Output(component_id="university-table", component_property="columns"),
     Input(component_id="main-slider", component_property="value"),
     Input(component_id="criteria-dropdown", component_property="value"),
@@ -280,12 +280,13 @@ def update_main(slider_value, dropdown_value, rows, selected_rows):
     
     current_main_university_list = pd.DataFrame() if rows is None else pd.DataFrame(rows).iloc[selected_rows]
     
-    print(current_main_criterion)
+    data = rankings_df[current_main_rankings.value][rankings_df[current_main_rankings.value]['Year'] == current_main_year].to_dict('records')
     columns = [{"name": i, "id": i} for i in [current_main_criterion, "University", 'Country']]
 
     return (
         load_main_bar_chart(current_main_university_list, current_main_rankings, current_main_year), 
         load_main_line_chart(current_main_university_list, current_main_rankings, current_main_criterion), 
+        data,
         columns
     )
 

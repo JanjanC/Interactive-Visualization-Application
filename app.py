@@ -74,6 +74,7 @@ choropleth_fig = load_choropleth_map()
 # Bar Chart (Criteria Comparision)
 current_main_rankings = Rankings.times
 current_main_university_list = pd.DataFrame() 
+current_main_criterion = "Overall Score"
 
 def load_main_bar_chart(university_list):
     if not university_list.empty:
@@ -90,32 +91,27 @@ def load_main_bar_chart(university_list):
 
 main_trend_fig = load_main_bar_chart(current_main_university_list)
 
-#Line Chart(Trend)
-def load_main_line_chart():
-    year = 2022
-    s_head_df = shanghai_df[shanghai_df["Year"] == year].head(5)
+# Line Chart(Trend)
+def load_main_line_chart(university_list, university_rankings, criterion):
+    if not university_list.empty:
+        fig = make_subplots(rows=len(university_list), cols=1, subplot_titles=university_list["University"].values.tolist())
 
-    top5_fig = make_subplots(rows=5, cols=1, subplot_titles=s_head_df["University"].values.tolist())
+        for index, university_name in enumerate(university_list["University"]):
+            current_df = rankings_df[university_rankings.value]
+            university_df = current_df[current_df["University"] == university_name].sort_values(by=["Year"], ascending=True)
+            year_list = university_df["Year"].values.tolist()
+            criteria_list = university_df["Overall Score"].values.tolist()
+            
+            fig.add_trace(go.Scatter(x=year_list, y=criteria_list, name=university_name, mode='lines', line=dict(color="#EF553B")), row=index+1, col=1)
 
-    x_count = 1
-    y_count = 1
+        fig.update_layout(showlegend=False)
+        fig.update_layout(height=700, width=1200, title_text="Shanghai Ranking of Top 5 Universities Score")    
+        return fig
+    else:
+        fig=px.bar().add_annotation(text="Select a University from the Table", showarrow=False, font={"size":20})
+        return fig
 
-    for idx in s_head_df.index:        
-        university_name = s_head_df["University"][idx]
-        temp = shanghai_df[shanghai_df["University"] == university_name].sort_values(by=["Year"], ascending=True)
-        temp_year = temp["Year"].values.tolist()
-        temp_criteria = temp["Overall Score"].values.tolist()
-        
-        top5_fig.add_trace(go.Scatter(x=temp_year, y=temp_criteria, name=university_name, mode='lines', line=dict(color="#EF553B")), row=x_count, col=1)
-        
-        x_count += 1
-
-    top5_fig.update_yaxes(range=[0, 100])
-    top5_fig.update_layout(showlegend=False)
-    top5_fig.update_layout(height=700, width=1200, title_text="Shanghai Ranking of Top 5 Universities Score")    
-    return top5_fig
-
-top5_fig = load_main_line_chart()
+main_line_fig = load_main_line_chart(current_main_university_list, current_main_rankings, current_main_criterion)
 
 #Table
 university_table = dash_table.DataTable(
@@ -215,7 +211,7 @@ main = html.Div([
     html.Div([
         dcc.Tabs(id="tab-graphs", value='criteria-comparison-tab', children=[
             dcc.Tab(label='Criteria Comparsion', value='criteria-comparison-tab', children=[dcc.Graph(id='main-bar-chart', figure=main_trend_fig)]),
-            dcc.Tab(label='Trends', children=[dcc.Graph(id='trends-tab', figure=top5_fig)]),
+            dcc.Tab(label='Trends', value='trends-tab', children=[dcc.Graph(id='main-line-chart', figure=main_line_fig)]),
         ]),
     ])
 ])
@@ -261,6 +257,7 @@ app.layout = dbc.Container([
 #Tables
 @app.callback(
     Output(component_id="main-bar-chart", component_property="figure"),
+    Output(component_id="main-line-chart", component_property="figure"),
     Input(component_id='university-table', component_property="derived_virtual_data"),
     Input(component_id='university-table', component_property="derived_virtual_selected_rows")
 )
@@ -270,26 +267,26 @@ def update_tabs(rows, derived_virtual_selected_rows):
     
     current_main_university_list = pd.DataFrame() if rows is None else pd.DataFrame(rows).iloc[derived_virtual_selected_rows]
 
-    return load_main_bar_chart(current_main_university_list)
+    return load_main_bar_chart(current_main_university_list), load_main_line_chart(current_main_university_list, current_main_rankings, current_main_criterion)
 
 #Rankings Buttons
-@app.callback(
-    Output(component_id="main-line-chart", component_property="figure"),
-    Input(component_id="btn-times-main", component_property="n_clicks"),
-    Input(component_id="btn-shanghai-main", component_property="n_clicks"),
-    Input(component_id="btn-cwur-main", component_property="n_clicks"),
-)
-def select_ranking(btn_times, btn_shanghai, btn_cwur):
-    if "btn-times-university" == ctx.triggered_id:
-        current_university_rankings = Rankings.times
-    elif "btn-shanghai-university" == ctx.triggered_id:
-        current_university_rankings = Rankings.shanghai
-    elif "btn-cwur-university" == ctx.triggered_id:
-        current_university_rankings = Rankings.cwur
-    else:
-        current_university_rankings = Rankings.times
+# @app.callback(
+#     Output(component_id="main-line-chart", component_property="figure"),
+#     Input(component_id="btn-times-main", component_property="n_clicks"),
+#     Input(component_id="btn-shanghai-main", component_property="n_clicks"),
+#     Input(component_id="btn-cwur-main", component_property="n_clicks"),
+# )
+# def select_ranking(btn_times, btn_shanghai, btn_cwur):
+#     if "btn-times-university" == ctx.triggered_id:
+#         current_university_rankings = Rankings.times
+#     elif "btn-shanghai-university" == ctx.triggered_id:
+#         current_university_rankings = Rankings.shanghai
+#     elif "btn-cwur-university" == ctx.triggered_id:
+#         current_university_rankings = Rankings.cwur
+#     else:
+#         current_university_rankings = Rankings.times
 
-    return load_main_line_chart()
+#     return load_main_line_chart(current_main_university_list, "Overall Score")
 
 #Callback for University Overview Page
 #Rankings Buttons

@@ -192,9 +192,9 @@ main = html.Div([
     ], className='row'),
     
     html.Div([
-        html.Button('Times Higher Education Rankings', id='btn-times-home'),
-        html.Button('Academic Ranking of World Universities', id='btn-shanghai-home'),
-        html.Button('Center for World University Rankings', id='btn-cwur-home'),
+        html.Button('Times Higher Education Rankings', id='btn-times-main'),
+        html.Button('Academic Ranking of World Universities', id='btn-shanghai-main'),
+        html.Button('Center for World University Rankings', id='btn-cwur-main'),
     ]),
 
     html.Div([
@@ -272,7 +272,27 @@ def update_tabs(rows, derived_virtual_selected_rows):
 
     return load_main_bar_chart(current_main_university_list)
 
+#Rankings Buttons
+@app.callback(
+    Output(component_id="main-line-chart", component_property="figure"),
+    Input(component_id="btn-times-main", component_property="n_clicks"),
+    Input(component_id="btn-shanghai-main", component_property="n_clicks"),
+    Input(component_id="btn-cwur-main", component_property="n_clicks"),
+)
+def select_ranking(btn_times, btn_shanghai, btn_cwur):
+    if "btn-times-university" == ctx.triggered_id:
+        current_university_rankings = Rankings.times
+    elif "btn-shanghai-university" == ctx.triggered_id:
+        current_university_rankings = Rankings.shanghai
+    elif "btn-cwur-university" == ctx.triggered_id:
+        current_university_rankings = Rankings.cwur
+    else:
+        current_university_rankings = Rankings.times
+
+    return load_main_line_chart()
+
 #Callback for University Overview Page
+#Rankings Buttons
 @app.callback(
     Output(component_id="university-line-chart", component_property="figure"),
     Input(component_id="btn-times-university", component_property="n_clicks"),
@@ -291,6 +311,7 @@ def select_ranking(btn_times, btn_shanghai, btn_cwur):
 
     return load_university_line_chart(current_university_rankings, current_university_name)
 
+#Year Sliders
 @app.callback(
     Output(component_id="radar-times", component_property="figure"),
     Output(component_id="radar-shanghai", component_property="figure"),

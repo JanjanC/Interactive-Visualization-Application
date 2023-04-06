@@ -1,3 +1,4 @@
+import math
 import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
@@ -138,7 +139,7 @@ current_university_year = 2012
 def load_university_line_chart(university_rankings, university_name):
     current_df = rankings_df[university_rankings.value]
     criteria = ["World Rank", "Overall Score"] + rankings_complete_columns[university_rankings.value]
-    fig = make_subplots(rows=4, cols=2, subplot_titles=criteria)
+    fig = make_subplots(rows=math.ceil(len(criteria) / 2), cols=2, subplot_titles=criteria)
     current_df = current_df[current_df["University"] == university_name].sort_values(by=["Year"], ascending=True)
     for index, criterion in enumerate(criteria):
         year_list = current_df["Year"].values.tolist()
@@ -160,15 +161,6 @@ university_trend_fig = load_university_line_chart(current_university_rankings, c
 
 #Radar Charts
 def load_university_radar_chart(university_name, university_year):
-    # times_university = times_df[(times_df["University"] == university_name) & (times_df["Year"] == university_year)].squeeze()
-    # times_university.name = "Times Higher Education World Rankings"
-    # times_fig = px.line_polar(times_university, r=times_university[times_columns], theta=times_columns, line_close=True)
-    # times_fig.update_traces(fill='toself')
-    # times_fig.update_layout(
-    #     font=dict(size=18), 
-    #     polar=dict(radialaxis=dict(visible=True, range=[0, 100])),
-    #     showlegend=True
-    # )
     figs = []
     for university_rankings in Rankings:
         current_df = rankings_df[university_rankings.value]
@@ -183,16 +175,6 @@ def load_university_radar_chart(university_name, university_year):
             showlegend=True
         )
         figs.append(fig)
-
-    # shanghai_university = shanghai_df[(shanghai_df["University"] == university_name) & (shanghai_df["Year"] == university_year)].squeeze()
-    # shanghai_university.name = "Academic Ranking of World Universities"
-    # shanghai_fig = px.line_polar(shanghai_university, r=shanghai_university[shanghai_columns], theta=shanghai_columns, line_close=True)
-    # shanghai_fig.update_traces(fill='toself')
-    # shanghai_fig.update_layout(
-    #     font=dict(size=18), 
-    #     polar=dict(radialaxis=dict(visible=True, range=[0, 100])),
-    #     showlegend=True
-    # )
 
     return tuple(figs)
 

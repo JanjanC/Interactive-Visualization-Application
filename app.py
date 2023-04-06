@@ -131,21 +131,23 @@ current_university_year = 2012
 # Line Charts
 def load_university_line_chart(university_rankings, university_name):
     current_df = rankings_df[university_rankings.value]
-    #TODO: make it work for other university rankings as well
-    current_df["World Rank"] = current_df["World Rank"].str.removeprefix("=")
     criteria = ["World Rank", "Overall Score"] + rankings_columns[university_rankings.value]
     fig = make_subplots(rows=4, cols=2, subplot_titles=criteria)
     current_df = current_df[current_df["University"] == university_name].sort_values(by=["Year"], ascending=True)
 
     for index, criterion in enumerate(criteria):
         year_list = current_df["Year"].values.tolist()
-        criteria_list = current_df[criterion].values.tolist()
+
         if criterion == "World Rank":
-            criteria_list = [-int(x) for x in criteria_list]
-            fig.update_yaxes(range=[0, 100])
+            criteria_list = current_df["World Rank Order"].values.tolist()
+            #TODO: change hover data
+        else:
+            criteria_list = current_df[criterion].values.tolist()
+        
         fig.add_trace(go.Scatter(x=year_list, y=criteria_list, name=criterion, mode='lines'), row = index // 2 + 1, col = index % 2 + 1)
 
-    fig.update_yaxes(range=[-10, -1], row=1, col=1)
+    fig.update_yaxes(autorange="reversed", row=1, col=1)
+
     fig.update_layout(height=600, width=1200, title_text="Times Ranking of Harvard University")
     return fig
 

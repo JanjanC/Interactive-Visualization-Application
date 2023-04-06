@@ -262,19 +262,44 @@ app.layout = dbc.Container([
 #Callback for Main Dashboard
 #Tables
 @app.callback(
+    Output(component_id="criteria-dropdown", component_property="options"),
     Output(component_id="main-bar-chart", component_property="figure"),
     Output(component_id="main-line-chart", component_property="figure"),
     Output(component_id="university-table", component_property="data"),
     Output(component_id="university-table", component_property="columns"),
+    Input(component_id="btn-times-main", component_property="n_clicks"),
+    Input(component_id="btn-shanghai-main", component_property="n_clicks"),
+    Input(component_id="btn-cwur-main", component_property="n_clicks"),
     Input(component_id="main-slider", component_property="value"),
     Input(component_id="criteria-dropdown", component_property="value"),
     Input(component_id='university-table', component_property="derived_virtual_data"),
     Input(component_id='university-table', component_property="derived_virtual_selected_rows")
 )
-def update_main(slider_value, dropdown_value, rows, selected_rows):
+def update_main(btn_times, btn_shanghai, btn_cwur, slider_value, dropdown_value, rows, selected_rows):
+    #Slider and Dropdown Data
+    global current_main_year
+    global current_main_criterion
+    global current_main_rankings
+
     current_main_year = slider_value
     current_main_criterion = dropdown_value
 
+    # Buttons Data
+    button_rankings = Rankings.times
+    if "btn-times-main" == ctx.triggered_id:
+        current_main_rankings = Rankings.times
+    elif "btn-shanghai-main" == ctx.triggered_id:
+        current_main_rankings = Rankings.shanghai
+    elif "btn-cwur-main" == ctx.triggered_id:
+        current_main_rankings = Rankings.cwur
+
+    print(current_main_rankings)
+    options = ['World Rank', 'Overall Score'] + rankings_year_columns[current_main_rankings.value][str(current_main_year)]
+
+    if current_main_criterion not in options:
+        current_main_criterion = "World Rank"
+
+    # Tables Data
     if selected_rows is None:
         selected_rows = []
     
@@ -284,6 +309,7 @@ def update_main(slider_value, dropdown_value, rows, selected_rows):
     columns = [{"name": i, "id": i} for i in [current_main_criterion, "University", 'Country']]
 
     return (
+        options,
         load_main_bar_chart(current_main_university_list, current_main_rankings, current_main_year), 
         load_main_line_chart(current_main_university_list, current_main_rankings, current_main_criterion), 
         data,
@@ -318,6 +344,7 @@ def update_main(slider_value, dropdown_value, rows, selected_rows):
     Input(component_id="btn-cwur-university", component_property="n_clicks"),
 )
 def select_ranking(btn_times, btn_shanghai, btn_cwur):
+    global current_university_rankings
     if "btn-times-university" == ctx.triggered_id:
         current_university_rankings = Rankings.times
     elif "btn-shanghai-university" == ctx.triggered_id:
@@ -337,6 +364,7 @@ def select_ranking(btn_times, btn_shanghai, btn_cwur):
     Input(component_id="university-slider", component_property="value")
 )
 def update_radar(slider_value):
+    global current_university_year
     current_university_year = slider_value
     return load_university_radar_chart(current_university_name, current_university_year)
 

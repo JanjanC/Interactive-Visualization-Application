@@ -209,8 +209,8 @@ main = html.Div([
             sort_action='native',
             filter_action='native',
             row_selectable='multi',
-            cell_selectable=False,
-            page_size=10
+            # cell_selectable=False,
+            page_size=10,
         )
     ]),
 
@@ -326,6 +326,28 @@ def update_main(btn_times, btn_shanghai, btn_cwur, slider_value, dropdown_value,
         columns,
         selected_index
     )
+
+# UI changes (highlight whole row when a cell is selected)
+@app.callback(
+    Output("university-table", "style_data_conditional"),
+    Input("university-table", "active_cell"),
+)
+def highlight_row(active):
+    style = [{
+                "if": {"state": "active"},
+                "backgroundColor": "rgba(150, 180, 225, 0.2)",
+                "border": "1px solid blue",
+            }]
+    
+    if active:
+        style.append(
+            {
+                "if": {"row_index": active["row"]},
+                "backgroundColor": "rgba(150, 180, 225, 0.2)",
+                "border": "1px solid blue",
+            },
+        )
+    return style
 
 #Callback for University Overview Page
 #Rankings Buttons

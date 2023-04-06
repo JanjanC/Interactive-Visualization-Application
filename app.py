@@ -13,7 +13,7 @@ times_df = pd.read_csv('datasets/times_2011_2023.csv')
 times_columns = ['Teaching', 'International', 'Research', 'Citations', 'Income']
 
 shanghai_df = pd.read_csv('datasets/shanghai_2012_2022.csv')
-shanghai_columns = ['alumni', 'award', 'hici', 'ns', 'pub', 'pcp']
+shanghai_columns = ['Alumni', 'Award', 'HiCi', 'N&S', 'PUB', 'PCP']
 
 cwur_df = pd.read_csv('datasets/cwur_2012_2022.csv')
 cwur_columns = {
@@ -97,7 +97,7 @@ def load_main_line_chart():
         university_name = s_head_df["University"][idx]
         temp = shanghai_df[shanghai_df["University"] == university_name].sort_values(by=["Year"], ascending=True)
         temp_year = temp["Year"].values.tolist()
-        temp_criteria = temp["total_score"].values.tolist()
+        temp_criteria = temp["Overall Score"].values.tolist()
         
         top5_fig.add_trace(go.Scatter(x=temp_year, y=temp_criteria, name=university_name, mode='lines', line=dict(color="#EF553B")), row=x_count, col=1)
         

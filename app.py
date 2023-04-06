@@ -2,7 +2,6 @@ import math
 import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
-# from jupyter_dash import JupyterDash
 from dash import Dash, dcc, html, dash_table, Input, Output, ctx
 import dash_bootstrap_components as dbc
 import pandas as pd
@@ -223,8 +222,7 @@ main = html.Div([
 ])
 
 #HTML for University Page
-modal =  html.Div([
-    html.H1('University Home Page'),
+modal_body =  html.Div([
 
     html.Div([
         html.Button('Times Higher Education Rankings', id='btn-times-university'),
@@ -256,7 +254,17 @@ modal =  html.Div([
 
 app.layout = dbc.Container([
     main,
-    modal
+    html.Div([
+        dbc.Modal(
+            [
+                dbc.ModalHeader("University Page"),
+                dbc.ModalBody(modal_body),
+            ],
+            id="university-modal",
+            fullscreen=True,
+            is_open=False,
+        ),
+    ])
 ])
 
 #Callback for Main Dashboard
@@ -348,6 +356,19 @@ def highlight_row(active):
             },
         )
     return style
+
+@app.callback(
+    Output("university-modal", "is_open"),
+    Output('university-table', 'active_cell'),
+    Input('university-table', 'active_cell'),
+    Input(component_id='university-table', component_property="derived_virtual_data"),
+    Input("university-modal", "is_open"),
+)
+def toggle_modal(active_cell, rows, is_open):
+    if active_cell:
+        return not is_open, None
+    
+    return is_open, None
 
 #Callback for University Overview Page
 #Rankings Buttons

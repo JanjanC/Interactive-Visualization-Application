@@ -204,7 +204,7 @@ main = html.Div([
 
         dash_table.DataTable(
             id='university-table',
-            data = rankings_df[current_main_rankings.value][rankings_df[current_main_rankings.value]['Year'] == current_main_year].to_dict('records'), 
+            data = rankings_df[current_main_rankings.value][rankings_df[current_main_rankings.value]['Year'] == current_main_year].reset_index(drop=True).to_dict('records'), 
             columns = [{"name": i, "id": i} for i in [current_main_criterion, "University", 'Country']],
             sort_action='native',
             filter_action='native',
@@ -267,6 +267,7 @@ app.layout = dbc.Container([
     Output(component_id="main-line-chart", component_property="figure"),
     Output(component_id="university-table", component_property="data"),
     Output(component_id="university-table", component_property="columns"),
+    Output(component_id='university-table', component_property="selected_rows"),
     Input(component_id="btn-times-main", component_property="n_clicks"),
     Input(component_id="btn-shanghai-main", component_property="n_clicks"),
     Input(component_id="btn-cwur-main", component_property="n_clicks"),
@@ -280,6 +281,7 @@ def update_main(btn_times, btn_shanghai, btn_cwur, slider_value, dropdown_value,
     global current_main_year
     global current_main_criterion
     global current_main_rankings
+    global current_main_university_list
 
     current_main_year = slider_value
     current_main_criterion = dropdown_value
@@ -293,47 +295,37 @@ def update_main(btn_times, btn_shanghai, btn_cwur, slider_value, dropdown_value,
     elif "btn-cwur-main" == ctx.triggered_id:
         current_main_rankings = Rankings.cwur
 
-    print(current_main_rankings)
+    #Dropdown Data
     options = ['World Rank', 'Overall Score'] + rankings_year_columns[current_main_rankings.value][str(current_main_year)]
 
     if current_main_criterion not in options:
         current_main_criterion = "World Rank"
 
-    # Tables Data
+    # Tables Data    
+    #load new df based on selected rankings and year
+    df = rankings_df[current_main_rankings.value][rankings_df[current_main_rankings.value]['Year'] == current_main_year].reset_index(drop=True)
+    data = df.to_dict('records')
+    columns = [{"name": i, "id": i} for i in [current_main_criterion, "University", 'Country']]
+
     if selected_rows is None:
         selected_rows = []
-    
-    current_main_university_list = pd.DataFrame() if rows is None else pd.DataFrame(rows).iloc[selected_rows]
-    
-    data = rankings_df[current_main_rankings.value][rankings_df[current_main_rankings.value]['Year'] == current_main_year].to_dict('records')
-    columns = [{"name": i, "id": i} for i in [current_main_criterion, "University", 'Country']]
+    #update the index of the currently selected universities
+    university_names = [] if rows is None else pd.DataFrame(rows).iloc[selected_rows]['University'] #currently selected universities
+    selected_index = df[df["University"].isin(university_names)].index.tolist() #update the index
+
+    current_main_university_list = pd.DataFrame() if rows is None else pd.DataFrame(data).iloc[selected_index] #update the university list based on the new data nd index
+
+    print("Row", selected_rows)
+    print("Index", selected_index)
 
     return (
         options,
         load_main_bar_chart(current_main_university_list, current_main_rankings, current_main_year), 
         load_main_line_chart(current_main_university_list, current_main_rankings, current_main_criterion), 
         data,
-        columns
+        columns,
+        selected_index
     )
-
-#Rankings Buttons
-# @app.callback(
-#     Output(component_id="main-line-chart", component_property="figure"),
-#     Input(component_id="btn-times-main", component_property="n_clicks"),
-#     Input(component_id="btn-shanghai-main", component_property="n_clicks"),
-#     Input(component_id="btn-cwur-main", component_property="n_clicks"),
-# )
-# def select_ranking(btn_times, btn_shanghai, btn_cwur):
-#     if "btn-times-university" == ctx.triggered_id:
-#         current_university_rankings = Rankings.times
-#     elif "btn-shanghai-university" == ctx.triggered_id:
-#         current_university_rankings = Rankings.shanghai
-#     elif "btn-cwur-university" == ctx.triggered_id:
-#         current_university_rankings = Rankings.cwur
-#     else:
-#         current_university_rankings = Rankings.times
-
-#     return load_main_line_chart(current_main_university_list, "Overall Score")
 
 #Callback for University Overview Page
 #Rankings Buttons

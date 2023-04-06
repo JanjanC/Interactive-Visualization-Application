@@ -75,6 +75,7 @@ choropleth_fig = load_choropleth_map()
 current_main_rankings = Rankings.times
 current_main_university_list = pd.DataFrame() 
 current_main_criterion = "Overall Score"
+current_main_year = 2012
 
 def load_main_bar_chart(university_list):
     if not university_list.empty:
@@ -112,18 +113,6 @@ def load_main_line_chart(university_list, university_rankings, criterion):
         return fig
 
 main_line_fig = load_main_line_chart(current_main_university_list, current_main_rankings, current_main_criterion)
-
-#Table
-university_table = dash_table.DataTable(
-    id='university-table',
-    data = times_df.to_dict('records'), 
-    columns = [{"name": i, "id": i} for i in ['World Rank', "University", 'country']],
-    sort_action='native',
-    filter_action='native',
-    row_selectable='multi',
-    cell_selectable=False,
-    page_size=10
-)
 
 # University Page
 #Selected University
@@ -205,7 +194,24 @@ main = html.Div([
     ]),
 
     html.Div([
-        university_table
+        dcc.Dropdown(
+            ['World Rank', 'Overall Score'] + rankings_year_columns[current_main_rankings.value][str(current_main_year)], 
+            (['World Rank', 'Overall Score'] + rankings_year_columns[current_main_rankings.value][str(current_main_year)])[0],
+            placeholder='Select a Criteria',
+            clearable=False,
+            id='criteria-dropdown',
+        ),
+
+        dash_table.DataTable(
+            id='university-table',
+            data = times_df.to_dict('records'), 
+            columns = [{"name": i, "id": i} for i in ['World Rank', "University", 'Country']],
+            sort_action='native',
+            filter_action='native',
+            row_selectable='multi',
+            cell_selectable=False,
+            page_size=10
+        )
     ]),
 
     html.Div([
@@ -258,16 +264,31 @@ app.layout = dbc.Container([
 @app.callback(
     Output(component_id="main-bar-chart", component_property="figure"),
     Output(component_id="main-line-chart", component_property="figure"),
+    # Output(component_id="university-table", component_property="data"),
+    Output(component_id="university-table", component_property="columns"),
+    Input(component_id="main-slider", component_property="value"),
+    Input(component_id="criteria-dropdown", component_property="value"),
     Input(component_id='university-table', component_property="derived_virtual_data"),
     Input(component_id='university-table', component_property="derived_virtual_selected_rows")
 )
-def update_tabs(rows, derived_virtual_selected_rows):
-    if derived_virtual_selected_rows is None:
-        derived_virtual_selected_rows = []
-    
-    current_main_university_list = pd.DataFrame() if rows is None else pd.DataFrame(rows).iloc[derived_virtual_selected_rows]
+def update_main(slider_value, dropdown_value, rows, selected_rows):
+    current_main_year = slider_value
+    current_main_criterion = dropdown_value
 
-    return load_main_bar_chart(current_main_university_list), load_main_line_chart(current_main_university_list, current_main_rankings, current_main_criterion)
+    if selected_rows is None:
+        selected_rows = []
+    
+    current_main_university_list = pd.DataFrame() if rows is None else pd.DataFrame(rows).iloc[selected_rows]
+    
+    print(current_main_criterion)
+    columns = [{"name": i, "id": i} for i in [current_main_criterion, "University", 'Country']]
+
+
+    return (
+        load_main_bar_chart(current_main_university_list), 
+        load_main_line_chart(current_main_university_list, current_main_rankings, current_main_criterion), 
+        columns
+    )
 
 #Rankings Buttons
 # @app.callback(

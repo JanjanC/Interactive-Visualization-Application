@@ -10,13 +10,16 @@ import enum
 import requests
 
 times_df = pd.read_csv('datasets/times_2011_2023.csv')
-times_columns = ['Teaching', 'International', 'Research', 'Citations', 'Income']
+times_complete_columns = ['Teaching', 'International', 'Research', 'Citations', 'Income']
+times_year_columns = {'{}'.format(i): times_complete_columns for i in range(2011, 2024)}
 
 shanghai_df = pd.read_csv('datasets/shanghai_2012_2022.csv')
-shanghai_columns = ['Alumni', 'Award', 'HiCi', 'N&S', 'PUB', 'PCP']
+shanghai_complete_columns = ['Alumni', 'Award', 'HiCi', 'N&S', 'PUB', 'PCP']
+shanghai_year_columns = {'{}'.format(i): shanghai_complete_columns for i in range(2012, 2023)}
 
 cwur_df = pd.read_csv('datasets/cwur_2012_2022.csv')
-cwur_columns = {
+cwur_complete_columns = ['Quality of Education', 'Alumni Employment', 'Quality of Faculty', 'Publications', 'Influence', 'Citations', 'Broad Impact', 'Patents', 'Research Output', 'Research Performance']
+cwur_year_columns = {
     '2012': ['Quality of Education', 'Alumni Employment', 'Quality of Faculty', 'Publications', 'Influence', 'Citations', 'Patents'],
     '2013': ['Quality of Education', 'Alumni Employment', 'Quality of Faculty', 'Publications', 'Influence', 'Citations', 'Patents'],
     '2014': ['Quality of Education', 'Alumni Employment', 'Quality of Faculty', 'Publications', 'Influence', 'Citations', 'Broad Impact', 'Patents'],
@@ -36,7 +39,9 @@ class Rankings(enum.Enum):
    cwur = 2
 
 rankings_df = [times_df, shanghai_df, cwur_df]
-rankings_columns = [times_columns, shanghai_columns, cwur_columns]
+rankings_names = ['Times Higher Education World Rankings', 'Academic Ranking of World Universities', 'Center for World University Rankings']
+rankings_complete_columns = [times_complete_columns, shanghai_complete_columns, cwur_complete_columns]
+rankings_year_columns = [times_year_columns, shanghai_year_columns, cwur_year_columns]
 
 cont = requests.get(
     "https://gist.githubusercontent.com/hrbrmstr/91ea5cc9474286c72838/raw/59421ff9b268ff0929b051ddafafbeb94a4c1910/continents.json"
@@ -71,8 +76,9 @@ current_main_university_list = pd.DataFrame()
 
 def load_main_bar_chart(university_list):
     if not university_list.empty:
-        current_df = university_list[["University"] + rankings_columns[current_main_rankings.value]]
-        fig = px.bar(current_df, x=times_columns, y="University", barmode='group', labels=times_columns)
+        criteria = ["University"] + rankings_complete_columns[current_main_rankings.value]
+        current_df = university_list[criteria]
+        fig = px.bar(current_df, x=criteria, y="University", barmode='group', labels=criteria)
         fig.update_layout(yaxis=dict(autorange="reversed"))
         fig.update_layout(dict(template="plotly_white"))
         fig.update_layout(title="Times Ranking Top 5 Universities", xaxis_title="Score", yaxis_title="University Name")
@@ -131,10 +137,9 @@ current_university_year = 2012
 # Line Charts
 def load_university_line_chart(university_rankings, university_name):
     current_df = rankings_df[university_rankings.value]
-    criteria = ["World Rank", "Overall Score"] + rankings_columns[university_rankings.value]
+    criteria = ["World Rank", "Overall Score"] + rankings_complete_columns[university_rankings.value]
     fig = make_subplots(rows=4, cols=2, subplot_titles=criteria)
     current_df = current_df[current_df["University"] == university_name].sort_values(by=["Year"], ascending=True)
-
     for index, criterion in enumerate(criteria):
         year_list = current_df["Year"].values.tolist()
 
@@ -155,37 +160,41 @@ university_trend_fig = load_university_line_chart(current_university_rankings, c
 
 #Radar Charts
 def load_university_radar_chart(university_name, university_year):
-    times_university = times_df[(times_df["University"] == university_name) & (times_df["Year"] == university_year)].squeeze()
-    times_university.name = "Times Higher Education World Rankings"
-    times_fig = px.line_polar(times_university, r=times_university[times_columns], theta=times_columns, line_close=True)
-    times_fig.update_traces(fill='toself')
-    times_fig.update_layout(
-        font=dict(size=18), 
-        polar=dict(radialaxis=dict(visible=True, range=[0, 100])),
-        showlegend=True
-    )
-    
-    cwur_university = cwur_df[(cwur_df["University"] == university_name) & (cwur_df["Year"] == university_year)].squeeze()
-    cwur_university.name = "Center for World University Rankings"
-    cwur_fig = px.line_polar(cwur_university, r=cwur_university[cwur_columns[str(university_year)]], theta=cwur_columns[str(university_year)], line_close=True)
-    cwur_fig.update_traces(fill='toself')
-    cwur_fig.update_layout(
-        font=dict(size=18), 
-        polar=dict(radialaxis=dict(visible=True, range=[0, 100])),
-        showlegend=True
-    )
+    # times_university = times_df[(times_df["University"] == university_name) & (times_df["Year"] == university_year)].squeeze()
+    # times_university.name = "Times Higher Education World Rankings"
+    # times_fig = px.line_polar(times_university, r=times_university[times_columns], theta=times_columns, line_close=True)
+    # times_fig.update_traces(fill='toself')
+    # times_fig.update_layout(
+    #     font=dict(size=18), 
+    #     polar=dict(radialaxis=dict(visible=True, range=[0, 100])),
+    #     showlegend=True
+    # )
+    figs = []
+    for university_rankings in Rankings:
+        current_df = rankings_df[university_rankings.value]
+        current_university = current_df[(current_df["University"] == university_name) & (current_df["Year"] == university_year)].squeeze()
+        current_year_columns = rankings_year_columns[university_rankings.value][str(university_year)]
+        current_university.name = "Center for World University Rankings"
+        fig = px.line_polar(current_university, r=current_university[current_year_columns], theta=current_year_columns, line_close=True)
+        fig.update_traces(fill='toself')
+        fig.update_layout(
+            font=dict(size=18), 
+            polar=dict(radialaxis=dict(visible=True, range=[0, 100])),
+            showlegend=True
+        )
+        figs.append(fig)
 
-    shanghai_university = shanghai_df[(shanghai_df["University"] == university_name) & (shanghai_df["Year"] == university_year)].squeeze()
-    shanghai_university.name = "Academic Ranking of World Universities"
-    shanghai_fig = px.line_polar(shanghai_university, r=shanghai_university[shanghai_columns], theta=shanghai_columns, line_close=True)
-    shanghai_fig.update_traces(fill='toself')
-    shanghai_fig.update_layout(
-        font=dict(size=18), 
-        polar=dict(radialaxis=dict(visible=True, range=[0, 100])),
-        showlegend=True
-    )
+    # shanghai_university = shanghai_df[(shanghai_df["University"] == university_name) & (shanghai_df["Year"] == university_year)].squeeze()
+    # shanghai_university.name = "Academic Ranking of World Universities"
+    # shanghai_fig = px.line_polar(shanghai_university, r=shanghai_university[shanghai_columns], theta=shanghai_columns, line_close=True)
+    # shanghai_fig.update_traces(fill='toself')
+    # shanghai_fig.update_layout(
+    #     font=dict(size=18), 
+    #     polar=dict(radialaxis=dict(visible=True, range=[0, 100])),
+    #     showlegend=True
+    # )
 
-    return times_fig, cwur_fig, shanghai_fig
+    return tuple(figs)
 
 times_radar_fig, cwur_radar_fig, shanghai_radar_fig = load_university_radar_chart(current_university_name, current_university_year)
 

@@ -77,20 +77,20 @@ current_main_university_list = pd.DataFrame()
 current_main_criterion = "Overall Score"
 current_main_year = 2012
 
-def load_main_bar_chart(university_list):
+def load_main_bar_chart(university_list, university_rankings, main_year):
     if not university_list.empty:
         criteria = ["University"] + rankings_complete_columns[current_main_rankings.value]
         current_df = university_list[criteria]
         fig = px.bar(current_df, x=criteria, y="University", barmode='group', labels=criteria)
         fig.update_layout(yaxis=dict(autorange="reversed"))
         fig.update_layout(dict(template="plotly_white"))
-        fig.update_layout(title="Times Ranking Top 5 Universities", xaxis_title="Score", yaxis_title="University Name")
+        fig.update_layout(title="Comparsion of the Selected Universities Based on the Selected Criteria in the {} {}".format(main_year, rankings_names[university_rankings.value]), xaxis_title="Score", yaxis_title="University Name")
     else:
         fig=px.bar().add_annotation(text="Select a University from the Table", showarrow=False, font={"size":20})
 
     return fig
 
-main_trend_fig = load_main_bar_chart(current_main_university_list)
+main_trend_fig = load_main_bar_chart(current_main_university_list, current_main_rankings, current_main_year)
 
 # Line Chart(Trend)
 def load_main_line_chart(university_list, university_rankings, criterion):
@@ -101,12 +101,12 @@ def load_main_line_chart(university_list, university_rankings, criterion):
             current_df = rankings_df[university_rankings.value]
             university_df = current_df[current_df["University"] == university_name].sort_values(by=["Year"], ascending=True)
             year_list = university_df["Year"].values.tolist()
-            criteria_list = university_df["Overall Score"].values.tolist()
+            criteria_list = university_df[criterion].values.tolist()
             
             fig.add_trace(go.Scatter(x=year_list, y=criteria_list, name=university_name, mode='lines', line=dict(color="#EF553B")), row=index+1, col=1)
 
         fig.update_layout(showlegend=False)
-        fig.update_layout(height=700, width=1200, title_text="Shanghai Ranking of Top 5 Universities Score")    
+        fig.update_layout(height=700, width=1200, title_text="{} Trend in the {}".format(criterion, rankings_names[university_rankings.value]))    
         return fig
     else:
         fig=px.bar().add_annotation(text="Select a University from the Table", showarrow=False, font={"size":20})
@@ -283,9 +283,8 @@ def update_main(slider_value, dropdown_value, rows, selected_rows):
     print(current_main_criterion)
     columns = [{"name": i, "id": i} for i in [current_main_criterion, "University", 'Country']]
 
-
     return (
-        load_main_bar_chart(current_main_university_list), 
+        load_main_bar_chart(current_main_university_list, current_main_rankings, current_main_year), 
         load_main_line_chart(current_main_university_list, current_main_rankings, current_main_criterion), 
         columns
     )

@@ -148,9 +148,10 @@ def load_university_line_chart(university_rankings, university_name):
             fig.add_trace(
                 go.Scatter(
                     x=year_list, y=criteria_list, name=criterion, mode='markers+lines',
+                    meta=criterion,
                     customdata=current_df["World Rank"].values.tolist(),
                     marker=dict(color=px.colors.qualitative.Plotly[(index-2) % 10]),
-                    hovertemplate="(%{x}, %{customdata})"
+                    hovertemplate="<b>Year</b>: %{x}<br><b>%{meta}</b>: %{customdata}<extra></extra>"
                 ),
                 row=index // 2 + 1,
                 col=index % 2 + 1
@@ -160,7 +161,9 @@ def load_university_line_chart(university_rankings, university_name):
             fig.add_trace(
                 go.Scatter(
                     x=year_list, y=criteria_list, name=criterion, mode='markers+lines',
+                    meta=criterion,
                     marker=dict(color=px.colors.qualitative.Plotly[(index-2) % 10]),
+                    hovertemplate="<b>Year</b>: %{x}<br><b>%{meta}</b>: %{y}<extra></extra>"
                 ),
                 row=index // 2 + 1,
                 col=index % 2 + 1
@@ -190,7 +193,7 @@ def load_university_radar_chart(university_name, university_year):
                 r=current_university[current_year_columns],
                 theta=current_year_columns,
                 name=rankings_names[university_rankings.value],
-                hovertemplate="%{theta}: %{r}"
+                hovertemplate="<b>%{theta}</b>: %{r}<extra></extra>"
             ),
             row=1,
             col=index+1

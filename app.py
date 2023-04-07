@@ -96,7 +96,7 @@ def load_main_bar_chart(university_list, university_rankings, main_year):
         fig = px.bar(current_df, x=criteria, y="University", barmode='group', labels=criteria)
         fig.update_layout(yaxis=dict(autorange="reversed"))
         fig.update_layout(dict(template="plotly_white"))
-        fig.update_layout(title="Comparsion of the Selected Universities Based on the Selected Criteria in the {} {}".format(main_year, rankings_names[university_rankings.value]), xaxis_title="Score", yaxis_title="University Name")
+        fig.update_layout(title="Comparsion of the Selected Universities Based on the Selected Criteria in the <b>{} {}</b>".format(main_year, rankings_names[university_rankings.value]), xaxis_title="Score", yaxis_title="University Name")
     else:
         fig = go.Figure().add_annotation(text="Select a University from the Table", showarrow=False, font={"size": 20}).update_xaxes(visible=False).update_yaxes(visible=False)
 
@@ -122,7 +122,7 @@ def load_main_line_chart(university_list, university_rankings, criterion):
             fig.add_trace(go.Scatter(x=year_list, y=criteria_list, name=university_name, mode='lines', line=dict(color=px.colors.qualitative.Plotly[color_index])), row=index+1, col=1)
 
         fig.update_layout(showlegend=False)
-        fig.update_layout(height=700, width=1200, title_text="{} Trend in the {}".format(criterion, rankings_names[university_rankings.value]))
+        fig.update_layout(height=700, width=1200, title_text="<b>{}</b> Trend in the <b>{}</b>".format(criterion, rankings_names[university_rankings.value]))
         return fig
     else:
         fig = go.Figure().add_annotation(text="Select a University from the Table", showarrow=False, font={"size": 20}).update_xaxes(visible=False).update_yaxes(visible=False)
@@ -134,9 +134,9 @@ main_line_fig = load_main_line_chart(current_main_university_list, current_main_
 # University Page
 # Line Charts
 
-def load_university_line_chart(university_rankings, university_name):    
+
+def load_university_line_chart(university_rankings, university_name):
     current_df = rankings_df[university_rankings.value]
-    current_ranking_name = rankings_names[university_rankings.value]
     criteria = ["World Rank", "Overall Score"] + rankings_complete_columns[university_rankings.value]
     fig = make_subplots(rows=math.ceil(len(criteria) / 2), cols=2, subplot_titles=criteria)
     current_df = current_df[current_df["University"] == university_name].sort_values(by=["Year"], ascending=True)
@@ -153,7 +153,7 @@ def load_university_line_chart(university_rankings, university_name):
 
     fig.update_yaxes(autorange="reversed", row=1, col=1)
 
-    fig.update_layout(height=600, width=1200, title_text=(current_ranking_name + ' - ' + university_name))
+    fig.update_layout(height=600, width=1200, title_text="<b>{}</b> of {}".format(rankings_names[university_rankings.value], university_name))
     return fig
 
 
@@ -170,7 +170,6 @@ def load_university_radar_chart(university_name, university_year):
         current_university = current_df[(current_df["University"] == university_name) & (current_df["Year"] == university_year)].squeeze()
         current_year_columns = rankings_year_columns[university_rankings.value][str(university_year)]
         current_year_columns = current_year_columns + [current_year_columns[0]]
-        print("Year Columns", current_year_columns)
         current_university.name = rankings_names[university_rankings.value]
         fig.add_trace(go.Scatterpolar(r=current_university[current_year_columns], theta=current_year_columns, name=rankings_names[university_rankings.value]), row=1, col=index+1)
 
@@ -289,7 +288,7 @@ app.layout = dbc.Container([
 # Tables
 
 
-@app.callback(
+@ app.callback(
     Output(component_id="criteria-dropdown", component_property="options"),
     Output(component_id="main-bar-chart", component_property="figure"),
     Output(component_id="main-line-chart", component_property="figure"),
@@ -358,7 +357,7 @@ def update_main_dashboard(btn_times, btn_shanghai, btn_cwur, slider_value, dropd
 # UI changes (highlight whole row when a cell is selected)
 
 
-@app.callback(
+@ app.callback(
     Output("university-table", "style_data_conditional"),
     Input("university-table", "active_cell"),
 )
@@ -380,7 +379,7 @@ def highlight_row(active):
     return style
 
 
-@app.callback(
+@ app.callback(
     Output("university-modal", "is_open"),
     Output("university-name-title", "children"),
     Output('university-table', 'active_cell'),

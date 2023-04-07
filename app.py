@@ -145,12 +145,28 @@ def load_university_line_chart(university_rankings, university_name):
 
         if criterion == "World Rank":
             criteria_list = current_df["World Rank Order"].values.tolist()
-            # TODO: change hover data
+            fig.add_trace(
+                go.Scatter(
+                    x=year_list, y=criteria_list, name=criterion, mode='markers+lines',
+                    customdata=current_df["World Rank"].values.tolist(),
+                    marker=dict(color=px.colors.qualitative.Plotly[(index-2) % 10]),
+                    hovertemplate="(%{x}, %{customdata})"
+                ),
+                row=index // 2 + 1,
+                col=index % 2 + 1
+            )
         else:
             criteria_list = current_df[criterion].values.tolist()
-        fig.add_trace(go.Scatter(x=year_list, y=criteria_list, name=criterion, mode='lines', marker=dict(color=px.colors.qualitative.Plotly[(index-2) % 10])), row=index // 2 + 1, col=index % 2 + 1)
-    fig.update_yaxes(autorange="reversed", row=1, col=1)
+            fig.add_trace(
+                go.Scatter(
+                    x=year_list, y=criteria_list, name=criterion, mode='markers+lines',
+                    marker=dict(color=px.colors.qualitative.Plotly[(index-2) % 10]),
+                ),
+                row=index // 2 + 1,
+                col=index % 2 + 1
+            )
 
+    fig.update_yaxes(autorange="reversed", row=1, col=1)
     fig.update_layout(height=600, width=1200, title_text="Historical Performance of <b>{}</b> in the <b>{}</b>".format(university_name, rankings_names[university_rankings.value]))
     return fig
 
@@ -358,7 +374,7 @@ def update_main_dashboard(btn_times, btn_shanghai, btn_cwur, slider_value, dropd
     Output(component_id="university-line-chart", component_property="figure"),
     Output(component_id="university-radar-chart", component_property="figure"),
     Input('university-table', 'active_cell'),
-    Input(component_id='university-table', component_property="derived_virtual_data"),
+    Input(component_id='university-table', component_property="derived_viewport_data"),
     Input("university-modal", "is_open"),
     Input(component_id="btn-times-university", component_property="n_clicks"),
     Input(component_id="btn-shanghai-university", component_property="n_clicks"),

@@ -118,7 +118,7 @@ def load_main_line_chart(university_list, university_rankings, criterion):
             year_list = university_df["Year"].values.tolist()
             criteria_list = university_df[criterion].values.tolist()
 
-            color_index = (['World Rank', 'Overall Score'] + rankings_year_columns[current_main_rankings.value][str(current_main_year)]).index(criterion)
+            color_index = (['World Rank', 'Overall Score'] + rankings_year_columns[current_main_rankings.value][str(current_main_year)]).index(criterion) - 2
             fig.add_trace(go.Scatter(x=year_list, y=criteria_list, name=university_name, mode='lines', line=dict(color=px.colors.qualitative.Plotly[color_index])), row=index+1, col=1)
 
         fig.update_layout(showlegend=False)
@@ -148,9 +148,7 @@ def load_university_line_chart(university_rankings, university_name):
             # TODO: change hover data
         else:
             criteria_list = current_df[criterion].values.tolist()
-
-        fig.add_trace(go.Scatter(x=year_list, y=criteria_list, name=criterion, mode='lines'), row=index // 2 + 1, col=index % 2 + 1)
-
+        fig.add_trace(go.Scatter(x=year_list, y=criteria_list, name=criterion, mode='lines', marker=dict(color=px.colors.qualitative.Plotly[(index-2) % 10])), row=index // 2 + 1, col=index % 2 + 1)
     fig.update_yaxes(autorange="reversed", row=1, col=1)
 
     fig.update_layout(height=600, width=1200, title_text="<b>{}</b> of {}".format(rankings_names[university_rankings.value], university_name))
@@ -227,20 +225,13 @@ main = html.Div([
             row_selectable='multi',
             # cell_selectable=False,
             page_size=10,
-            style_data_conditional=[
-                {
-                    "if": {"state": "selected"},
-                    "backgroundColor": "rgba(0, 116, 217, .03)",
-                    "border": "1px solid blue",
-                },
-            ]
         )
     ]),
 
     html.Div([
         dcc.Tabs(id="tab-graphs", value='criteria-comparison-tab', children=[
-            dcc.Tab(label='Criteria Comparsion', value='criteria-comparison-tab', children=[dcc.Graph(id='main-bar-chart', figure=main_trend_fig)]),
             dcc.Tab(label='Trends', value='trends-tab', children=[dcc.Graph(id='main-line-chart', figure=main_line_fig)]),
+            dcc.Tab(label='Criteria Comparsion', value='criteria-comparison-tab', children=[dcc.Graph(id='main-bar-chart', figure=main_trend_fig)]),
         ]),
     ])
 ])
@@ -357,37 +348,6 @@ def update_main_dashboard(btn_times, btn_shanghai, btn_cwur, slider_value, dropd
         columns,
         selected_index
     )
-
-# UI changes (highlight whole row when a cell is selected)
-
-
-# @ app.callback(
-#     Output("university-table", "style_data_conditional"),
-#     Input("university-table", "active_cell"),
-# )
-# def highlight_row(active):
-#     style = [
-#         {
-#             "if": {"state": "active"},
-#             "backgroundColor": "rgba(150, 180, 225, 0.2)",
-#             "border": "1px solid blue",
-#         },
-#         {
-#             "if": {"state": "selected"},
-#             "backgroundColor": "rgba(0, 116, 217, .03)",
-#             "border": "1px solid blue",
-#         },
-#     ]
-
-#     if active:
-#         style.append(
-#             {
-#                 "if": {"row_index": active["row"]},
-#                 "backgroundColor": "rgba(150, 180, 225, 0.2)",
-#                 "border": "1px solid blue",
-#             },
-#         )
-#     return style
 
 
 @ app.callback(

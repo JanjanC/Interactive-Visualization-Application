@@ -227,6 +227,13 @@ main = html.Div([
             row_selectable='multi',
             # cell_selectable=False,
             page_size=10,
+            style_data_conditional=[
+                {
+                    "if": {"state": "selected"},
+                    "backgroundColor": "rgba(0, 116, 217, .03)",
+                    "border": "1px solid blue",
+                },
+            ]
         )
     ]),
 
@@ -340,10 +347,7 @@ def update_main_dashboard(btn_times, btn_shanghai, btn_cwur, slider_value, dropd
     university_names = [] if rows is None else pd.DataFrame(rows).iloc[selected_rows]['University']  # currently selected universities
     selected_index = df[df["University"].isin(university_names)].index.tolist()  # update the index
 
-    current_main_university_list = pd.DataFrame() if rows is None else pd.DataFrame(data).iloc[selected_index]  # update the university list based on the new data nd index
-
-    print("Row", selected_rows)
-    print("Index", selected_index)
+    current_main_university_list = pd.DataFrame() if rows is None else pd.DataFrame(data).iloc[selected_index]  # update the university list based on the new data and index
 
     return (
         options,
@@ -357,31 +361,39 @@ def update_main_dashboard(btn_times, btn_shanghai, btn_cwur, slider_value, dropd
 # UI changes (highlight whole row when a cell is selected)
 
 
-@ app.callback(
-    Output("university-table", "style_data_conditional"),
-    Input("university-table", "active_cell"),
-)
-def highlight_row(active):
-    style = [{
-        "if": {"state": "active"},
-        "backgroundColor": "rgba(150, 180, 225, 0.2)",
-        "border": "1px solid blue",
-    }]
+# @ app.callback(
+#     Output("university-table", "style_data_conditional"),
+#     Input("university-table", "active_cell"),
+# )
+# def highlight_row(active):
+#     style = [
+#         {
+#             "if": {"state": "active"},
+#             "backgroundColor": "rgba(150, 180, 225, 0.2)",
+#             "border": "1px solid blue",
+#         },
+#         {
+#             "if": {"state": "selected"},
+#             "backgroundColor": "rgba(0, 116, 217, .03)",
+#             "border": "1px solid blue",
+#         },
+#     ]
 
-    if active:
-        style.append(
-            {
-                "if": {"row_index": active["row"]},
-                "backgroundColor": "rgba(150, 180, 225, 0.2)",
-                "border": "1px solid blue",
-            },
-        )
-    return style
+#     if active:
+#         style.append(
+#             {
+#                 "if": {"row_index": active["row"]},
+#                 "backgroundColor": "rgba(150, 180, 225, 0.2)",
+#                 "border": "1px solid blue",
+#             },
+#         )
+#     return style
 
 
 @ app.callback(
     Output("university-modal", "is_open"),
     Output("university-name-title", "children"),
+    Output('university-table', 'selected_cells'),
     Output('university-table', 'active_cell'),
     Output(component_id="university-line-chart", component_property="figure"),
     Output(component_id="university-radar-chart", component_property="figure"),
@@ -417,6 +429,7 @@ def open_university_overview(active_cell, rows, is_open, btn_times, btn_shanghai
     return (
         is_open,
         current_university_name,
+        [],
         None,
         load_university_line_chart(current_university_rankings, current_university_name),
         load_university_radar_chart(current_university_name, current_university_year)

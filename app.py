@@ -162,25 +162,23 @@ university_trend_fig = load_university_line_chart(current_university_rankings, c
 
 
 def load_university_radar_chart(university_name, university_year):
-    figs = []
-    for university_rankings in Rankings:
+    fig = make_subplots(rows=1, cols=3, specs=[[{"type": "polar"}, {"type": "polar"}, {"type": "polar"}]], subplot_titles=rankings_names)
+
+    for index, university_rankings in enumerate(Rankings):
         current_df = rankings_df[university_rankings.value]
         current_university = current_df[(current_df["University"] == university_name) & (current_df["Year"] == university_year)].squeeze()
         current_year_columns = rankings_year_columns[university_rankings.value][str(university_year)]
-        current_university.name = "Center for World University Rankings"
-        fig = px.line_polar(current_university, r=current_university[current_year_columns], theta=current_year_columns, line_close=True)
-        fig.update_traces(fill='toself')
-        fig.update_layout(
-            font=dict(size=18),
-            polar=dict(radialaxis=dict(visible=True, range=[0, 100])),
-            showlegend=True
-        )
-        figs.append(fig)
+        current_year_columns = current_year_columns + [current_year_columns[0]]
+        print("Year Columns", current_year_columns)
+        current_university.name = rankings_names[university_rankings.value]
+        fig.add_trace(go.Scatterpolar(r=current_university[current_year_columns], theta=current_year_columns, name=rankings_names[university_rankings.value]), row=1, col=index+1)
 
-    return tuple(figs)
+    fig.update_layout(polar=dict(radialaxis=dict(visible=True, range=[0, 100])), showlegend=True)
+    fig.update_traces(fill='toself')
+    return fig
 
 
-times_radar_fig, cwur_radar_fig, shanghai_radar_fig = load_university_radar_chart(current_university_name, current_university_year)
+radar_fig = load_university_radar_chart(current_university_name, current_university_year)
 
 # initialize application
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
@@ -266,9 +264,7 @@ modal_body = html.Div([
     ], className='row'),
 
     html.Div([
-        html.Div([dcc.Graph(id='radar-times', figure=times_radar_fig)], className='col-4'),
-        html.Div([dcc.Graph(id='radar-shanghai', figure=shanghai_radar_fig)], className='col-4'),
-        html.Div([dcc.Graph(id='radaw-cwur', figure=cwur_radar_fig)], className='col-4')
+        html.Div([dcc.Graph(id='university-radar-chart', figure=radar_fig)], className='col-12'),
     ], className='row'),
 ])
 
@@ -277,6 +273,7 @@ app.layout = dbc.Container([
     html.Div([
         dbc.Modal(
             [
+                dbc.ModalHeader(),
                 dbc.ModalBody(modal_body),
             ],
             id="university-modal",
@@ -386,9 +383,7 @@ def highlight_row(active):
     Output("university-name-title", "children"),
     Output('university-table', 'active_cell'),
     Output(component_id="university-line-chart", component_property="figure"),
-    Output(component_id="radar-times", component_property="figure"),
-    Output(component_id="radar-shanghai", component_property="figure"),
-    Output(component_id="radaw-cwur", component_property="figure"),
+    Output(component_id="university-radar-chart", component_property="figure"),
     Input('university-table', 'active_cell'),
     Input(component_id='university-table', component_property="derived_virtual_data"),
     Input("university-modal", "is_open"),
@@ -418,13 +413,12 @@ def open_university_overview(active_cell, rows, is_open, btn_times, btn_shanghai
 
     current_university_year = slider_value
 
-    a, b, c = load_university_radar_chart(current_university_name, current_university_year)
     return (
         is_open,
         current_university_name,
         None,
         load_university_line_chart(current_university_rankings, current_university_name),
-        a, b, c
+        load_university_radar_chart(current_university_name, current_university_year)
     )
 
 

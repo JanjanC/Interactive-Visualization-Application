@@ -248,7 +248,7 @@ modal_body = html.Div([
         html.Button('Times Higher Education Rankings', id='btn-times-university', className='btn btn-primary mx-3'),
         html.Button('Academic Ranking of World Universities', id='btn-shanghai-university', className='btn btn-primary mx-3'),
         html.Button('Center for World University Rankings', id='btn-cwur-university', className='btn btn-primary mx-3'),
-    ]),
+    ], className='py-3'),
 
     html.Div([
         dcc.Slider(

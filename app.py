@@ -151,7 +151,7 @@ def load_university_line_chart(university_rankings, university_name):
         fig.add_trace(go.Scatter(x=year_list, y=criteria_list, name=criterion, mode='lines', marker=dict(color=px.colors.qualitative.Plotly[(index-2) % 10])), row=index // 2 + 1, col=index % 2 + 1)
     fig.update_yaxes(autorange="reversed", row=1, col=1)
 
-    fig.update_layout(height=600, width=1200, title_text="<b>{}</b> of {}".format(rankings_names[university_rankings.value], university_name))
+    fig.update_layout(height=600, width=1200, title_text="Historical Performance of <b>{}</b> in the <b>{}</b>".format(university_name, rankings_names[university_rankings.value]))
     return fig
 
 
@@ -161,7 +161,7 @@ university_trend_fig = load_university_line_chart(current_university_rankings, c
 
 
 def load_university_radar_chart(university_name, university_year):
-    fig = make_subplots(rows=1, cols=3, specs=[[{"type": "polar"}, {"type": "polar"}, {"type": "polar"}]], subplot_titles=rankings_names)
+    fig = make_subplots(rows=1, cols=3, specs=[[{"type": "polar"}, {"type": "polar"}, {"type": "polar"}]], subplot_titles=["{} {}".format(university_year, university_rankings) for university_rankings in rankings_names])
 
     for index, university_rankings in enumerate(Rankings):
         current_df = rankings_df[university_rankings.value]

@@ -191,11 +191,12 @@ main = html.Div([
         html.Div([dcc.Graph(id='choropleth_map', figure=choropleth_fig)], className='col-4'),
     ], className='row'),
 
+    # TODO: Change the color directly via. CSS on click and all
     html.Div([
-        html.Button('Times Higher Education Rankings', id='btn-times-main'),
-        html.Button('Academic Ranking of World Universities', id='btn-shanghai-main'),
-        html.Button('Center for World University Rankings', id='btn-cwur-main'),
-    ]),
+        html.Button('Times Higher Education Rankings', id='btn-times-main', className='btn btn-primary mx-3'),
+        html.Button('Academic Ranking of World Universities', id='btn-shanghai-main', className='btn btn-primary mx-3'),
+        html.Button('Center for World University Rankings', id='btn-cwur-main', className='btn btn-primary mx-3'),
+    ], className='py-3'),
 
     html.Div([
         dcc.Slider(
@@ -243,9 +244,9 @@ modal_body = html.Div([
     html.H1('Main Dashboard', id='university-name-title'),
 
     html.Div([
-        html.Button('Times Higher Education Rankings', id='btn-times-university'),
-        html.Button('Academic Ranking of World Universities', id='btn-shanghai-university'),
-        html.Button('Center for World University Rankings', id='btn-cwur-university'),
+        html.Button('Times Higher Education Rankings', id='btn-times-university', className='btn btn-primary mx-3'),
+        html.Button('Academic Ranking of World Universities', id='btn-shanghai-university', className='btn btn-primary mx-3'),
+        html.Button('Center for World University Rankings', id='btn-cwur-university', className='btn btn-primary mx-3'),
     ]),
 
     html.Div([

@@ -133,9 +133,9 @@ main_line_fig = load_main_line_chart(current_main_university_list, current_main_
 # University Page
 # Line Charts
 
-
-def load_university_line_chart(university_rankings, university_name):
+def load_university_line_chart(university_rankings, university_name):    
     current_df = rankings_df[university_rankings.value]
+    current_ranking_name = rankings_names[university_rankings.value]
     criteria = ["World Rank", "Overall Score"] + rankings_complete_columns[university_rankings.value]
     fig = make_subplots(rows=math.ceil(len(criteria) / 2), cols=2, subplot_titles=criteria)
     current_df = current_df[current_df["University"] == university_name].sort_values(by=["Year"], ascending=True)
@@ -152,7 +152,7 @@ def load_university_line_chart(university_rankings, university_name):
 
     fig.update_yaxes(autorange="reversed", row=1, col=1)
 
-    fig.update_layout(height=600, width=1200, title_text="Times Ranking of Harvard University")
+    fig.update_layout(height=600, width=1200, title_text=(current_ranking_name + ' - ' + university_name))
     return fig
 
 

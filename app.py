@@ -169,7 +169,7 @@ app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 #HTML for Main Dashboard
 main = html.Div([
-    html.H1('Main Dashboard'), #automatically placed inside the HTML body
+    html.H1('Main Dashboard'),
     
     html.Div([
         html.Div([dcc.Graph(id='choropleth_map', figure=choropleth_fig)], className='col-4'),
@@ -224,6 +224,8 @@ main = html.Div([
 #HTML for University Page
 modal_body =  html.Div([
 
+    html.H1('Main Dashboard', id='university-name-title'),
+
     html.Div([
         html.Button('Times Higher Education Rankings', id='btn-times-university'),
         html.Button('Academic Ranking of World Universities', id='btn-shanghai-university'),
@@ -257,7 +259,6 @@ app.layout = dbc.Container([
     html.Div([
         dbc.Modal(
             [
-                dbc.ModalHeader("University Page"),
                 dbc.ModalBody(modal_body),
             ],
             id="university-modal",
@@ -284,7 +285,7 @@ app.layout = dbc.Container([
     Input(component_id='university-table', component_property="derived_virtual_data"),
     Input(component_id='university-table', component_property="derived_virtual_selected_rows")
 )
-def update_main(btn_times, btn_shanghai, btn_cwur, slider_value, dropdown_value, rows, selected_rows):
+def update_main_dashboard(btn_times, btn_shanghai, btn_cwur, slider_value, dropdown_value, rows, selected_rows):
     #Slider and Dropdown Data
     global current_main_year
     global current_main_criterion
@@ -359,27 +360,31 @@ def highlight_row(active):
 
 @app.callback(
     Output("university-modal", "is_open"),
+    Output("university-name-title", "children"),
     Output('university-table', 'active_cell'),
+    Output(component_id="university-line-chart", component_property="figure"),
+    Output(component_id="radar-times", component_property="figure"),
+    Output(component_id="radar-shanghai", component_property="figure"),
+    Output(component_id="radaw-cwur", component_property="figure"),
     Input('university-table', 'active_cell'),
     Input(component_id='university-table', component_property="derived_virtual_data"),
     Input("university-modal", "is_open"),
-)
-def toggle_modal(active_cell, rows, is_open):
-    if active_cell:
-        return not is_open, None
-    
-    return is_open, None
-
-#Callback for University Overview Page
-#Rankings Buttons
-@app.callback(
-    Output(component_id="university-line-chart", component_property="figure"),
     Input(component_id="btn-times-university", component_property="n_clicks"),
     Input(component_id="btn-shanghai-university", component_property="n_clicks"),
     Input(component_id="btn-cwur-university", component_property="n_clicks"),
+    Input(component_id="university-slider", component_property="value")
 )
-def select_ranking(btn_times, btn_shanghai, btn_cwur):
+def open_university_overview(active_cell, rows, is_open, btn_times, btn_shanghai, btn_cwur, slider_value):
+    
+    global current_university_name
     global current_university_rankings
+    global current_university_year
+
+    if active_cell:
+        is_open = not is_open
+        current_university_name = rows[active_cell['row']]['University']
+        print(current_university_name)
+    
     if "btn-times-university" == ctx.triggered_id:
         current_university_rankings = Rankings.times
     elif "btn-shanghai-university" == ctx.triggered_id:
@@ -389,19 +394,16 @@ def select_ranking(btn_times, btn_shanghai, btn_cwur):
     else:
         current_university_rankings = Rankings.times
 
-    return load_university_line_chart(current_university_rankings, current_university_name)
-
-#Year Sliders
-@app.callback(
-    Output(component_id="radar-times", component_property="figure"),
-    Output(component_id="radar-shanghai", component_property="figure"),
-    Output(component_id="radaw-cwur", component_property="figure"),
-    Input(component_id="university-slider", component_property="value")
-)
-def update_radar(slider_value):
-    global current_university_year
     current_university_year = slider_value
-    return load_university_radar_chart(current_university_name, current_university_year)
+    
+    a,b,c = load_university_radar_chart(current_university_name, current_university_year)
+    return (
+        is_open,
+        current_university_name,
+        None,
+        load_university_line_chart(current_university_rankings, current_university_name),
+        a, b, c
+    )
 
 if __name__ == '__main__':
     app.run_server(debug=True) #run server

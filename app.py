@@ -119,7 +119,16 @@ def load_main_line_chart(university_list, university_rankings, criterion):
             criteria_list = university_df[criterion].values.tolist()
 
             color_index = (['World Rank', 'Overall Score'] + rankings_year_columns[current_main_rankings.value][str(current_main_year)]).index(criterion) - 2
-            fig.add_trace(go.Scatter(x=year_list, y=criteria_list, name=university_name, mode='lines', line=dict(color=px.colors.qualitative.Plotly[color_index])), row=index+1, col=1)
+            fig.add_trace(
+                go.Scatter(
+                    x=year_list, y=criteria_list, name=university_name, mode='lines',
+                    line=dict(color=px.colors.qualitative.Plotly[color_index]),
+                    meta=[university_name, criterion],
+                    hovertemplate="<b>%{meta[0]}</b><br><b>Year</b>: %{x}<br><b>%{meta[1]}</b>: %{y}<extra></extra>"
+                ),
+                row=index+1,
+                col=1
+            )
 
         fig.update_layout(showlegend=False)
         fig.update_layout(height=700, width=1200, title_text="<b>{}</b> Trend in the <b>{}</b>".format(criterion, rankings_names[university_rankings.value]))

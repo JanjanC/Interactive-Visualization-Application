@@ -85,7 +85,7 @@ def load_main_bar_chart(university_list, university_rankings, main_year):
         fig.update_layout(dict(template="plotly_white"))
         fig.update_layout(title="Comparsion of the Selected Universities Based on the Selected Criteria in the {} {}".format(main_year, rankings_names[university_rankings.value]), xaxis_title="Score", yaxis_title="University Name")
     else:
-        fig=px.bar().add_annotation(text="Select a University from the Table", showarrow=False, font={"size":20})
+        fig=go.Figure().add_annotation(text="Select a University from the Table", showarrow=False, font={"size":20}).update_xaxes(visible=False).update_yaxes(visible=False)
 
     return fig
 
@@ -108,7 +108,7 @@ def load_main_line_chart(university_list, university_rankings, criterion):
         fig.update_layout(height=700, width=1200, title_text="{} Trend in the {}".format(criterion, rankings_names[university_rankings.value]))    
         return fig
     else:
-        fig=px.bar().add_annotation(text="Select a University from the Table", showarrow=False, font={"size":20})
+        fig=go.Figure().add_annotation(text="Select a University from the Table", showarrow=False, font={"size":20}).update_xaxes(visible=False).update_yaxes(visible=False)
         return fig
 
 main_line_fig = load_main_line_chart(current_main_university_list, current_main_rankings, current_main_criterion)

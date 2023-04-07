@@ -118,7 +118,8 @@ def load_main_line_chart(university_list, university_rankings, criterion):
             year_list = university_df["Year"].values.tolist()
             criteria_list = university_df[criterion].values.tolist()
 
-            fig.add_trace(go.Scatter(x=year_list, y=criteria_list, name=university_name, mode='lines', line=dict(color="#EF553B")), row=index+1, col=1)
+            color_index = (['World Rank', 'Overall Score'] + rankings_year_columns[current_main_rankings.value][str(current_main_year)]).index(criterion)
+            fig.add_trace(go.Scatter(x=year_list, y=criteria_list, name=university_name, mode='lines', line=dict(color=px.colors.qualitative.Plotly[color_index])), row=index+1, col=1)
 
         fig.update_layout(showlegend=False)
         fig.update_layout(height=700, width=1200, title_text="{} Trend in the {}".format(criterion, rankings_names[university_rankings.value]))

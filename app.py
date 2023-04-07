@@ -185,8 +185,18 @@ def load_university_radar_chart(university_name, university_year):
         current_year_columns = rankings_year_columns[university_rankings.value][str(university_year)]
         current_year_columns = current_year_columns + [current_year_columns[0]]
         current_university.name = rankings_names[university_rankings.value]
-        fig.add_trace(go.Scatterpolar(r=current_university[current_year_columns], theta=current_year_columns, name=rankings_names[university_rankings.value]), row=1, col=index+1)
+        fig.add_trace(
+            go.Scatterpolar(
+                r=current_university[current_year_columns],
+                theta=current_year_columns,
+                name=rankings_names[university_rankings.value],
+                hovertemplate="%{theta}: %{r}"
+            ),
+            row=1,
+            col=index+1
+        )
 
+    fig.update_annotations(yshift=20)
     fig.update_layout(polar=dict(radialaxis=dict(visible=True, range=[0, 100])), showlegend=True)
     fig.update_traces(fill='toself')
     return fig

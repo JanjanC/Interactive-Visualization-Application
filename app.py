@@ -150,7 +150,7 @@ def load_main_line_chart(university_list, university_rankings, criterion):
                            [str(current_main_year)]).index(criterion) - 2
             fig.add_trace(
                 go.Scatter(
-                    x=year_list, y=criteria_list, name=university_name, mode='lines',
+                    x=year_list, y=criteria_list, name=university_name, mode='markers+lines',
                     line=dict(color=px.colors.qualitative.Plotly[color_index]),
                     meta=[university_name, criterion],
                     hovertemplate="<b>%{meta[0]}</b><br><b>Year</b>: %{x}<br><b>%{meta[1]}</b>: %{y}<extra></extra>"

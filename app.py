@@ -91,7 +91,7 @@ btn_main_times_class = deactivated_class
 btn_main_shanghai_class = deactivated_class
 btn_main_cwur_class = deactivated_class
 # University Overview Buttons
-btn_univ_times_class = deactivated_class
+btn_univ_times_class = activated_class
 btn_univ_shanghai_class = deactivated_class
 btn_univ_cwur_class = deactivated_class
 
@@ -531,11 +531,6 @@ def open_university_overview(active_cell, rows, is_open, btn_times, btn_shanghai
         btn_univ_times_class = deactivated_class
         btn_univ_shanghai_class = deactivated_class
         btn_univ_cwur_class = activated_class
-    else:
-        current_university_rankings = Rankings.times
-        btn_univ_times_class = activated_class
-        btn_univ_shanghai_class = deactivated_class
-        btn_univ_cwur_class = deactivated_class
 
     current_university_year = slider_value
 

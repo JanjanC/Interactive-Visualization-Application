@@ -134,7 +134,7 @@ main_trend_fig = load_main_bar_chart(
 # Line Chart(Trend)
 
 
-def load_main_line_chart(university_list, university_rankings, criterion):
+def load_main_line_chart(university_list, university_rankings, university_year, criterion):
     if not university_list.empty:
         fig = make_subplots(rows=len(university_list), cols=1,
                             subplot_titles=university_list["University"].values.tolist())
@@ -142,7 +142,8 @@ def load_main_line_chart(university_list, university_rankings, criterion):
 
         for index, university_name in enumerate(university_list["University"]):
             current_df = rankings_df[university_rankings.value]
-            university_df = current_df[current_df["University"] == university_name].sort_values(
+            university_df = current_df[(current_df["University"] ==
+                                        university_name) & (current_df["Year"] <= university_year)].sort_values(
                 by=["Year"], ascending=True)
             year_list = university_df["Year"].values.tolist()
             criteria_list = university_df[criterion].values.tolist()
@@ -173,7 +174,7 @@ def load_main_line_chart(university_list, university_rankings, criterion):
 
 
 main_line_fig = load_main_line_chart(
-    current_main_university_list, current_main_rankings, current_main_criterion)
+    current_main_university_list, current_main_rankings, current_main_year, current_main_criterion)
 
 # University Page
 # Line Charts
@@ -470,7 +471,7 @@ def update_main_dashboard(btn_times, btn_shanghai, btn_cwur, slider_value, dropd
         load_main_bar_chart(current_main_university_list,
                             current_main_rankings, current_main_year),
         load_main_line_chart(current_main_university_list,
-                             current_main_rankings, current_main_criterion),
+                             current_main_rankings, current_main_year, current_main_criterion),
         data,
         columns,
         selected_index,

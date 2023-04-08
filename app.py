@@ -138,6 +138,7 @@ def load_main_line_chart(university_list, university_rankings, criterion):
     if not university_list.empty:
         fig = make_subplots(rows=len(university_list), cols=1,
                             subplot_titles=university_list["University"].values.tolist())
+        height_counter = 200
 
         for index, university_name in enumerate(university_list["University"]):
             current_df = rankings_df[university_rankings.value]
@@ -159,8 +160,10 @@ def load_main_line_chart(university_list, university_rankings, criterion):
                 col=1
             )
 
+            height_counter += 200
+
         fig.update_layout(showlegend=False)
-        fig.update_layout(height=700, width=1200, title_text="<b>{}</b> Trend in the <b>{}</b>".format(
+        fig.update_layout(height=height_counter, width=1200, title_text="<b>{}</b> Trend in the <b>{}</b>".format(
             criterion, rankings_names[university_rankings.value]))
         return fig
     else:
@@ -326,7 +329,7 @@ main = html.Div([
             dcc.Tab(label='Criteria Comparsion', value='criteria-comparison-tab',
                     children=[dcc.Graph(id='main-bar-chart', figure=main_trend_fig)]),
         ]),
-    ])
+    ], style={'overflowY': 'scroll', 'height': 600})
 ])
 
 # HTML for University Page

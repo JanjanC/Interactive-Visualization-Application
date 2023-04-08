@@ -179,14 +179,14 @@ main_line_fig = load_main_line_chart(
 # Line Charts
 
 
-def load_university_line_chart(university_rankings, university_name):
+def load_university_line_chart(university_rankings, university_name, university_year):
     current_df = rankings_df[university_rankings.value]
     criteria = ["World Rank", "Overall Score"] + \
         rankings_complete_columns[university_rankings.value]
     fig = make_subplots(rows=math.ceil(len(criteria) / 2),
                         cols=2, subplot_titles=criteria)
-    current_df = current_df[current_df["University"] ==
-                            university_name].sort_values(by=["Year"], ascending=True)
+    current_df = current_df[(current_df["University"] ==
+                            university_name) & (current_df["Year"] <= university_year)].sort_values(by=["Year"], ascending=True)
     for index, criterion in enumerate(criteria):
         year_list = current_df["Year"].values.tolist()
 
@@ -225,7 +225,7 @@ def load_university_line_chart(university_rankings, university_name):
 
 
 university_trend_fig = load_university_line_chart(
-    current_university_rankings, current_university_name)
+    current_university_rankings, current_university_name, current_university_year)
 
 # Radar Charts
 
@@ -233,7 +233,6 @@ university_trend_fig = load_university_line_chart(
 def load_university_radar_chart(university_name, university_year):
     fig = make_subplots(rows=1, cols=3, specs=[[{"type": "polar"}, {"type": "polar"}, {"type": "polar"}]], subplot_titles=[
                         "{} {}".format(university_year, university_rankings) for university_rankings in rankings_names])
-
     for index, university_rankings in enumerate(Rankings):
         current_df = rankings_df[university_rankings.value]
         current_university = current_df[(current_df["University"] == university_name) & (
@@ -516,6 +515,7 @@ def open_university_overview(active_cell, rows, is_open, btn_times, btn_shanghai
         is_open = not is_open
         current_university_name = rows[active_cell['row']]['University']
 
+    # TODO: Change the 'else' so that it doesn't break upon change of slider
     if "btn-times-university" == ctx.triggered_id:
         current_university_rankings = Rankings.times
         btn_univ_times_class = activated_class
@@ -545,7 +545,7 @@ def open_university_overview(active_cell, rows, is_open, btn_times, btn_shanghai
         [],
         None,
         load_university_line_chart(
-            current_university_rankings, current_university_name),
+            current_university_rankings, current_university_name, current_university_year),
         load_university_radar_chart(
             current_university_name, current_university_year),
         btn_univ_times_class,

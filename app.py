@@ -231,7 +231,6 @@ university_trend_fig = load_university_line_chart(
 
 # Radar Charts
 
-
 def load_university_radar_chart(university_name, university_year):
     fig = make_subplots(rows=1, cols=3, specs=[[{"type": "polar"}, {"type": "polar"}, {"type": "polar"}]], subplot_titles=[
                         "{} {}".format(university_year, university_rankings) for university_rankings in rankings_names])
@@ -258,6 +257,7 @@ def load_university_radar_chart(university_name, university_year):
     fig.update_layout(polar=dict(radialaxis=dict(
         visible=True, range=[0, 100])), showlegend=True)
     fig.update_traces(fill='toself')
+    
     return fig
 
 
@@ -350,7 +350,7 @@ modal_body = html.Div([
                     id='btn-shanghai-university', className='btn btn-secondary mx-3'),
         html.Button('Center for World University Rankings',
                     id='btn-cwur-university', className='btn btn-secondary mx-3'),
-    ], className='py-3'),
+    ], className='py-3 d-flex justify-content-center'),
 
     html.Div([
         dcc.Slider(
@@ -372,7 +372,7 @@ modal_body = html.Div([
         html.Div([dcc.Graph(id='university-radar-chart',
                  figure=radar_fig)], className='col-12'),
     ], className='row'),
-])
+], className='container')
 
 app.layout = dbc.Container([
     main,

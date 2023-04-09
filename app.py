@@ -102,6 +102,7 @@ btn_univ_cwur_class = deactivated_class
 def load_choropleth_map():
     choropleth_fig = px.choropleth(countries, locations=countries['name'], labels=countries['name'], locationmode="country names", scope="world",
                                    color=countries['school_count'], geojson=gdf, color_continuous_scale=['#eff3ff', '#bdd7e7', '#6baed6', '#3182bd', '#08519c'])
+    choropleth_fig.update_layout(height=300, margin={"r":0,"t":0,"l":0,"b":0})
     return choropleth_fig
 
 
@@ -268,12 +269,7 @@ app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 # HTML for Main Dashboard
 main = html.Div([
-    html.H1('Main Dashboard'),
-
-    html.Div([
-        html.Div(
-            [dcc.Graph(id='choropleth_map', figure=choropleth_fig)], className='col-4'),
-    ], className='row'),
+    html.H1('University Rankings Dashboard'),
 
     # TODO: Change the color directly via. CSS on click and all
     html.Div([
@@ -283,7 +279,7 @@ main = html.Div([
                     id='btn-shanghai-main', className='btn btn-secondary mx-3'),
         html.Button('Center for World University Rankings',
                     id='btn-cwur-main', className='btn btn-secondary mx-3'),
-    ], className='py-3'),
+    ], className='py-3 d-flex justify-content-center'),
 
     html.Div([
         dcc.Slider(
@@ -297,40 +293,50 @@ main = html.Div([
     ]),
 
     html.Div([
-        dcc.Dropdown(
-            ['World Rank', 'Overall Score'] + \
-            rankings_year_columns[current_main_rankings.value][str(
-                current_main_year)],
-            (['World Rank', 'Overall Score'] + \
-             rankings_year_columns[current_main_rankings.value][str(current_main_year)])[0],
-            placeholder='Select a Criteria',
-            clearable=False,
-            id='criteria-dropdown',
-        ),
+        html.Div([
+            dcc.Tabs(id="tab-graphs", value='criteria-comparison-tab', children=[
+                dcc.Tab(label='Trends', value='trends-tab',
+                        children=[dcc.Graph(id='main-line-chart', figure=main_line_fig)]),
+                dcc.Tab(label='Criteria Comparsion', value='criteria-comparison-tab',
+                        children=[dcc.Graph(id='main-bar-chart', figure=main_trend_fig)]),
+            ]),
+        ], style={'overflowY': 'scroll', 'height': 600, 'width' : '70%'}),
 
-        dash_table.DataTable(
-            id='university-table',
-            data=rankings_df[current_main_rankings.value][rankings_df[current_main_rankings.value]
-                                                          ['Year'] == current_main_year].reset_index(drop=True).to_dict('records'),
-            columns=[{"name": i, "id": i}
-                     for i in [current_main_criterion, "University", 'Country']],
-            sort_action='native',
-            filter_action='native',
-            row_selectable='multi',
-            # cell_selectable=False,
-            page_size=10,
-        )
-    ]),
+        html.Div([
+            html.Div([
+                html.Div([
+                    html.Div(
+                        [dcc.Graph(id='choropleth_map', figure=choropleth_fig)]),
+                ]),
+            ]),
+        ],style={'width' : '30%'}),
+    ], className='d-flex flex-row'),
 
-    html.Div([
-        dcc.Tabs(id="tab-graphs", value='criteria-comparison-tab', children=[
-            dcc.Tab(label='Trends', value='trends-tab',
-                    children=[dcc.Graph(id='main-line-chart', figure=main_line_fig)]),
-            dcc.Tab(label='Criteria Comparsion', value='criteria-comparison-tab',
-                    children=[dcc.Graph(id='main-bar-chart', figure=main_trend_fig)]),
-        ]),
-    ], style={'overflowY': 'scroll', 'height': 600})
-])
+    dcc.Dropdown(
+        ['World Rank', 'Overall Score'] + \
+        rankings_year_columns[current_main_rankings.value][str(
+            current_main_year)],
+        (['World Rank', 'Overall Score'] + \
+        rankings_year_columns[current_main_rankings.value][str(current_main_year)])[0],
+        placeholder='Select a Criteria',
+        clearable=False,
+        id='criteria-dropdown',
+    ),
+
+    dash_table.DataTable(
+        id='university-table',
+        data=rankings_df[current_main_rankings.value][rankings_df[current_main_rankings.value]
+                                                    ['Year'] == current_main_year].reset_index(drop=True).to_dict('records'),
+        columns=[{"name": i, "id": i}
+                for i in [current_main_criterion, "University", 'Country']],
+        sort_action='native',
+        filter_action='native',
+        row_selectable='multi',
+        # cell_selectable=False,
+        page_size=10,
+    )
+
+], className='container')
 
 # HTML for University Page
 modal_body = html.Div([

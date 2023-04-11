@@ -5,6 +5,7 @@ from plotly.subplots import make_subplots
 from dash import Dash, dcc, html, dash_table, Input, Output, ctx
 import dash_bootstrap_components as dbc
 import pandas as pd
+import numpy as np
 import geopandas as gpd
 import enum
 import requests
@@ -111,16 +112,19 @@ choropleth_fig = load_choropleth_map()
 # Bar Chart (Criteria Comparision)
 
 
-def load_main_bar_chart(university_list, university_rankings, main_year):
+def load_main_bar_chart(university_list, university_rankings, main_year, values):
     if not university_list.empty:
+
         criteria = ["University"] + \
-            rankings_complete_columns[university_rankings.value]
+            values
+        
         current_df = university_list[criteria]
         fig = px.bar(current_df, x=criteria, y="University",
                      barmode='group', labels=criteria)
+        fig.update_layout(width=870)
         fig.update_layout(yaxis=dict(autorange="reversed"))
         fig.update_layout(dict(template="plotly_white"))
-        fig.update_layout(title="Comparsion of the Selected Universities Based on the Selected Criteria in the <b>{} {}</b>".format(
+        fig.update_layout(title="<b>{} {}</b> University Criteria".format(
             main_year, rankings_names[university_rankings.value]), xaxis_title="Score", yaxis_title="University Name")
     else:
         fig = go.Figure().add_annotation(text="Select a University from the Table", showarrow=False,
@@ -129,8 +133,8 @@ def load_main_bar_chart(university_list, university_rankings, main_year):
     return fig
 
 
-main_trend_fig = load_main_bar_chart(
-    current_main_university_list, current_main_rankings, current_main_year)
+# main_trend_fig = load_main_bar_chart(
+#     current_main_university_list, current_main_rankings, current_main_year)
 
 # Line Chart(Trend)
 
@@ -162,20 +166,19 @@ def load_main_line_chart(university_list, university_rankings, university_year, 
                 col=1
             )
 
-            height_counter += 200
-
+            height_counter += 120
         fig.update_layout(showlegend=False)
-        fig.update_layout(height=height_counter, width=1200, title_text="<b>{}</b> Trend in the <b>{}</b>".format(
+        fig.update_layout(height=height_counter, width=870, title_text="<b>{}</b> Trend in the <b>{}</b>".format(
             criterion, rankings_names[university_rankings.value]))
-        return fig
+        return fig, height_counter + 20
     else:
         fig = go.Figure().add_annotation(text="Select a University from the Table", showarrow=False,
                                          font={"size": 20}).update_xaxes(visible=False).update_yaxes(visible=False)
-        return fig
+        return fig, 600
 
 
-main_line_fig = load_main_line_chart(
-    current_main_university_list, current_main_rankings, current_main_year, current_main_criterion)
+# main_line_fig = load_main_line_chart(
+#     current_main_university_list, current_main_rankings, current_main_year, current_main_criterion)
 
 # University Page
 # Line Charts
@@ -296,11 +299,21 @@ main = html.Div([
         html.Div([
             dcc.Tabs(id="tab-graphs", value='criteria-comparison-tab', children=[
                 dcc.Tab(label='Trends', value='trends-tab',
-                        children=[dcc.Graph(id='main-line-chart', figure=main_line_fig)]),
+                        children=[
+                            dcc.Graph(id='main-line-chart')]),
                 dcc.Tab(label='Criteria Comparsion', value='criteria-comparison-tab',
-                        children=[dcc.Graph(id='main-bar-chart', figure=main_trend_fig)]),
+                        children=[
+                            dcc.Graph(id='main-bar-chart'),
+
+                            dcc.Checklist(id='bar-chart-checklist', 
+                            options=rankings_complete_columns[0], 
+                            inline=True,
+                            value=rankings_complete_columns[0])
+                            ]),
             ]),
-        ], style={'overflowY': 'scroll', 'height': 600, 'width' : '70%'}),
+        ], 
+        id="tab-container", style={'height': 600,'width' : '70%'},
+        ),
 
         html.Div([
             html.Div([
@@ -395,7 +408,7 @@ app.layout = dbc.Container([
 
 @ app.callback(
     Output(component_id="criteria-dropdown", component_property="options"),
-    Output(component_id="main-bar-chart", component_property="figure"),
+    Output(component_id="main-bar-chart", component_property="figure", allow_duplicate=True),
     Output(component_id="main-line-chart", component_property="figure"),
     Output(component_id="university-table", component_property="data"),
     Output(component_id="university-table", component_property="columns"),
@@ -404,6 +417,9 @@ app.layout = dbc.Container([
     Output(component_id="btn-times-main", component_property="className"),
     Output(component_id="btn-shanghai-main", component_property="className"),
     Output(component_id="btn-cwur-main", component_property="className"),
+    Output(component_id='bar-chart-checklist', component_property="options"),
+    Output(component_id='bar-chart-checklist', component_property="value"),
+    Output(component_id="tab-container", component_property="style"),
     Input(component_id="btn-times-main", component_property="n_clicks"),
     Input(component_id="btn-shanghai-main", component_property="n_clicks"),
     Input(component_id="btn-cwur-main", component_property="n_clicks"),
@@ -412,9 +428,11 @@ app.layout = dbc.Container([
     Input(component_id='university-table',
           component_property="derived_virtual_data"),
     Input(component_id='university-table',
-          component_property="derived_virtual_selected_rows")
+          component_property="derived_virtual_selected_rows"),
+    Input(component_id="tab-graphs", component_property="value"),
+    prevent_initial_call=True
 )
-def update_main_dashboard(btn_times, btn_shanghai, btn_cwur, slider_value, dropdown_value, rows, selected_rows):
+def update_main_dashboard(btn_times, btn_shanghai, btn_cwur, slider_value, dropdown_value, rows, selected_rows, tab_val):
     # Slider and Dropdown Data
     global current_main_year
     global current_main_criterion
@@ -440,11 +458,12 @@ def update_main_dashboard(btn_times, btn_shanghai, btn_cwur, slider_value, dropd
         btn_main_shanghai_class = activated_class
         btn_main_cwur_class = deactivated_class
     elif "btn-cwur-main" == ctx.triggered_id:
-        current_main_rankings = Rankings.cwur
         btn_main_times_class = deactivated_class
         btn_main_shanghai_class = deactivated_class
         btn_main_cwur_class = activated_class
-
+    
+    checklist_options = checklist_value = rankings_complete_columns[current_main_rankings.value]
+ 
     # Dropdown Data
     options = ['World Rank', 'Overall Score'] + \
         rankings_year_columns[current_main_rankings.value][str(
@@ -472,18 +491,28 @@ def update_main_dashboard(btn_times, btn_shanghai, btn_cwur, slider_value, dropd
     current_main_university_list = pd.DataFrame() if rows is None else pd.DataFrame(
         data).iloc[selected_index]  # update the university list based on the new data and index
 
+
+    line_fig, height = load_main_line_chart(current_main_university_list,
+                             current_main_rankings, current_main_year, current_main_criterion)
+    
+    style = {'height': 600,'width' : '70%'}
+    if tab_val == "trends-tab":
+        style = {'height': height,'width' : '70%'}
+
     return (
         options,
         load_main_bar_chart(current_main_university_list,
-                            current_main_rankings, current_main_year),
-        load_main_line_chart(current_main_university_list,
-                             current_main_rankings, current_main_year, current_main_criterion),
+                            current_main_rankings, current_main_year, checklist_value),
+        line_fig,
         data,
         columns,
         selected_index,
         btn_main_times_class,
         btn_main_shanghai_class,
-        btn_main_cwur_class
+        btn_main_cwur_class,
+        checklist_options,
+        checklist_value,
+        style
     )
 
 
@@ -554,6 +583,24 @@ def open_university_overview(active_cell, rows, is_open, btn_times, btn_shanghai
         btn_univ_shanghai_class,
         btn_univ_cwur_class
     )
+
+@app.callback(
+        Output(component_id="main-bar-chart", component_property="figure"),
+        Input(component_id='bar-chart-checklist', component_property="value")
+)
+def update_bar_chart(values):
+    return load_main_bar_chart(current_main_university_list,
+                            current_main_rankings, current_main_year, values)
+
+# @app.callback(
+#         Output(component_id="tab-container", component_property="style"),
+#         Input(component_id="tab-graphs", component_property="value"),
+# )
+# def update_tabs(tab_val):
+#     style = {'height': 600,'width' : '70%'}
+#     if tab_val == "trends-tab":
+#         style = {'height': 900,'width' : '70%'}
+#     return style
 
 
 if __name__ == '__main__':

@@ -118,9 +118,10 @@ def load_main_bar_chart(university_list, university_rankings, main_year):
         current_df = university_list[criteria]
         fig = px.bar(current_df, x=criteria, y="University",
                      barmode='group', labels=criteria)
+        fig.update_layout(width=870)
         fig.update_layout(yaxis=dict(autorange="reversed"))
         fig.update_layout(dict(template="plotly_white"))
-        fig.update_layout(title="Comparsion of the Selected Universities Based on the Selected Criteria in the <b>{} {}</b>".format(
+        fig.update_layout(title="<b>{} {}</b> University Criteria".format(
             main_year, rankings_names[university_rankings.value]), xaxis_title="Score", yaxis_title="University Name")
     else:
         fig = go.Figure().add_annotation(text="Select a University from the Table", showarrow=False,
@@ -162,10 +163,9 @@ def load_main_line_chart(university_list, university_rankings, university_year, 
                 col=1
             )
 
-            height_counter += 200
-
+            height_counter += 150
         fig.update_layout(showlegend=False)
-        fig.update_layout(height=height_counter, width=1200, title_text="<b>{}</b> Trend in the <b>{}</b>".format(
+        fig.update_layout(height=height_counter, width=870, title_text="<b>{}</b> Trend in the <b>{}</b>".format(
             criterion, rankings_names[university_rankings.value]))
         return fig
     else:

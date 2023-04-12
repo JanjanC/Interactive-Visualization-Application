@@ -11,6 +11,8 @@ import numpy as np
 import geopandas as gpd
 import enum
 import requests
+import json
+from urllib.request import urlopen
 
 times_df = pd.read_csv('datasets/times_2011_2023.csv')
 times_complete_columns = ['Teaching',
@@ -55,25 +57,9 @@ rankings_complete_columns = [times_complete_columns,
 rankings_year_columns = [times_year_columns,
                          shanghai_year_columns, cwur_year_columns]
 
-cont = requests.get(
-    "https://gist.githubusercontent.com/hrbrmstr/91ea5cc9474286c72838/raw/59421ff9b268ff0929b051ddafafbeb94a4c1910/continents.json"
-)
-gdf = gpd.GeoDataFrame.from_features(cont.json())
-
-countries = gpd.read_file("datasets/world_countries.json")
-countries_csv = gpd.read_file("datasets/countries.csv")
-school = pd.read_csv("datasets/school_and_country_table.csv")
-
-countries_csv = countries_csv.drop(
-    ['geometry', 'country', 'latitude', 'longitude'], axis=1)
-countries = countries.join(
-    countries_csv.set_index('name'), on='name', how='left')
-school.join(countries.set_index('name'), on='country', how='left')
-school.join(countries.set_index('name'), on='country', how='left')
-school.groupby('country').count()
-school_count = school.groupby('country').count()
-countries = countries.join(school_count, on='name', how="left")
-countries.rename(columns={'school_name': 'school_count'}, inplace=True)
+token = open("datasets/.mapbox_token").read()
+with urlopen('https://raw.githubusercontent.com/datasets/geo-countries/master/data/countries.geojson') as response:
+    countries = json.load(response)
 
 # Global Variables for the Selected Data
 # Main Dashboard
@@ -103,14 +89,29 @@ btn_univ_cwur_class = deactivated_class
 # Chloropleth Map
 
 
-def load_choropleth_map():
-    choropleth_fig = px.choropleth(countries, locations=countries['name'], labels=countries['name'], locationmode="country names", scope="world",
-                                   color=countries['school_count'], geojson=gdf, color_continuous_scale=['#eff3ff', '#bdd7e7', '#6baed6', '#3182bd', '#08519c'])
-    choropleth_fig.update_layout(height=300, margin={"r":0,"t":0,"l":0,"b":0})
+def load_choropleth_map(university_list, university_rankings, main_year):
+    if not university_list.empty:
+        choropleth_fig = px.choropleth_mapbox(university_list,
+                                geojson = countries,
+                                locations = ['Country'],
+                                zoom = 3, 
+                                mapbox_style = 'light', 
+                                # center = {"lat": 12.120649, "lon": 122.610799}
+                                )
+        choropleth_fig.update_layout(height=300, margin={"r":0,"t":0,"l":0,"b":0}, mapbox_accesstoken = token)
+    else:
+        choropleth_fig = px.choropleth_mapbox(university_list,
+                                geojson = countries,
+                                locations = ['Country'],
+                                zoom = 3, 
+                                mapbox_style = 'light', 
+                                # center = {"lat": 12.120649, "lon": 122.610799}
+                                )
+        choropleth_fig.update_layout(height=300, margin={"r":0,"t":0,"l":0,"b":0}, mapbox_accesstoken = token)
+    
     return choropleth_fig
 
-
-choropleth_fig = load_choropleth_map()
+choropleth_fig = load_choropleth_map(current_main_university_list, current_main_rankings, current_main_year)
 
 # Bar Chart (Criteria Comparision)
 def load_main_bar_chart(university_list, university_rankings, main_year, values):
@@ -430,6 +431,7 @@ app.layout = dbc.Container([
     Input(component_id='university-table', component_property="derived_virtual_data"),
     Input(component_id='university-table', component_property="derived_virtual_selected_rows"),
     Input(component_id="tab-graphs", component_property="value"),
+    Input(component_id="choropleth_map", component_property="selectedData"),
     prevent_initial_call=True
 )
 def update_main_dashboard(btn_times, btn_shanghai, btn_cwur, slider_value, dropdown_value, rows, selected_rows, tab_val):
@@ -496,6 +498,7 @@ def update_main_dashboard(btn_times, btn_shanghai, btn_cwur, slider_value, dropd
         options,
         load_main_bar_chart(current_main_university_list, current_main_rankings, current_main_year, checklist_value),
         line_fig,
+        load_choropleth_map(current_main_university_list, current_main_rankings, current_main_year),
         data,
         columns,
         selected_index,

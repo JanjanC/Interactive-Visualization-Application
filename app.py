@@ -217,6 +217,7 @@ def load_university_line_chart(university_rankings, university_name, university_
 
     fig.update_yaxes(autorange="reversed", row=1, col=1)
     fig.update_layout(height=600, width=1200, title_text="Historical Performance of <b>{}</b> in the <b>{}</b>".format(university_name, rankings_names[university_rankings.value]))
+    fig.update_layout(showlegend=False)
     return fig
 
 
@@ -243,7 +244,8 @@ def load_university_radar_chart(university_name, university_year):
                 r=current_university[current_year_columns],
                 theta=current_year_columns,
                 name=rankings_names[university_rankings.value],
-                hovertemplate="<b>%{theta}</b>: %{r}<extra></extra>"
+                hovertemplate="<b>%{theta}</b>: %{r}<extra></extra>",
+                marker=dict(color=px.colors.qualitative.Plotly[0])
             ),
             row=1,
             col=index+1
@@ -251,6 +253,7 @@ def load_university_radar_chart(university_name, university_year):
 
     fig.update_annotations(yshift=20)
     fig.update_layout(polar=dict(radialaxis=dict(visible=True, range=[0, 100])), showlegend=True)
+    fig.update_layout(showlegend=False)
     fig.update_traces(fill='toself')
     
     return fig

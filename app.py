@@ -85,6 +85,7 @@ current_main_year = 2012
 current_university_rankings = Rankings.times
 current_university_name = "Harvard University"
 current_university_year = 2012
+current_university_range = [2012, 2022]
 
 activated_class = 'btn btn-primary mx-3'
 deactivated_class = 'btn btn-secondary mx-3'
@@ -179,11 +180,12 @@ def load_main_line_chart(university_list, university_rankings, university_year, 
 # Line Charts
 
 
-def load_university_line_chart(university_rankings, university_name, university_year):
+def load_university_line_chart(university_rankings, university_name, university_range):
     current_df = rankings_df[university_rankings.value]
     criteria = ["World Rank", "Overall Score"] + rankings_complete_columns[university_rankings.value]
     fig = make_subplots(rows=math.ceil(len(criteria) / 2), cols=2, subplot_titles=criteria)
-    current_df = current_df[(current_df["University"] == university_name) & (current_df["Year"] <= university_year)].sort_values(by=["Year"], ascending=True)
+    current_df_conditions = (current_df["University"] == university_name) & (current_df["Year"] >= university_range[0]) & (current_df["Year"] <= university_range[1])
+    current_df = current_df[current_df_conditions].sort_values(by=["Year"], ascending=True)
     for index, criterion in enumerate(criteria):
         year_list = current_df["Year"].values.tolist()
 
@@ -218,7 +220,7 @@ def load_university_line_chart(university_rankings, university_name, university_
     return fig
 
 
-university_trend_fig = load_university_line_chart(current_university_rankings, current_university_name, current_university_year)
+university_trend_fig = load_university_line_chart(current_university_rankings, current_university_name, current_university_range)
 
 # Radar Charts
 
@@ -354,19 +356,31 @@ modal_body = html.Div([
     ], className='py-3 d-flex justify-content-center'),
 
     html.Div([
+        dcc.RangeSlider(
+            min=2012,
+            max=2022,
+            step=1,
+            value=[2012, 2022],
+            marks={i: '{}'.format(i) for i in range(2012, 2023)},
+            id='university-range-slider'
+        ),
+    ]),
+
+
+    html.Div([
+        html.Div([dcc.Graph(id='university-line-chart', figure=university_trend_fig)], className='col-12'),
+    ], className='row'),
+
+    html.Div([
         dcc.Slider(
             min=2012,
             max=2022,
             step=1,
             value=2012,
             marks={i: '{}'.format(i) for i in range(2012, 2023)},
-            id='university-slider'
+            id='university-year-slider'
         ),
     ]),
-
-    html.Div([
-        html.Div([dcc.Graph(id='university-line-chart', figure=university_trend_fig)], className='col-12'),
-    ], className='row'),
 
     html.Div([
         html.Div([dcc.Graph(id='university-radar-chart', figure=radar_fig)], className='col-12'),
@@ -507,12 +521,14 @@ def update_main_dashboard(btn_times, btn_shanghai, btn_cwur, slider_value, dropd
     Input(component_id="btn-times-university", component_property="n_clicks"),
     Input(component_id="btn-shanghai-university", component_property="n_clicks"),
     Input(component_id="btn-cwur-university", component_property="n_clicks"),
-    Input(component_id="university-slider", component_property="value")
+    Input(component_id="university-range-slider", component_property="value"),
+    Input(component_id="university-year-slider", component_property="value")
 )
-def open_university_overview(active_cell, rows, is_open, btn_times, btn_shanghai, btn_cwur, slider_value):
+def open_university_overview(active_cell, rows, is_open, btn_times, btn_shanghai, btn_cwur, range_slider, year_slider):
 
     global current_university_name
     global current_university_rankings
+    global current_university_range
     global current_university_year
     global btn_univ_times_class
     global btn_univ_shanghai_class
@@ -538,14 +554,15 @@ def open_university_overview(active_cell, rows, is_open, btn_times, btn_shanghai
         btn_univ_shanghai_class = deactivated_class
         btn_univ_cwur_class = activated_class
 
-    current_university_year = slider_value
+    current_university_range = range_slider
+    current_university_year = year_slider
 
     return (
         is_open,
         current_university_name,
         [],
         None,
-        load_university_line_chart(current_university_rankings, current_university_name, current_university_year),
+        load_university_line_chart(current_university_rankings, current_university_name, current_university_range),
         load_university_radar_chart(current_university_name, current_university_year),
         btn_univ_times_class,
         btn_univ_shanghai_class,

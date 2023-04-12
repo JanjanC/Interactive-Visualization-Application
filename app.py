@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import math
 import plotly.express as px
 import plotly.graph_objects as go
@@ -319,11 +321,17 @@ main = html.Div([
     dash_table.DataTable(
         id='university-table',
         data=rankings_df[current_main_rankings.value][rankings_df[current_main_rankings.value]['Year'] == current_main_year].reset_index(drop=True).to_dict('records'),
-        columns=[{"name": i, "id": i} for i in [current_main_criterion, "University", 'Country']],
+        columns=[{"name": i, "id": i} for i in [current_main_criterion, "University", 'Country', '']],
         sort_action='native',
         filter_action='native',
         row_selectable='multi',
         page_size=10,
+        style_cell_conditional=[
+            {
+                'if': {'column_id': ''},
+                'width': '10px'
+            },
+        ],
     )
 
 ], className='container')
@@ -448,8 +456,9 @@ def update_main_dashboard(btn_times, btn_shanghai, btn_cwur, slider_value, dropd
     # Tables Data
     # load new df based on selected rankings and year
     df = rankings_df[current_main_rankings.value][rankings_df[current_main_rankings.value]['Year'] == current_main_year].reset_index(drop=True)
+    df[''] = 'ⓘ'
     data = df.to_dict('records')
-    columns = [{"name": i, "id": i} for i in [current_main_criterion, "University", 'Country']]
+    columns = [{"name": i, "id": i} for i in [current_main_criterion, "University", 'Country', '']]
 
     if selected_rows is None:
         selected_rows = []

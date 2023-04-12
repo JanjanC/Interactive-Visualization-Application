@@ -110,26 +110,23 @@ def load_choropleth_map():
 choropleth_fig = load_choropleth_map()
 
 # Bar Chart (Criteria Comparision)
-
-
 def load_main_bar_chart(university_list, university_rankings, main_year, values):
     if not university_list.empty:
-
-        criteria = ["University"] + \
-            values
+        criteria = ["University"] + values
         
         current_df = university_list[criteria]
-        fig = px.bar(current_df, x=criteria, y="University",
-                     barmode='group', labels=criteria)
+        fig = px.bar(current_df, x=criteria, y="University", barmode='group', labels=criteria)
         fig.update_layout(width=870)
         fig.update_layout(yaxis=dict(autorange="reversed"))
         fig.update_layout(dict(template="plotly_white"))
-        fig.update_layout(title="<b>{} {}</b> University Criteria".format(
-            main_year, rankings_names[university_rankings.value]), xaxis_title="Score", yaxis_title="University Name")
+        fig.update_layout(
+            title="<b>{} {}</b> University Criteria".format(main_year, rankings_names[university_rankings.value]), 
+            xaxis_title="Score", 
+            yaxis_title="University Name"
+        )
     else:
-        fig = go.Figure().add_annotation(text="Select a University from the Table", showarrow=False,
-                                         font={"size": 20}).update_xaxes(visible=False).update_yaxes(visible=False)
-
+        fig = go.Figure().add_annotation(text="Select a University from the Table", showarrow=False, font={"size": 20}).update_xaxes(visible=False).update_yaxes(visible=False)
+    
     return fig
 
 
@@ -141,20 +138,16 @@ def load_main_bar_chart(university_list, university_rankings, main_year, values)
 
 def load_main_line_chart(university_list, university_rankings, university_year, criterion):
     if not university_list.empty:
-        fig = make_subplots(rows=len(university_list), cols=1,
-                            subplot_titles=university_list["University"].values.tolist())
+        fig = make_subplots(rows=len(university_list), cols=1, subplot_titles=university_list["University"].values.tolist())
         height_counter = 200
 
         for index, university_name in enumerate(university_list["University"]):
             current_df = rankings_df[university_rankings.value]
-            university_df = current_df[(current_df["University"] ==
-                                        university_name) & (current_df["Year"] <= university_year)].sort_values(
-                by=["Year"], ascending=True)
+            university_df = current_df[(current_df["University"] == university_name) & (current_df["Year"] <= university_year)].sort_values(by=["Year"], ascending=True)
             year_list = university_df["Year"].values.tolist()
             criteria_list = university_df[criterion].values.tolist()
 
-            color_index = (['World Rank', 'Overall Score'] + rankings_year_columns[current_main_rankings.value]
-                           [str(current_main_year)]).index(criterion) - 2
+            color_index = (['World Rank', 'Overall Score'] + rankings_year_columns[current_main_rankings.value][str(current_main_year)]).index(criterion) - 2
             fig.add_trace(
                 go.Scatter(
                     x=year_list, y=criteria_list, name=university_name, mode='markers+lines',
@@ -167,13 +160,13 @@ def load_main_line_chart(university_list, university_rankings, university_year, 
             )
 
             height_counter += 120
+        
         fig.update_layout(showlegend=False)
-        fig.update_layout(height=height_counter, width=870, title_text="<b>{}</b> Trend in the <b>{}</b>".format(
-            criterion, rankings_names[university_rankings.value]))
+        fig.update_layout(height=height_counter, width=870, title_text="<b>{}</b> Trend in the <b>{}</b>".format(criterion, rankings_names[university_rankings.value]))
+        
         return fig, height_counter + 20
     else:
-        fig = go.Figure().add_annotation(text="Select a University from the Table", showarrow=False,
-                                         font={"size": 20}).update_xaxes(visible=False).update_yaxes(visible=False)
+        fig = go.Figure().add_annotation(text="Select a University from the Table", showarrow=False, font={"size": 20}).update_xaxes(visible=False).update_yaxes(visible=False)
         return fig, 600
 
 
@@ -186,12 +179,9 @@ def load_main_line_chart(university_list, university_rankings, university_year, 
 
 def load_university_line_chart(university_rankings, university_name, university_year):
     current_df = rankings_df[university_rankings.value]
-    criteria = ["World Rank", "Overall Score"] + \
-        rankings_complete_columns[university_rankings.value]
-    fig = make_subplots(rows=math.ceil(len(criteria) / 2),
-                        cols=2, subplot_titles=criteria)
-    current_df = current_df[(current_df["University"] ==
-                            university_name) & (current_df["Year"] <= university_year)].sort_values(by=["Year"], ascending=True)
+    criteria = ["World Rank", "Overall Score"] + rankings_complete_columns[university_rankings.value]
+    fig = make_subplots(rows=math.ceil(len(criteria) / 2), cols=2, subplot_titles=criteria)
+    current_df = current_df[(current_df["University"] == university_name) & (current_df["Year"] <= university_year)].sort_values(by=["Year"], ascending=True)
     for index, criterion in enumerate(criteria):
         year_list = current_df["Year"].values.tolist()
 
@@ -202,8 +192,7 @@ def load_university_line_chart(university_rankings, university_name, university_
                     x=year_list, y=criteria_list, name=criterion, mode='markers+lines',
                     meta=criterion,
                     customdata=current_df["World Rank"].values.tolist(),
-                    marker=dict(
-                        color=px.colors.qualitative.Plotly[(index-2) % 10]),
+                    marker=dict(color=px.colors.qualitative.Plotly[(index-2) % 10]),
                     hovertemplate="<b>Year</b>: %{x}<br><b>%{meta}</b>: %{customdata}<extra></extra>"
                 ),
                 row=index // 2 + 1,
@@ -215,8 +204,7 @@ def load_university_line_chart(university_rankings, university_name, university_
                 go.Scatter(
                     x=year_list, y=criteria_list, name=criterion, mode='markers+lines',
                     meta=criterion,
-                    marker=dict(
-                        color=px.colors.qualitative.Plotly[(index-2) % 10]),
+                    marker=dict(color=px.colors.qualitative.Plotly[(index-2) % 10]),
                     hovertemplate="<b>Year</b>: %{x}<br><b>%{meta}</b>: %{y}<extra></extra>"
                 ),
                 row=index // 2 + 1,
@@ -224,25 +212,26 @@ def load_university_line_chart(university_rankings, university_name, university_
             )
 
     fig.update_yaxes(autorange="reversed", row=1, col=1)
-    fig.update_layout(height=600, width=1200, title_text="Historical Performance of <b>{}</b> in the <b>{}</b>".format(
-        university_name, rankings_names[university_rankings.value]))
+    fig.update_layout(height=600, width=1200, title_text="Historical Performance of <b>{}</b> in the <b>{}</b>".format(university_name, rankings_names[university_rankings.value]))
     return fig
 
 
-university_trend_fig = load_university_line_chart(
-    current_university_rankings, current_university_name, current_university_year)
+university_trend_fig = load_university_line_chart(current_university_rankings, current_university_name, current_university_year)
 
 # Radar Charts
 
 def load_university_radar_chart(university_name, university_year):
-    fig = make_subplots(rows=1, cols=3, specs=[[{"type": "polar"}, {"type": "polar"}, {"type": "polar"}]], subplot_titles=[
-                        "{} {}".format(university_year, university_rankings) for university_rankings in rankings_names])
+    fig = make_subplots(
+        rows=1, 
+        cols=3, 
+        specs=[[{"type": "polar"}, {"type": "polar"}, {"type": "polar"}]], 
+        subplot_titles=["{} {}".format(university_year, university_rankings) for university_rankings in rankings_names]
+    )
+
     for index, university_rankings in enumerate(Rankings):
         current_df = rankings_df[university_rankings.value]
-        current_university = current_df[(current_df["University"] == university_name) & (
-            current_df["Year"] == university_year)].squeeze()
-        current_year_columns = rankings_year_columns[university_rankings.value][str(
-            university_year)]
+        current_university = current_df[(current_df["University"] == university_name) & (current_df["Year"] == university_year)].squeeze()
+        current_year_columns = rankings_year_columns[university_rankings.value][str(university_year)]
         current_year_columns = current_year_columns + [current_year_columns[0]]
         current_university.name = rankings_names[university_rankings.value]
         fig.add_trace(
@@ -257,15 +246,13 @@ def load_university_radar_chart(university_name, university_year):
         )
 
     fig.update_annotations(yshift=20)
-    fig.update_layout(polar=dict(radialaxis=dict(
-        visible=True, range=[0, 100])), showlegend=True)
+    fig.update_layout(polar=dict(radialaxis=dict(visible=True, range=[0, 100])), showlegend=True)
     fig.update_traces(fill='toself')
     
     return fig
 
 
-radar_fig = load_university_radar_chart(
-    current_university_name, current_university_year)
+radar_fig = load_university_radar_chart(current_university_name, current_university_year)
 
 # initialize application
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
@@ -274,7 +261,6 @@ app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 main = html.Div([
     html.H1('University Rankings Dashboard'),
 
-    # TODO: Change the color directly via. CSS on click and all
     html.Div([
         html.Button('Times Higher Education Rankings',
                     id='btn-times-main', className='btn btn-secondary mx-3'),
@@ -296,41 +282,35 @@ main = html.Div([
     ]),
 
     html.Div([
-        html.Div([
-            dcc.Tabs(id="tab-graphs", value='criteria-comparison-tab', children=[
-                dcc.Tab(label='Trends', value='trends-tab',
-                        children=[
-                            dcc.Graph(id='main-line-chart')]),
-                dcc.Tab(label='Criteria Comparsion', value='criteria-comparison-tab',
+        html.Div(
+            children = [
+                dcc.Tabs(id="tab-graphs", value='criteria-comparison-tab', children=[
+                    dcc.Tab(
+                        label='Trends', 
+                        value='trends-tab',
+                        children=[dcc.Graph(id='main-line-chart')]),
+                    dcc.Tab(
+                        label='Criteria Comparsion', value='criteria-comparison-tab',
                         children=[
                             dcc.Graph(id='main-bar-chart'),
-
                             dcc.Checklist(id='bar-chart-checklist', 
                             options=rankings_complete_columns[0], 
                             inline=True,
                             value=rankings_complete_columns[0])
-                            ]),
-            ]),
-        ], 
-        id="tab-container", style={'height': 600,'width' : '70%'},
+                        ]
+                    ),
+                ]),
+            ], 
+            id="tab-container", 
+            style={'height': 600,'width' : '70%'},
         ),
 
-        html.Div([
-            html.Div([
-                html.Div([
-                    html.Div(
-                        [dcc.Graph(id='choropleth_map', figure=choropleth_fig)]),
-                ]),
-            ]),
-        ],style={'width' : '30%'}),
+        html.Div([dcc.Graph(id='choropleth_map', figure=choropleth_fig)], style={'width' : '30%'}),
     ], className='d-flex flex-row'),
 
     dcc.Dropdown(
-        ['World Rank', 'Overall Score'] + \
-        rankings_year_columns[current_main_rankings.value][str(
-            current_main_year)],
-        (['World Rank', 'Overall Score'] + \
-        rankings_year_columns[current_main_rankings.value][str(current_main_year)])[0],
+        ['World Rank', 'Overall Score'] + rankings_year_columns[current_main_rankings.value][str(current_main_year)],
+        (['World Rank', 'Overall Score'] + rankings_year_columns[current_main_rankings.value][str(current_main_year)])[0],
         placeholder='Select a Criteria',
         clearable=False,
         id='criteria-dropdown',
@@ -338,14 +318,11 @@ main = html.Div([
 
     dash_table.DataTable(
         id='university-table',
-        data=rankings_df[current_main_rankings.value][rankings_df[current_main_rankings.value]
-                                                    ['Year'] == current_main_year].reset_index(drop=True).to_dict('records'),
-        columns=[{"name": i, "id": i}
-                for i in [current_main_criterion, "University", 'Country']],
+        data=rankings_df[current_main_rankings.value][rankings_df[current_main_rankings.value]['Year'] == current_main_year].reset_index(drop=True).to_dict('records'),
+        columns=[{"name": i, "id": i} for i in [current_main_criterion, "University", 'Country']],
         sort_action='native',
         filter_action='native',
         row_selectable='multi',
-        # cell_selectable=False,
         page_size=10,
     )
 
@@ -357,12 +334,15 @@ modal_body = html.Div([
     html.H1('Main Dashboard', id='university-name-title'),
 
     html.Div([
-        html.Button('Times Higher Education Rankings',
-                    id='btn-times-university', className='btn btn-secondary mx-3'),
-        html.Button('Academic Ranking of World Universities',
-                    id='btn-shanghai-university', className='btn btn-secondary mx-3'),
-        html.Button('Center for World University Rankings',
-                    id='btn-cwur-university', className='btn btn-secondary mx-3'),
+        html.Button(children='Times Higher Education Rankings',
+                    id='btn-times-university', 
+                    className='btn btn-secondary mx-3'),
+        html.Button(children='Academic Ranking of World Universities',
+                    id='btn-shanghai-university', 
+                    className='btn btn-secondary mx-3'),
+        html.Button(children='Center for World University Rankings',
+                    id='btn-cwur-university', 
+                    className='btn btn-secondary mx-3'),
     ], className='py-3 d-flex justify-content-center'),
 
     html.Div([
@@ -377,13 +357,11 @@ modal_body = html.Div([
     ]),
 
     html.Div([
-        html.Div([dcc.Graph(id='university-line-chart',
-                 figure=university_trend_fig)], className='col-12'),
+        html.Div([dcc.Graph(id='university-line-chart', figure=university_trend_fig)], className='col-12'),
     ], className='row'),
 
     html.Div([
-        html.Div([dcc.Graph(id='university-radar-chart',
-                 figure=radar_fig)], className='col-12'),
+        html.Div([dcc.Graph(id='university-radar-chart', figure=radar_fig)], className='col-12'),
     ], className='row'),
 ], className='container')
 
@@ -412,8 +390,7 @@ app.layout = dbc.Container([
     Output(component_id="main-line-chart", component_property="figure"),
     Output(component_id="university-table", component_property="data"),
     Output(component_id="university-table", component_property="columns"),
-    Output(component_id='university-table',
-           component_property="selected_rows"),
+    Output(component_id='university-table', component_property="selected_rows"),
     Output(component_id="btn-times-main", component_property="className"),
     Output(component_id="btn-shanghai-main", component_property="className"),
     Output(component_id="btn-cwur-main", component_property="className"),
@@ -425,10 +402,8 @@ app.layout = dbc.Container([
     Input(component_id="btn-cwur-main", component_property="n_clicks"),
     Input(component_id="main-slider", component_property="value"),
     Input(component_id="criteria-dropdown", component_property="value"),
-    Input(component_id='university-table',
-          component_property="derived_virtual_data"),
-    Input(component_id='university-table',
-          component_property="derived_virtual_selected_rows"),
+    Input(component_id='university-table', component_property="derived_virtual_data"),
+    Input(component_id='university-table', component_property="derived_virtual_selected_rows"),
     Input(component_id="tab-graphs", component_property="value"),
     prevent_initial_call=True
 )
@@ -465,35 +440,27 @@ def update_main_dashboard(btn_times, btn_shanghai, btn_cwur, slider_value, dropd
     checklist_options = checklist_value = rankings_complete_columns[current_main_rankings.value]
  
     # Dropdown Data
-    options = ['World Rank', 'Overall Score'] + \
-        rankings_year_columns[current_main_rankings.value][str(
-            current_main_year)]
+    options = ['World Rank', 'Overall Score'] + rankings_year_columns[current_main_rankings.value][str(current_main_year)]
 
     if current_main_criterion not in options:
         current_main_criterion = "World Rank"
 
     # Tables Data
     # load new df based on selected rankings and year
-    df = rankings_df[current_main_rankings.value][rankings_df[current_main_rankings.value]
-                                                  ['Year'] == current_main_year].reset_index(drop=True)
+    df = rankings_df[current_main_rankings.value][rankings_df[current_main_rankings.value]['Year'] == current_main_year].reset_index(drop=True)
     data = df.to_dict('records')
-    columns = [{"name": i, "id": i}
-               for i in [current_main_criterion, "University", 'Country']]
+    columns = [{"name": i, "id": i} for i in [current_main_criterion, "University", 'Country']]
 
     if selected_rows is None:
         selected_rows = []
     # update the index of the currently selected universities
-    university_names = [] if rows is None else pd.DataFrame(
-        rows).iloc[selected_rows]['University']  # currently selected universities
-    selected_index = df[df["University"].isin(
-        university_names)].index.tolist()  # update the index
+    university_names = [] if rows is None else pd.DataFrame(rows).iloc[selected_rows]['University']  # currently selected universities
+    selected_index = df[df["University"].isin(university_names)].index.tolist()  # update the index
 
-    current_main_university_list = pd.DataFrame() if rows is None else pd.DataFrame(
-        data).iloc[selected_index]  # update the university list based on the new data and index
+     # update the university list based on the new data and index
+    current_main_university_list = pd.DataFrame() if rows is None else pd.DataFrame(data).iloc[selected_index]
 
-
-    line_fig, height = load_main_line_chart(current_main_university_list,
-                             current_main_rankings, current_main_year, current_main_criterion)
+    line_fig, height = load_main_line_chart(current_main_university_list, current_main_rankings, current_main_year, current_main_criterion)
     
     style = {'height': 600,'width' : '70%'}
     if tab_val == "trends-tab":
@@ -501,8 +468,7 @@ def update_main_dashboard(btn_times, btn_shanghai, btn_cwur, slider_value, dropd
 
     return (
         options,
-        load_main_bar_chart(current_main_university_list,
-                            current_main_rankings, current_main_year, checklist_value),
+        load_main_bar_chart(current_main_university_list, current_main_rankings, current_main_year, checklist_value),
         line_fig,
         data,
         columns,
@@ -523,18 +489,14 @@ def update_main_dashboard(btn_times, btn_shanghai, btn_cwur, slider_value, dropd
     Output('university-table', 'active_cell'),
     Output(component_id="university-line-chart", component_property="figure"),
     Output(component_id="university-radar-chart", component_property="figure"),
-    Output(component_id="btn-times-university",
-           component_property="className"),
-    Output(component_id="btn-shanghai-university",
-           component_property="className"),
+    Output(component_id="btn-times-university", component_property="className"),
+    Output(component_id="btn-shanghai-university", component_property="className"),
     Output(component_id="btn-cwur-university", component_property="className"),
     Input('university-table', 'active_cell'),
-    Input(component_id='university-table',
-          component_property="derived_viewport_data"),
+    Input(component_id='university-table', component_property="derived_viewport_data"),
     Input("university-modal", "is_open"),
     Input(component_id="btn-times-university", component_property="n_clicks"),
-    Input(component_id="btn-shanghai-university",
-          component_property="n_clicks"),
+    Input(component_id="btn-shanghai-university", component_property="n_clicks"),
     Input(component_id="btn-cwur-university", component_property="n_clicks"),
     Input(component_id="university-slider", component_property="value")
 )
@@ -551,7 +513,6 @@ def open_university_overview(active_cell, rows, is_open, btn_times, btn_shanghai
         is_open = not is_open
         current_university_name = rows[active_cell['row']]['University']
 
-    # TODO: Change the 'else' so that it doesn't break upon change of slider
     if "btn-times-university" == ctx.triggered_id:
         current_university_rankings = Rankings.times
         btn_univ_times_class = activated_class
@@ -575,10 +536,8 @@ def open_university_overview(active_cell, rows, is_open, btn_times, btn_shanghai
         current_university_name,
         [],
         None,
-        load_university_line_chart(
-            current_university_rankings, current_university_name, current_university_year),
-        load_university_radar_chart(
-            current_university_name, current_university_year),
+        load_university_line_chart(current_university_rankings, current_university_name, current_university_year),
+        load_university_radar_chart(current_university_name, current_university_year),
         btn_univ_times_class,
         btn_univ_shanghai_class,
         btn_univ_cwur_class
@@ -589,19 +548,7 @@ def open_university_overview(active_cell, rows, is_open, btn_times, btn_shanghai
         Input(component_id='bar-chart-checklist', component_property="value")
 )
 def update_bar_chart(values):
-    return load_main_bar_chart(current_main_university_list,
-                            current_main_rankings, current_main_year, values)
-
-# @app.callback(
-#         Output(component_id="tab-container", component_property="style"),
-#         Input(component_id="tab-graphs", component_property="value"),
-# )
-# def update_tabs(tab_val):
-#     style = {'height': 600,'width' : '70%'}
-#     if tab_val == "trends-tab":
-#         style = {'height': 900,'width' : '70%'}
-#     return style
-
+    return load_main_bar_chart(current_main_university_list, current_main_rankings, current_main_year, values)
 
 if __name__ == '__main__':
     app.run_server(debug=True)  # run server

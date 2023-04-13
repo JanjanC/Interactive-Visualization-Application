@@ -9,10 +9,8 @@ import dash_bootstrap_components as dbc
 import pandas as pd
 import numpy as np
 import geopandas as gpd
+import geojson
 import enum
-import requests
-import json
-from urllib.request import urlopen
 
 times_df = pd.read_csv('datasets/times_2011_2023.csv')
 times_complete_columns = ['Teaching',
@@ -58,8 +56,8 @@ rankings_year_columns = [times_year_columns,
                          shanghai_year_columns, cwur_year_columns]
 
 token = open("datasets/.mapbox_token").read()
-with urlopen('https://raw.githubusercontent.com/datasets/geo-countries/master/data/countries.geojson') as response:
-    countries = json.load(response)
+with open('datasets/countries.json') as f:
+    countries = geojson.load(f)
 
 # Global Variables for the Selected Data
 # Main Dashboard
@@ -90,24 +88,18 @@ btn_univ_cwur_class = deactivated_class
 
 
 def load_choropleth_map(university_list, university_rankings, main_year):
-    if not university_list.empty:
-        choropleth_fig = px.choropleth_mapbox(university_list,
-                                geojson = countries,
-                                locations = ['Country'],
-                                zoom = 3, 
-                                mapbox_style = 'light', 
-                                # center = {"lat": 12.120649, "lon": 122.610799}
-                                )
-        choropleth_fig.update_layout(height=300, margin={"r":0,"t":0,"l":0,"b":0}, mapbox_accesstoken = token)
-    else:
-        choropleth_fig = px.choropleth_mapbox(university_list,
-                                geojson = countries,
-                                locations = ['Country'],
-                                zoom = 3, 
-                                mapbox_style = 'light', 
-                                # center = {"lat": 12.120649, "lon": 122.610799}
-                                )
-        choropleth_fig.update_layout(height=300, margin={"r":0,"t":0,"l":0,"b":0}, mapbox_accesstoken = token)
+    current_df = rankings_df[university_rankings.value]
+    current_df = current_df[current_df['Year'] <= main_year]
+    country_df = current_df[['Country', 'University']].groupby(['Country'], as_index = False).count()
+    choropleth_fig = px.choropleth_mapbox(country_df,
+                                    geojson = countries,
+                                    featureidkey = 'properties.ADMIN',
+                                    locations = 'Country',
+                                    color = 'University',
+                                    zoom = 1,
+                                    color_continuous_scale = px.colors.qualitative.Plotly[0]
+                                    )
+    choropleth_fig.update_layout(height=300, margin={"r":0,"t":0,"l":0,"b":0}, mapbox_accesstoken = token)
     
     return choropleth_fig
 
@@ -434,7 +426,7 @@ app.layout = dbc.Container([
     Input(component_id="choropleth_map", component_property="selectedData"),
     prevent_initial_call=True
 )
-def update_main_dashboard(btn_times, btn_shanghai, btn_cwur, slider_value, dropdown_value, rows, selected_rows, tab_val):
+def update_main_dashboard(btn_times, btn_shanghai, btn_cwur, slider_value, dropdown_value, rows, selected_rows, tab_val, selected_map):
     # Slider and Dropdown Data
     global current_main_year
     global current_main_criterion
@@ -490,15 +482,16 @@ def update_main_dashboard(btn_times, btn_shanghai, btn_cwur, slider_value, dropd
 
     line_fig, height = load_main_line_chart(current_main_university_list, current_main_rankings, current_main_year, current_main_criterion)
     
+    choropleth_fig = load_choropleth_map(current_main_university_list, current_main_rankings, current_main_year)
+    
     style = {'height': 600,'width' : '70%'}
     if tab_val == "trends-tab":
-        style = {'height': height,'width' : '70%'}
-
+        style = {'height': height,'width' : '70%'}    
+    
     return (
         options,
         load_main_bar_chart(current_main_university_list, current_main_rankings, current_main_year, checklist_value),
         line_fig,
-        load_choropleth_map(current_main_university_list, current_main_rankings, current_main_year),
         data,
         columns,
         selected_index,

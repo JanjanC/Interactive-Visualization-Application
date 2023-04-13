@@ -101,9 +101,6 @@ def load_choropleth_map(university_rankings, main_year):
                                     )
     choropleth_fig.update_layout(height=300, margin={"r":0,"t":0,"l":0,"b":0}, mapbox_accesstoken = token)
     
-    # print("Done Choro")
-    choropleth_fig = go.Figure().add_annotation(text="Select a University from the Table", showarrow=False, font={"size": 20}).update_xaxes(visible=False).update_yaxes(visible=False)
-    choropleth_fig.update_layout(height=300)
     return choropleth_fig
 
 choropleth_fig = load_choropleth_map(current_main_rankings, current_main_year)
@@ -427,7 +424,6 @@ app.layout = dbc.Container([
     Output(component_id="btn-times-main", component_property="className"),
     Output(component_id="btn-shanghai-main", component_property="className"),
     Output(component_id="btn-cwur-main", component_property="className"),
-    # Output(component_id="tab-container", component_property="style"),
     Input(component_id="btn-times-main", component_property="n_clicks"),
     Input(component_id="btn-shanghai-main", component_property="n_clicks"),
     Input(component_id="btn-cwur-main", component_property="n_clicks"),
@@ -448,7 +444,7 @@ def update_main_dashboard(btn_times, btn_shanghai, btn_cwur, slider_value, dropd
     global btn_main_shanghai_class
     global btn_main_cwur_class
 
-    print("Called")
+
     current_main_year = slider_value
     current_main_criterion = dropdown_value
 
@@ -465,6 +461,7 @@ def update_main_dashboard(btn_times, btn_shanghai, btn_cwur, slider_value, dropd
         btn_main_shanghai_class = activated_class
         btn_main_cwur_class = deactivated_class
     elif "btn-cwur-main" == ctx.triggered_id:
+        current_main_rankings = Rankings.cwur
         btn_main_times_class = deactivated_class
         btn_main_shanghai_class = deactivated_class
         btn_main_cwur_class = activated_class
@@ -497,10 +494,6 @@ def update_main_dashboard(btn_times, btn_shanghai, btn_cwur, slider_value, dropd
     
     choropleth_fig = load_choropleth_map(current_main_rankings, current_main_year)
     
-    # style = {'height': 600,'width' : '70%'}
-    # if tab_value == "trends-tab":
-    #     style = {'height': height,'width' : '70%'}    
-    
     style_cell_conditional=[
         {
             'if': {'column_id': ''},
@@ -512,7 +505,7 @@ def update_main_dashboard(btn_times, btn_shanghai, btn_cwur, slider_value, dropd
         },
     ]
 
-    print("Done Call")
+    print(selected_map)
 
     return (
         options,

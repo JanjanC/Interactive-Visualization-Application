@@ -19,7 +19,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 18,18,Columbia University,United States of America,73.8,90.9,73.8,92.6,,81,,,,,2011
 19,19,University of Pennsylvania,United States of America,71.8,32.9,82.7,93.6,43.7,78,,,,,2011
 20,20,Carnegie Mellon University,United States of America,70.3,39.1,79.3,95.7,53.7,77.9,,,,,2011
-21,21,University of Hong Kong,Hong Kong S.A.R.,68.4,91.4,71.4,96.1,56.5,79,,,,,2011
+21,21,University of Hong Kong,China,68.4,91.4,71.4,96.1,56.5,79,,,,,2011
 22,22,UCL,United Kingdom,74,90.8,81.6,80.6,39,78.6,,,,,2011
 23,23,University of Washington,United States of America,68.2,49,77.1,95.9,32.8,76.9,,,,,2011
 24,24,Duke University,United States of America,66.8,49.4,71.5,92.3,100,75.4,,,,,2011
@@ -39,7 +39,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 38,38,Washington University in St Louis,United States of America,58.9,56.4,63,88.6,,69.9,,,,,2011
 39,39,École Polytechnique,France,57.9,77.9,56.1,91.4,,69.5,,,,,2011
 40,40,University of Edinburgh,United Kingdom,59.9,67.3,61.9,86.8,42.2,68.7,,,,,2011
-41,41,The Hong Kong University of Science and Technology,Hong Kong S.A.R.,50.4,97.4,51.8,98.2,64.1,69,,,,,2011
+41,41,The Hong Kong University of Science and Technology,China,50.4,97.4,51.8,98.2,64.1,69,,,,,2011
 42,42,École Normale Supérieure,France,66.8,44.9,48.2,95.7,30.7,67.3,,,,,2011
 43,43,University of Wisconsin,United States of America,55.5,43.7,64.6,83.4,,67,,,,,2011
 43,43,University of Göttingen,Germany,57.3,44.5,55.9,92.5,31.7,65.8,,,,,2011
@@ -109,7 +109,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 107,107,University of Cape Town,South Africa,36.6,83.3,42.1,82.8,,56.1,,,,,2011
 109,109,Penn State (Main campus),United States of America,46.3,19.9,49.2,77.6,44,54.5,,,,,2011
 109,109,Seoul National University,South Korea,62.3,44.9,54.1,54.6,43,55.7,,,,,2011
-111,111,Hong Kong Baptist University,Hong Kong S.A.R.,32.9,71.8,32.5,97.6,26.7,55,,,,,2011
+111,111,Hong Kong Baptist University,China,32.9,71.8,32.5,97.6,26.7,55,,,,,2011
 112,112,Tokyo Institute of Technology,Japan,62.9,24.8,63.4,45.5,60.5,54.9,,,,,2011
 112,112,Bilkent University,Turkey,34.3,47.7,36.1,95.7,32.4,54.2,,,,,2011
 114,114,Eindhoven University of Technology,Netherlands,55.4,44.9,51.7,56.9,99.8,55.1,,,,,2011
@@ -148,7 +148,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 147,147,Uppsala University,Sweden,49.6,77.9,62.2,40.7,39.5,52.6,,,,,2011
 147,147,Alexandria University,Egypt,29.5,19.3,28,99.8,36,49.5,,,,,2011
 149,149,University of Aberdeen,United Kingdom,37.8,86.1,45.2,64.6,47,51.9,,,,,2011
-149,149,Hong Kong Polytechnic University,Hong Kong S.A.R.,39.4,82.9,45.7,62.4,57.2,51.9,,,,,2011
+149,149,Hong Kong Polytechnic University,China,39.4,82.9,45.7,62.4,57.2,51.9,,,,,2011
 151,151,Delft University of Technology,Netherlands,55.5,47.4,67.7,29,99.4,51.7,,,,,2011
 152,152,"Birkbeck, University of London",United Kingdom,41.2,88.5,35.8,70.6,27.4,51.6,,,,,2011
 152,152,Newcastle University,United Kingdom,42.7,80.5,42.8,63.6,31.1,51.5,,,,,2011
@@ -232,7 +232,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 31,31,University of Illinois at Urbana-Champaign,United States of America,67.9,50.7,81.3,81.5,,74.2,,,,,2012
 32,32,Karolinska Institute,Sweden,69.9,82,73.8,73.1,78.5,73.2,,,,,2012
 33,33,"University of California, San Diego",United States of America,61.4,31.5,72,97.8,51.8,73,,,,,2012
-34,34,University of Hong Kong,Hong Kong S.A.R.,74,83.7,80.1,60.5,64.1,72.3,,,,,2012
+34,34,University of Hong Kong,China,74,83.7,80.1,60.5,64.1,72.3,,,,,2012
 35,35,"University of California, Santa Barbara",United States of America,55,52.6,65.3,99.9,85,72.1,,,,,2012
 36,36,University of Edinburgh,United Kingdom,63,79.8,61.4,92.3,41.3,72,,,,,2012
 37,37,University of Melbourne,Australia,62.2,82.5,72.4,80.7,44.4,71.9,,,,,2012
@@ -260,7 +260,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 59,59,École Normale Supérieure,France,56.6,66.2,33.5,96.4,44.7,62,,,,,2012
 59,59,University of Pittsburgh-Pittsburgh campus,United States of America,54.3,26.5,53.9,88.7,37.5,62,,,,,2012
 61,61,University of Zurich,Switzerland,56.7,87.4,45.9,78.4,43.5,61.9,,,,,2012
-62,62,The Hong Kong University of Science and Technology,Hong Kong S.A.R.,51,80.1,58.6,71,59,61.7,,,,,2012
+62,62,The Hong Kong University of Science and Technology,China,51,80.1,58.6,71,59,61.7,,,,,2012
 63,63,École Polytechnique,France,50.4,86.1,38.8,89.1,63,61.5,,,,,2012
 64,64,University of Massachusetts,United States of America,54,27.3,58.3,80.1,53.2,61.1,,,,,2012
 65,65,McMaster University,Canada,41.9,72,49.9,85.5,97.5,61,,,,,2012
@@ -351,7 +351,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 150,150,Brandeis University,United States of America,25.3,40.3,27.3,90.2,33.7,46.7,,,,,2012
 151,151,University of Aberdeen,United Kingdom,30.6,84.8,32.2,67.7,44.4,46.6,,,,,2012
 151,151,Free University of Berlin,Germany,46.3,62.1,48.5,42.5,30.6,46.6,,,,,2012
-151,151,Chinese University of Hong Kong,Hong Kong S.A.R.,47,69.5,50.2,37.8,36.4,46.6,,,,,2012
+151,151,Chinese University of Hong Kong,China,47,69.5,50.2,37.8,36.4,46.6,,,,,2012
 154,154,National Taiwan University (NTU),Taiwan,47.8,20.7,58.5,39.2,40,46.2,,,,,2012
 154,154,Yeshiva University,United States of America,43.6,26.4,27,75.3,,46.2,,,,,2012
 156,156,University of Exeter,United Kingdom,31.3,73.4,33.3,67.8,35.4,46.1,,,,,2012
@@ -391,7 +391,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 189,189,The University of Western Australia,Australia,32.1,90,35.8,47.8,58.7,42.9,,,,,2012
 191,191,University of Bergen,Norway,29,73.5,26.6,65.2,42.1,42.8,,,,,2012
 192,192,University of Science and Technology of China,China,38.9,14.8,23.5,73.6,29.7,42.7,,,,,2012
-193,193,City University of Hong Kong,Hong Kong S.A.R.,30.2,61.6,35,57.4,50.1,42.7,,,,,2012
+193,193,City University of Hong Kong,China,30.2,61.6,35,57.4,50.1,42.7,,,,,2012
 194,194,University of Konstanz,Germany,29,63.7,29.7,62.8,49.9,42.5,,,,,2012
 195,195,Boston College,United States of America,26.5,41.4,18.9,83.5,24.2,42.4,,,,,2012
 196,196,Karlsruhe Institute of Technology,Germany,34.6,64.9,19.6,65.5,35.6,41.7,,,,,2012
@@ -451,7 +451,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 238,226-250,Korea University,South Korea,39.5,23.4,39.6,30.2,49.7,35.8,,,,,2012
 263,251-275,Johannes Kepler University of Linz,Austria,18.4,56.6,11.1,62.8,73.4,33.8,,,,,2012
 263,251-275,Nanjing University,China,40.9,25,24.2,42.3,42.9,35.2,,,,,2012
-263,251-275,Hong Kong Polytechnic University,Hong Kong S.A.R.,30.1,62.5,37.3,22.2,72.8,33.4,,,,,2012
+263,251-275,Hong Kong Polytechnic University,China,30.1,62.5,37.3,22.2,72.8,33.4,,,,,2012
 263,251-275,National Sun Yat-Sen University,Taiwan,24.9,16,30.4,48.5,42.1,33.4,,,,,2012
 263,251-275,Bielefeld University,Germany,19.1,45.2,17,61.6,28.6,33.4,,,,,2012
 263,251-275,Norwegian University of Science and Technology,Norway,26.9,57.7,26.9,41.5,49.7,34.2,,,,,2012
@@ -483,7 +483,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 288,276-300,Istanbul Technical University,Turkey,25.1,18.9,18.2,48.9,99.1,31.6,,,,,2012
 288,276-300,University of Kansas,United States of America,33.2,23.5,20.1,43,27.6,31.3,,,,,2012
 288,276-300,University of Kentucky,United States of America,38.7,18.3,28.4,35.2,,,,,,,2012
-288,276-300,Hong Kong Baptist University,Hong Kong S.A.R.,20,58.9,11.2,59.7,25.3,32.3,,,,,2012
+288,276-300,Hong Kong Baptist University,China,20,58.9,11.2,59.7,25.3,32.3,,,,,2012
 288,276-300,Lomonosov Moscow State University,Russia,47.9,53.3,27.5,11,80,31.9,,,,,2012
 288,276-300,Queensland University of Technology,Australia,21,76.7,26.7,35.5,62.5,32.3,,,,,2012
 288,276-300,Middle East Technical University,Turkey,37,23.5,28.9,35.1,43.2,33.1,,,,,2012
@@ -636,7 +636,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 33,33,University of Illinois at Urbana-Champaign,United States of America,74.2,36,84.9,80.8,,75.8,,,,,2013
 34,34,McGill University,Canada,74.4,75.9,80.4,75.2,40.3,75.7,,,,,2013
 35,35,"University of California, Santa Barbara",United States of America,56.1,58.3,73.5,99.4,100,75.6,,,,,2013
-35,35,University of Hong Kong,Hong Kong S.A.R.,78.4,81.7,85.9,62.1,62.5,75.6,,,,,2013
+35,35,University of Hong Kong,China,78.4,81.7,85.9,62.1,62.5,75.6,,,,,2013
 37,37,Australian National University,Australia,68.6,90,83.5,73.5,39.6,75.4,,,,,2013
 38,38,"University of California, San Diego",United States of America,63.4,34.2,79,96.2,43.9,75.2,,,,,2013
 39,39,London School of Economics and Political Science,United Kingdom,70.8,87.2,80.8,66.5,42.9,73,,,,,2013
@@ -666,7 +666,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 62,62,École Polytechnique,France,56.5,83,54.7,80.7,75.8,65.7,,,,,2013
 64,64,Leiden University,Netherlands,54,54.8,67.1,78.4,46.1,65.1,,,,,2013
 65,65,The University of Queensland,Australia,54.4,77.8,66.1,69.6,64,64.5,,,,,2013
-65,65,The Hong Kong University of Science and Technology,Hong Kong S.A.R.,56.9,78.1,64.6,68.9,55.6,64.4,,,,,2013
+65,65,The Hong Kong University of Science and Technology,China,56.9,78.1,64.6,68.9,55.6,64.4,,,,,2013
 67,67,Utrecht University,Netherlands,48,47.3,64.7,82.4,82.6,64.1,,,,,2013
 68,68,Korea Advanced Institute of Science and Technology (KAIST),South Korea,69.9,31.1,68.9,58.4,100,64,,,,,2013
 69,69,Purdue University West Lafayette,United States of America,59.8,54.8,71.9,63.1,,63.8,,,,,2013
@@ -725,7 +725,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 122,122,University of Florida,United States of America,52,31.2,62.9,56,,54.5,,,,,2013
 122,122,"University of California, Santa Cruz",United States of America,32.1,32.5,39.6,99.9,,54.5,,,,,2013
 124,124,University of Warwick,United Kingdom,48.9,80.9,50.5,58.8,35.3,54.4,,,,,2013
-124,124,Chinese University of Hong Kong,Hong Kong S.A.R.,53.7,62.6,63.1,45.1,44.5,54.4,,,,,2013
+124,124,Chinese University of Hong Kong,China,53.7,62.6,63.1,45.1,44.5,54.4,,,,,2013
 124,124,Dartmouth College,United States of America,47.5,31.5,35.9,87,38.6,54.4,,,,,2013
 127,127,Radboud University Nijmegen,Netherlands,35.7,53.4,54.3,73.3,41.7,54,,,,,2013
 128,128,Free University of Berlin,Germany,53.1,60.9,56.5,51.5,32.8,53.7,,,,,2013
@@ -782,7 +782,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 176,176,University of East Anglia,United Kingdom,29.6,68.9,27.7,85.5,30.7,48.8,,,,,2013
 180,180,Newcastle University,United Kingdom,37.9,74.4,30.5,72.1,37.4,48.7,,,,,2013
 180,180,Joseph Fourier University,France,36.6,56.3,26.5,81.8,36.3,48.6,,,,,2013
-182,182,City University of Hong Kong,Hong Kong S.A.R.,35.2,64,41.8,64.1,53.6,48.5,,,,,2013
+182,182,City University of Hong Kong,China,35.2,64,41.8,64.1,53.6,48.5,,,,,2013
 183,183,Yonsei University,South Korea,48.3,33.4,50.6,48.6,56.1,48.2,,,,,2013
 184,184,William & Mary,United States of America,41.3,25.8,22.6,87.1,29.9,48,,,,,2013
 184,184,Colorado School of Mines,United States of America,24.9,51.2,22.5,94.3,66,48,,,,,2013
@@ -871,7 +871,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 263,251-275,Norwegian University of Science and Technology,Norway,34.2,57.5,27.7,50.8,45.2,39.3,,,,,2013
 263,251-275,University of Iceland,Iceland,11.4,59.9,28,71,74.4,39.5,,,,,2013
 263,251-275,TU Wien,Austria,44.8,71.4,32.4,34.2,65.5,40.4,,,,,2013
-263,251-275,Hong Kong Polytechnic University,Hong Kong S.A.R.,34.6,65.4,41.2,39.8,42.2,40.6,,,,,2013
+263,251-275,Hong Kong Polytechnic University,China,34.6,65.4,41.2,39.8,42.2,40.6,,,,,2013
 263,251-275,Macquarie University,Australia,22,86.8,29.6,54.8,37.2,39.4,,,,,2013
 263,251-275,Tokyo Metropolitan University,Japan,19,19.6,9.8,97.1,31.1,40,,,,,2013
 263,251-275,Stellenbosch University,South Africa,31.5,47.8,35,48.9,96.6,40.6,,,,,2013
@@ -912,7 +912,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 325,301-350,Charles University in Prague,Czech Republic,34.7,50.3,26.2,42,28.1,35.3,,,,,2013
 325,301-350,Renmin University of China,China,36.1,45.8,12,59.6,44,36.8,,,,,2013
 325,301-350,King Abdulaziz University,Saudi Arabia,19.7,71,10.3,63.4,40.2,34.4,,,,,2013
-325,301-350,Hong Kong Baptist University,Hong Kong S.A.R.,22.9,62,15.1,57.6,29.6,34.1,,,,,2013
+325,301-350,Hong Kong Baptist University,China,22.9,62,15.1,57.6,29.6,34.1,,,,,2013
 325,301-350,Creighton University,United States of America,42.4,26,9.3,61,,,,,,,2013
 325,301-350,Sapienza University of Rome,Italy,35.3,33.2,30.6,39.1,36,34.9,,,,,2013
 325,301-350,University of Vermont,United States of America,28.5,19.9,20.6,58.6,,,,,,,2013
@@ -1043,7 +1043,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 40,40,"University of California, San Diego",United States of America,52,35.6,63,96.7,48.4,67.4,,,,,2014
 40,40,New York University,United States of America,65.4,41.8,58.4,87.9,29.9,67.4,,,,,2014
 42,42,Washington University in St Louis,United States of America,59.5,44.6,52.9,96.4,,67.2,,,,,2014
-43,43,University of Hong Kong,Hong Kong S.A.R.,61.6,80.3,69.9,61.5,56.9,65.3,,,,,2014
+43,43,University of Hong Kong,China,61.6,80.3,69.9,61.5,56.9,65.3,,,,,2014
 44,44,Seoul National University,South Korea,76.4,29.4,79.2,47.3,86,65.2,,,,,2014
 45,45,Peking University,China,72.3,60.6,58.1,62.8,99.9,65,,,,,2014
 46,46,University of Minnesota,United States of America,61.4,31.7,62.7,81.2,,64.9,,,,,2014
@@ -1057,7 +1057,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 52,52,"University of California, Davis",United States of America,55.5,53.7,56.4,81.2,51.3,63.2,,,,,2014
 55,55,LMU Munich,Germany,55.4,56.3,54.1,83.3,41.4,63.1,,,,,2014
 56,56,Korea Advanced Institute of Science and Technology (KAIST),South Korea,65.6,34.3,60,67,100,62.9,,,,,2014
-57,57,The Hong Kong University of Science and Technology,Hong Kong S.A.R.,52.4,77,59.7,72.3,58.5,62.6,,,,,2014
+57,57,The Hong Kong University of Science and Technology,China,52.4,77,59.7,72.3,58.5,62.6,,,,,2014
 58,58,University of Manchester,United Kingdom,54.5,80.9,52.2,77.3,40.8,62.3,,,,,2014
 59,59,Ohio State University (Main campus),United States of America,58.3,48.1,52.9,79.4,47.7,62,,,,,2014
 60,60,Pohang University of Science and Technology (POSTECH),South Korea,54.2,33.8,49,85.7,100,61.7,,,,,2014
@@ -1109,7 +1109,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 106,106,University of Montreal,Canada,45.7,75.6,42.9,59.3,90.9,52.3,,,,,2014
 106,106,Eindhoven University of Technology,Netherlands,37.3,68.7,47.9,63.6,100,52.3,,,,,2014
 108,108,"University of Maryland, College Park",United States of America,39,42.4,37.2,84.4,32.1,52.2,,,,,2014
-109,109,Chinese University of Hong Kong,Hong Kong S.A.R.,45.5,66.9,54.7,52.4,46.4,52,,,,,2014
+109,109,Chinese University of Hong Kong,China,45.5,66.9,54.7,52.4,46.4,52,,,,,2014
 109,109,University of Alberta,Canada,44.6,70.1,47.8,59.3,46.8,51.9,,,,,2014
 111,111,Uppsala University,Sweden,38.9,57.8,49.7,66.4,40.5,51.8,,,,,2014
 112,112,University of Sheffield,United Kingdom,40.6,71.6,38.1,72.4,42.7,51.8,,,,,2014
@@ -1220,7 +1220,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 213,201-225,University of Science and Technology of China,China,38.7,25.8,26.1,69.6,69.4,44,,,,,2014
 213,201-225,University of Innsbruck,Austria,25.2,91.4,17.2,70.6,40.2,41.8,,,,,2014
 213,201-225,University of Victoria,Canada,18.1,67,28.5,75.5,30.1,42.4,,,,,2014
-213,201-225,City University of Hong Kong,Hong Kong S.A.R.,30.9,65.9,33.5,60.2,55.7,43.7,,,,,2014
+213,201-225,City University of Hong Kong,China,30.9,65.9,33.5,60.2,55.7,43.7,,,,,2014
 213,201-225,Nagoya University,Japan,37.4,28,32.1,55.1,80.6,41.5,,,,,2014
 213,201-225,University of Trento,Italy,27.2,54.7,22.9,71.5,42.8,41.7,,,,,2014
 213,201-225,Sungkyunkwan University (SKKU),South Korea,37.6,33.7,38.8,45.8,98.6,41.7,,,,,2014
@@ -1261,7 +1261,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 263,251-275,University of Iceland,Iceland,12.5,59.9,24.3,71.1,78.5,38.8,,,,,2014
 263,251-275,Queen’s University Belfast,United Kingdom,26.9,87.5,22.8,53.8,48.5,38.8,,,,,2014
 263,251-275,"University of the Andes, Colombia",Colombia,14.5,55.7,10.5,89.3,30.6,39.2,,,,,2014
-263,251-275,Hong Kong Polytechnic University,Hong Kong S.A.R.,28.4,62.6,35.7,48.4,40.3,39.5,,,,,2014
+263,251-275,Hong Kong Polytechnic University,China,28.4,62.6,35.7,48.4,40.3,39.5,,,,,2014
 263,251-275,University of Newcastle,Australia,21.2,70.5,28.2,58,74.2,39.4,,,,,2014
 263,251-275,Swedish University of Agricultural Sciences,Sweden,29,45.2,23.9,59.3,99.8,39.5,,,,,2014
 263,251-275,Sharif University of Technology,Iran,29.7,20.7,37.2,49,98.3,38.8,,,,,2014
@@ -1324,7 +1324,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 325,301-350,University of Bayreuth,Germany,22.8,54.1,12.7,66,,,,,,,2014
 325,301-350,King Mongkut’s University of Technology Thonburi,Thailand,13,24.4,10.5,75.4,62.2,33.1,,,,,2014
 325,301-350,Deakin University,Australia,16.6,73.4,18.7,54.2,31.1,33.1,,,,,2014
-325,301-350,Hong Kong Baptist University,Hong Kong S.A.R.,20.7,59.5,13.9,65.3,30.2,35.2,,,,,2014
+325,301-350,Hong Kong Baptist University,China,20.7,59.5,13.9,65.3,30.2,35.2,,,,,2014
 325,301-350,University of Tsukuba,Japan,36.6,32.6,20.9,48.9,35.3,35.2,,,,,2014
 325,301-350,Keele University,United Kingdom,19.4,71.2,19.4,58.7,30.4,35.4,,,,,2014
 325,301-350,Kyushu University,Japan,38.6,24.5,28,30.9,75,33,,,,,2014
@@ -1443,7 +1443,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 40,40,King’s College London,United Kingdom,55.6,87,62.3,88.3,39,69.4,,,,,2015
 41,41,"University of California, San Diego",United States of America,52,37,66.6,96.4,54.2,68.6,,,,,2015
 42,42,Washington University in St Louis,United States of America,57.6,46.5,55.2,97.1,,67.8,,,,,2015
-43,43,University of Hong Kong,Hong Kong S.A.R.,62.1,81.9,72.6,65.1,56,67.5,,,,,2015
+43,43,University of Hong Kong,China,62.1,81.9,72.6,65.1,56,67.5,,,,,2015
 44,44,Karolinska Institute,Sweden,57.1,60.6,68,76.8,65.5,66.8,,,,,2015
 45,45,Australian National University,Australia,53.7,91.3,70.9,71.1,38.9,66.5,,,,,2015
 46,46,University of Minnesota,United States of America,59.9,33.8,64.7,82.9,,65.9,,,,,2015
@@ -1451,7 +1451,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 48,48,Peking University,China,70,53.7,61.9,63.7,100,65.2,,,,,2015
 49,49,Tsinghua University,China,64.1,44.6,68.3,65,99.7,65.1,,,,,2015
 50,50,Seoul National University,South Korea,75.5,30.3,77.1,48.7,86.3,64.8,,,,,2015
-51,51,The Hong Kong University of Science and Technology,Hong Kong S.A.R.,51.8,77.8,66.8,72.9,57.6,64.7,,,,,2015
+51,51,The Hong Kong University of Science and Technology,China,51.8,77.8,66.8,72.9,57.6,64.7,,,,,2015
 52,52,Korea Advanced Institute of Science and Technology (KAIST),South Korea,63.5,34.9,63.2,71.4,100,64.5,,,,,2015
 52,52,University of Manchester,United Kingdom,58.1,82,58.7,74.3,39.4,64.5,,,,,2015
 54,54,Brown University,United States of America,55.5,37,54.2,92,32.7,64.1,,,,,2015
@@ -1529,7 +1529,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 126,126,KTH Royal Institute of Technology,Sweden,45.7,84,44.8,55.1,100,52.5,,,,,2015
 126,126,University of Florida,United States of America,49.8,32.2,52.1,62.2,,52.5,,,,,2015
 126,126,Boston College,United States of America,32.4,54.6,29.1,95.9,46.5,52.5,,,,,2015
-129,129,Chinese University of Hong Kong,Hong Kong S.A.R.,43.9,64,53.5,57.8,42.8,52.4,,,,,2015
+129,129,Chinese University of Hong Kong,China,43.9,64,53.5,57.8,42.8,52.4,,,,,2015
 130,130,University of Virginia (Main campus),United States of America,48.7,31.8,35.9,76.9,49.8,52.1,,,,,2015
 131,131,Lancaster University,United Kingdom,35.4,84.7,36.1,78,34.1,52.1,,,,,2015
 132,132,University of Southampton,United Kingdom,35.2,82.4,34.1,79.7,38.9,51.9,,,,,2015
@@ -1592,7 +1592,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 188,188,Stony Brook University,United States of America,32.8,60.5,24.4,80.4,31.3,46.6,,,,,2015
 188,188,University of Ottawa,Canada,37.9,63.2,34.7,62.9,45.9,46.5,,,,,2015
 191,191,University at Buffalo,United States of America,40.1,57,39.8,57.5,39.6,46.5,,,,,2015
-192,192,City University of Hong Kong,Hong Kong S.A.R.,31,71.3,32.9,68.6,49.8,46.3,,,,,2015
+192,192,City University of Hong Kong,China,31,71.3,32.9,68.6,49.8,46.3,,,,,2015
 193,193,Fudan University,China,45.6,37.4,34,61,49.4,46.2,,,,,2015
 193,193,Iowa State University,United States of America,36.4,40.6,30.9,72,54.4,46.2,,,,,2015
 195,195,University of Bonn,Germany,32.2,54.8,22.2,83.8,,46.1,,,,,2015
@@ -1607,7 +1607,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 213,201-225,University of Texas at Dallas,United States of America,26,55.4,28.2,77.8,41.6,44.8,,,,,2015
 213,201-225,University of Illinois Chicago,United States of America,43,53.4,34.1,55.1,40.7,44.7,,,,,2015
 213,201-225,University of Trieste,Italy,28.7,50.7,16,88.1,33.3,44.5,,,,,2015
-213,201-225,Hong Kong Polytechnic University,Hong Kong S.A.R.,33.7,69.9,36.5,56.5,42.6,44.3,,,,,2015
+213,201-225,Hong Kong Polytechnic University,China,33.7,69.9,36.5,56.5,42.6,44.3,,,,,2015
 213,201-225,Newcastle University,United Kingdom,30.3,73.8,29.6,70.3,35,45.5,,,,,2015
 213,201-225,Yonsei University,South Korea,44.5,35.7,45.8,44.3,69.7,44.8,,,,,2015
 213,201-225,William & Mary,United States of America,36.8,26.5,19.9,78.7,30,43.4,,,,,2015
@@ -1721,7 +1721,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 325,301-350,University of Campinas,Brazil,43.4,20.7,38.8,28,44.5,35.7,,,,,2015
 325,301-350,University of Marrakech Cadi Ayyad,Morocco,16.3,45.1,6.5,83,28.6,35.8,,,,,2015
 325,301-350,Deakin University,Australia,20.1,71.8,20.6,57.5,30.6,35.6,,,,,2015
-325,301-350,Hong Kong Baptist University,Hong Kong S.A.R.,21.2,62.3,13.2,70.8,29.1,37,,,,,2015
+325,301-350,Hong Kong Baptist University,China,21.2,62.3,13.2,70.8,29.1,37,,,,,2015
 325,301-350,University of Bath,United Kingdom,29.2,76.1,25.1,47.5,36.7,37.2,,,,,2015
 325,301-350,Wayne State University,United States of America,32,30.7,15.2,61,,,,,,,2015
 325,301-350,University of Warsaw,Poland,20.8,41.6,13.6,70,28.5,35.2,,,,,2015
@@ -1846,7 +1846,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 42,42,Peking University,China,77.8,49.2,72.4,69.1,100,72,40148,8.3,14%,,2016
 43,43,The University of Tokyo,Japan,81.4,30.3,83,60.9,50.8,71.1,26199,5.7,10%,,2016
 44,44,"University of California, Davis",United States of America,60.1,58.4,72.7,84.3,57.3,70.9,35364,13.9,13%,54:46:00,2016
-44,44,University of Hong Kong,Hong Kong S.A.R.,64.6,99.5,72.8,70.1,53.7,71.1,19835,17.6,38%,53:47:00,2016
+44,44,University of Hong Kong,China,64.6,99.5,72.8,70.1,53.7,71.1,19835,17.6,38%,53:47:00,2016
 46,46,University of Texas at Austin,United States of America,59.3,31.7,69.7,92.2,63.1,70.3,49427,17.4,9%,51:49:00,2016
 47,47,Tsinghua University,China,73.3,39.5,83,58.8,100,70,39763,13.7,10%,32 : 68,2016
 47,47,Wageningen University & Research,Netherlands,52.6,70.3,66.9,87.8,100,70,9248,17,21%,56:44:00,2016
@@ -1860,7 +1860,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 56,56,University of Manchester,United Kingdom,58.4,87,66,77.3,42,68.1,34938,15.3,34%,52:48:00,2016
 56,56,The University of Sydney,Australia,54.3,84.4,68.1,77.5,72.4,68.1,41868,20.2,28%,57:43:00,2016
 58,58,University of Amsterdam,Netherlands,52.2,66.5,64.7,87.4,62.8,67.8,24570,14.4,11%,53:47:00,2016
-59,59,The Hong Kong University of Science and Technology,Hong Kong S.A.R.,49.4,80.5,66.1,82.6,68.1,67.2,11385,23.8,36%,,2016
+59,59,The Hong Kong University of Science and Technology,China,49.4,80.5,66.1,82.6,68.1,67.2,11385,23.8,36%,,2016
 60,60,The University of Queensland,Australia,49.2,89.3,62.8,82.4,76.7,66.9,34718,32.7,27%,53:47:00,2016
 60,60,Washington University in St Louis,United States of America,54.3,44.9,55.6,99.2,33.5,66.9,12528,5.7,17%,0.069444444,2016
 62,62,Utrecht University,Netherlands,48.1,55.8,64.3,88.1,89.1,66.6,30779,15.4,7%,59:41:00,2016
@@ -1941,7 +1941,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 135,135,University of Oslo,Norway,43.3,68.2,44.7,75.5,38.3,55.1,27139,18.8,18%,,2016
 136,136,Stockholm University,Sweden,34.1,48.5,51.2,82.5,31.1,54.8,31715,23.7,8%,62:38:00,2016
 137,137,University of Alberta,Canada,46.4,80.7,48.1,63.6,47.4,54.7,36299,21.6,23%,55:45:00,2016
-138,138,Chinese University of Hong Kong,Hong Kong S.A.R.,41.5,81.1,48.5,68.4,37.5,54.5,17916,10.2,22%,53:47:00,2016
+138,138,Chinese University of Hong Kong,China,41.5,81.1,48.5,68.4,37.5,54.5,17916,10.2,22%,53:47:00,2016
 138,138,Karlsruhe Institute of Technology,Germany,37.7,56.7,47.5,73.8,99.5,54.4,25294,24.6,16%,26 : 74,2016
 140,140,University of Sussex,United Kingdom,33.4,88.3,37.2,86.1,30.6,54.4,12001,17.4,35%,54:46:00,2016
 141,141,University of Massachusetts,United States of America,40.2,48.9,36.3,88.1,52.2,54.4,56959,13,11%,49:51:00,2016
@@ -2008,7 +2008,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 225,201-250,University at Buffalo,United States of America,36.5,60.6,37.9,62,43.8,46.6,25668,19,19%,47:53:00,2016
 225,201-250,University of Calgary,Canada,33.9,70.1,36.7,67.8,52,48.1,28341,16.5,17%,53:47:00,2016
 225,201-250,Chalmers University of Technology,Sweden,36.6,77.6,35.3,52.2,79.5,45,8605,11.6,15%,30 : 70,2016
-225,201-250,City University of Hong Kong,Hong Kong S.A.R.,32.1,81.6,26.7,76.8,50.1,48.1,10015,7.1,28%,51:49:00,2016
+225,201-250,City University of Hong Kong,China,32.1,81.6,26.7,76.8,50.1,48.1,10015,7.1,28%,51:49:00,2016
 225,201-250,Copenhagen Business School,Denmark,19.3,88.5,26.5,79.4,35.3,45.1,18293,42.7,19%,48:52:00,2016
 225,201-250,Dalhousie University,Canada,30.4,78.3,29.4,65.2,50.3,44.6,15064,14.4,18%,55:45:00,2016
 225,201-250,University of São Paulo,Brazil,60.9,25.3,68.6,20.4,40.3,47.9,81402,14.6,4%,48:52:00,2016
@@ -2021,7 +2021,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 225,201-250,George Washington University,United States of America,44.7,48.1,23.5,65.7,29.5,44.5,20541,12,16%,56:44:00,2016
 225,201-250,Goethe University Frankfurt,Germany,35.8,60.2,28.6,79.3,38.1,48.6,31861,9.3,15%,60:40:00,2016
 225,201-250,University of Hawai’i at Mānoa,United States of America,32,63.4,35.5,67.7,44.7,46.4,16773,11.1,13%,55:45:00,2016
-225,201-250,Hong Kong Polytechnic University,Hong Kong S.A.R.,29.3,79,35.2,63.3,45.1,45.4,22064,25.9,26%,51:49:00,2016
+225,201-250,Hong Kong Polytechnic University,China,29.3,79,35.2,63.3,45.1,45.4,22064,25.9,26%,51:49:00,2016
 225,201-250,University of Illinois Chicago,United States of America,40.9,58.1,29.2,63.2,38,45.3,24313,9.2,17%,53:47:00,2016
 225,201-250,Indiana University,United States of America,43,41.2,27.3,74.8,0,46.6,62468,13.6,13%,53:47:00,2016
 225,201-250,University of Iowa,United States of America,41,32.3,26.7,73.5,54.1,46.1,27526,11.6,11%,52:48:00,2016
@@ -2163,7 +2163,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 375,351-400,Graz University of Technology,Austria,26,69.3,15.8,52.9,77.2,35.5,7542,12.5,16%,0.970833333,2016
 375,351-400,University of Guelph,Canada,28,53.6,34.2,44.4,47.4,37.2,21643,28.3,4%,60:40:00,2016
 375,351-400,Hanyang University,South Korea,33.9,54.3,32.6,31.1,87.9,35.5,16729,10.4,19%,,2016
-375,351-400,Hong Kong Baptist University,Hong Kong S.A.R.,22.6,75,12.1,67.9,28.8,37.1,10441,11,25%,61:39:00,2016
+375,351-400,Hong Kong Baptist University,China,22.6,75,12.1,67.9,28.8,37.1,10441,11,25%,61:39:00,2016
 375,351-400,University of Houston,United States of America,34.9,33.9,26.5,52,42.3,37.6,40325,43.7,9%,50:50:00,2016
 375,351-400,Indian Institute of Technology Bombay,India,37.8,17.7,28.6,48.5,42.3,36.9,8327,14.9,1%,0.725,2016
 375,351-400,Instituto Superior Técnico Lisboa,Portugal,22.2,43.7,25,59.8,38.8,36.3,11778,16.9,9%,27 : 73,2016
@@ -2645,12 +2645,12 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 41,41,"University of California, San Diego",United States of America,61.2,47.7,66.2,98.9,67.3,73.2,28416,6.6,14%,47:53:00,2017
 42,42,McGill University,Canada,66.4,86.4,70.3,81.8,41.9,73.1,30911,13.5,24%,57:43:00,2017
 43,43,Universität Heidelberg,Germany,66.7,62.7,65,90.8,60,73,29527,24.9,17%,55:45:00,2017
-43,43,University of Hong Kong,Hong Kong S.A.R.,66.5,99.4,74.5,73.2,52.9,73,20095,17.8,39%,51:49:00,2017
+43,43,University of Hong Kong,China,66.5,99.4,74.5,73.2,52.9,73,20095,17.8,39%,51:49:00,2017
 45,45,University of Wisconsin-Madison,United States of America,68.2,42,71.4,87.9,47.4,72.6,40048,11,12%,51:49:00,2017
 46,46,Technical University of Munich,Germany,61,66.6,70.5,82,100,71.5,36929,51.9,22%,33 : 67,2017
 47,47,Australian National University,Australia,54,93.9,73.9,81.7,53.5,71.3,15402,19.9,35%,52:48:00,2017
 48,48,"University of California, Santa Barbara",United States of America,52.2,63.3,62.6,99.2,87.6,71.1,22267,27.4,12%,51:49:00,2017
-49,49,The Hong Kong University of Science and Technology,Hong Kong S.A.R.,53.2,82.8,66.7,91.2,62,71.1,11960,27.3,38%,,2017
+49,49,The Hong Kong University of Science and Technology,China,53.2,82.8,66.7,91.2,62,71.1,11960,27.3,38%,,2017
 50,50,University of Texas at Austin,United States of America,63.9,35.7,65.9,93,51.3,70.8,48689,17.2,10%,51:49:00,2017
 51,51,Brown University,United States of America,66.3,58,54.4,96.7,33.9,70.4,8694,10.2,20%,,2017
 51,51,"University of California, Davis",United States of America,61.4,61.2,67.3,86.6,50,70.4,36060,13.7,15%,55:45:00,2017
@@ -2677,7 +2677,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 72,72,Seoul National University,South Korea,70.2,32.4,69.8,58.8,85.2,64.2,26777,13.1,11%,,2017
 74,74,Monash University,Australia,49.5,87.1,57.4,78.5,76,64.1,44217,34.5,25%,57:43:00,2017
 75,75,Free University of Berlin,Germany,58.1,67.2,67.3,66.9,38.9,63.7,32909,53.9,21%,58:42:00,2017
-76,76,Chinese University of Hong Kong,Hong Kong S.A.R.,52.2,84,60.4,74.6,44.7,63.6,18433,10.5,27%,,2017
+76,76,Chinese University of Hong Kong,China,52.2,84,60.4,74.6,44.7,63.6,18433,10.5,27%,,2017
 77,77,Leiden University,Netherlands,46.1,68.1,57.9,86.1,47.3,63.3,23597,17.8,11%,59:41:00,2017
 78,78,UNSW Sydney,Australia,43.2,91,58.6,81.4,49.7,63,39121,26.3,32%,46:54:00,2017
 78,78,RWTH Aachen University,Germany,53.3,53.4,63.7,71.3,99.4,63,42298,54.9,17%,32 : 68,2017
@@ -2720,7 +2720,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 116,116,University of Colorado Boulder,United States of America,42.5,39.4,43.7,96.1,38,58.6,29741,16.3,9%,44:56:00,2017
 116,116,École Polytechnique,France,58.6,92.3,40.6,67.2,71.9,58.6,2669,5,31%,0.806944444,2017
 118,118,Ghent University,Belgium,43,55.1,55.5,75.7,84.4,58.5,35374,37,9%,53:47:00,2017
-119,119,City University of Hong Kong,Hong Kong S.A.R.,42.1,83.5,44.5,81.6,66.4,58.4,9871,11.6,30%,52:48:00,2017
+119,119,City University of Hong Kong,China,42.1,83.5,44.5,81.6,66.4,58.4,9871,11.6,30%,52:48:00,2017
 120,120,University of Copenhagen,Denmark,46.8,82.3,33.1,89.8,44.2,58.2,29796,4.2,17%,62:38:00,2017
 121,121,Pierre and Marie Curie University,France,52.9,71.4,33.7,86.2,38.2,58.2,28473,8,17%,48:52:00,2017
 121,121,Radboud University Nijmegen,Netherlands,35,68.3,50.6,87.2,45.2,58.1,19079,19.1,11%,57:43:00,2017
@@ -2794,7 +2794,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 188,188,Lomonosov Moscow State University,Russia,75.2,59.9,61.6,12.5,89.1,51.5,29563,7.4,21%,45:55:00,2017
 190,190,Newcastle University,United Kingdom,33.6,84.9,32.1,81,38.7,51.3,20307,15.6,28%,49:51:00,2017
 190,190,Sant’Anna School of Advanced Studies – Pisa,Italy,44.7,44.9,33.9,74.1,86.6,51.3,679,13.1,13%,38 : 62,2017
-192,192,Hong Kong Polytechnic University,Hong Kong S.A.R.,35,79.7,41.8,69.9,47.9,51.2,21907,25.6,25%,54:46:00,2017
+192,192,Hong Kong Polytechnic University,China,35,79.7,41.8,69.9,47.9,51.2,21907,25.6,25%,54:46:00,2017
 192,192,University of Reading,United Kingdom,36.8,86.6,37.5,71.6,36.6,51.2,12086,13.9,29%,56:44:00,2017
 194,194,University of Konstanz,Germany,39.8,62.6,44.5,64.4,73.1,51.1,11335,50.4,12%,54:46:00,2017
 195,195,University of Calgary,Canada,34.8,71.5,35.2,77.9,48.8,51,28047,16,18%,53:47:00,2017
@@ -2968,7 +2968,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 375,351-400,Graz University of Technology,Austria,28.5,71.2,15.4,60,67.8,38.2,6312,10.1,16%,1.011805556,2017
 375,351-400,University of Guelph,Canada,26.1,55.4,33,48.7,46.9,37.7,21547,28.4,4%,60:40:00,2017
 375,351-400,Hanyang University,South Korea,35,51.5,35.6,35.6,81.8,37.8,21629,14.1,15%,,2017
-375,351-400,Hong Kong Baptist University,Hong Kong S.A.R.,23.3,79.1,13.6,67.4,32.9,38,11038,11.1,29%,62:38:00,2017
+375,351-400,Hong Kong Baptist University,China,23.3,79.1,13.6,67.4,32.9,38,11038,11.1,29%,62:38:00,2017
 375,351-400,University of Houston,United States of America,35.4,36.8,29.4,54.3,40.6,39.5,39402,42.5,9%,50:50:00,2017
 375,351-400,ITMO University,Russia,27.3,40.8,17.2,67.1,72.4,38.4,11875,10.4,10%,,2017
 375,351-400,Indian Institute of Technology Bombay,India,39.2,19.2,31.1,52.8,46.9,39.5,9207,16.3,1%,0.765972222,2017
@@ -3622,11 +3622,11 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 37,37,University of Illinois at Urbana-Champaign,United States of America,65.8,52.8,78.9,88.9,56,75.4,43402,22.8,23%,46:54:00,2018
 38,38,École Polytechnique Fédérale de Lausanne,Switzerland,58.8,98.7,66.8,94.2,76,75.2,9928,11.2,55%,28 : 72,2018
 38,38,Karolinska Institute,Sweden,57,70.3,74.4,95.9,71.4,75.2,7424,10.9,19%,68:32:00,2018
-40,40,University of Hong Kong,Hong Kong S.A.R.,68.8,99.5,77.9,74.2,54,75.1,18364,18,42%,54:46:00,2018
+40,40,University of Hong Kong,China,68.8,99.5,77.9,74.2,54,75.1,18364,18,42%,54:46:00,2018
 41,41,Technical University of Munich,Germany,60.3,66.8,71.2,88.4,100,73.5,38689,54.4,23%,34 : 66,2018
 42,42,McGill University,Canada,63.4,87.5,70.8,84.7,39.8,73.2,30940,13.3,26%,57:43:00,2018
 43,43,University of Wisconsin-Madison,United States of America,68.4,43.4,73.9,86.5,45.8,73,38960,10.7,12%,51:49:00,2018
-44,44,The Hong Kong University of Science and Technology,Hong Kong S.A.R.,55.2,83.4,68.4,93.1,58.1,72.7,10214,23.1,31%,,2018
+44,44,The Hong Kong University of Science and Technology,China,55.2,83.4,68.4,93.1,58.1,72.7,10214,23.1,31%,,2018
 45,45,Universität Heidelberg,Germany,63.6,64.7,62.2,94.2,56,72.3,28876,23.2,17%,55:45:00,2018
 46,46,The University of Tokyo,Japan,79.5,32.2,85.2,63.7,52.7,72.3,26000,6.7,10%,,2018
 47,47,KU Leuven,Belgium,54.2,68.3,70.9,88.7,99.9,71.8,44412,37.1,15%,50:50:00,2018
@@ -3640,7 +3640,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 54,54,University of Manchester,United Kingdom,56.3,88.7,65.3,84.3,44.1,69.5,35318,14.6,38%,52:48:00,2018
 56,56,University of Minnesota,United States of America,57.6,37.7,67.9,87.5,90.4,69,60949,17.4,11%,51:49:00,2018
 56,56,University of North Carolina at Chapel Hill,United States of America,57.9,41.5,61.8,96.7,39.2,69,34684,9.7,8%,56:44:00,2018
-58,58,Chinese University of Hong Kong,Hong Kong S.A.R.,57,86.6,64.4,80.6,56.8,68.5,18072,17.3,31%,,2018
+58,58,Chinese University of Hong Kong,China,57,86.6,64.4,80.6,56.8,68.5,18072,17.3,31%,,2018
 59,59,University of Amsterdam,Netherlands,51.3,72.2,62.6,91.9,49.9,68.4,23495,12.3,12%,57:43:00,2018
 60,60,Purdue University West Lafayette,United States of America,62.3,69.9,68.9,73.4,63.5,68.2,38770,17.4,23%,42:58:00,2018
 61,61,The University of Sydney,Australia,50.2,84.6,63.1,85.9,67.9,67.8,44553,21.6,32%,57:43:00,2018
@@ -3702,7 +3702,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 117,117,Indiana University,United States of America,50.5,50.5,46.5,81.9,51.5,58.7,66835,14.1,15%,52:48:00,2018
 117,117,Trinity College Dublin,Ireland,45.3,92.1,44.8,79,41.2,58.7,16157,22.8,27%,58:42:00,2018
 119,119,University of Alberta,Canada,47.2,84.8,51.2,70.5,63.4,58.6,32435,21.6,26%,55:45:00,2018
-119,119,City University of Hong Kong,Hong Kong S.A.R.,40.8,84.4,48.6,79.4,65.9,58.6,9240,11.2,35%,54:46:00,2018
+119,119,City University of Hong Kong,China,40.8,84.4,48.6,79.4,65.9,58.6,9240,11.2,35%,54:46:00,2018
 121,121,Queen Mary University of London,United Kingdom,32.8,95.5,38.2,96.7,39.1,58.4,15405,13.3,45%,54:46:00,2018
 122,122,Radboud University Nijmegen,Netherlands,33.9,68.8,50.4,89.4,44.8,58.4,19358,19.1,12%,56:44:00,2018
 123,123,Georgetown University,United States of America,51.8,49.6,37.2,87.5,66.3,58.3,15956,8.6,17%,54:46:00,2018
@@ -3765,7 +3765,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 179,179,University of Twente,Netherlands,35.5,85.3,47,68.5,83.6,53.8,6697,12.8,27%,37 : 63,2018
 181,181,Paris-Sud University,France,40.4,63.5,33.1,86.8,32.3,53.7,27221,14.5,16%,55:45:00,2018
 182,182,École Normale Supérieure de Lyon,France,40.1,67.3,37.8,80.9,37.9,53.6,2221,8.5,13%,47:53:00,2018
-182,182,Hong Kong Polytechnic University,Hong Kong S.A.R.,39.1,79.9,48.1,67.7,45.8,53.6,21773,26.9,25%,51:49:00,2018
+182,182,Hong Kong Polytechnic University,China,39.1,79.9,48.1,67.7,45.8,53.6,21773,26.9,25%,51:49:00,2018
 184,184,Scuola Normale Superiore di Pisa,Italy,53.7,49.4,33.3,75.4,37.7,53.4,515,5.2,7%,30 : 70,2018
 185,185,University of Aberdeen,United Kingdom,30.3,93.3,33.6,87.1,41.9,53.3,12055,13.9,36%,55:45:00,2018
 186,186,University of Miami,United States of America,42.5,67.1,24.4,90.3,37.2,53.1,15860,5.9,16%,51:49:00,2018
@@ -4010,7 +4010,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 450,401–500,Hasselt University,Belgium,23.8,57.2,27.1,53.9,48.3,36.9,5045,19,12%,47:53:00,2018
 450,401–500,Hofstra University,United States of America,32.9,28.5,4.8,74.9,31.7,36.7,10001,13.9,10%,56:44:00,2018
 450,401–500,Hokkaido University,Japan,42.1,32.6,40.2,33.1,52,38.4,18038,8,9%,30 : 70,2018
-450,401–500,Hong Kong Baptist University,Hong Kong S.A.R.,22,84.8,13.8,66.9,32.4,38,11467,11.4,30%,61:39:00,2018
+450,401–500,Hong Kong Baptist University,China,22,84.8,13.8,66.9,32.4,38,11467,11.4,30%,61:39:00,2018
 450,401–500,Huazhong University of Science and Technology,China,31.2,22.5,27.5,50.3,63.9,36,56140,16.7,5%,35 : 65,2018
 450,401–500,University of Hull,United Kingdom,24,73.1,21.5,53.1,34.2,35.9,13482,16.6,19%,53:47:00,2018
 450,401–500,Jordan University of Science and Technology,Jordan,14.8,64.1,7,79.4,34.3,36,23103,12.6,20%,57:43:00,2018
@@ -4721,12 +4721,12 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 32,32,University of Melbourne,Australia,68,93.1,73.4,90.3,74,78.3,45030,26.6,42%,56:44:00,2019
 34,34,Georgia Institute of Technology,United States of America,62.5,77.1,76.1,95.1,62.2,77.4,21903,21.5,27%,32 : 68,2019
 35,35,École Polytechnique Fédérale de Lausanne,Switzerland,66.5,98.7,66.5,92.8,69.1,76.9,10343,11.4,57%,28 : 72,2019
-36,36,University of Hong Kong,Hong Kong S.A.R.,72.6,99.7,78.4,73.7,56.5,76.3,18122,18.1,43%,54:46:00,2019
+36,36,University of Hong Kong,China,72.6,99.7,78.4,73.7,56.5,76.3,18122,18.1,43%,54:46:00,2019
 37,37,University of British Columbia,Canada,60.8,93.9,72.6,92.8,42.9,76,53566,18.6,30%,54:46:00,2019
 38,38,King’s College London,United Kingdom,61.1,95.3,68.7,95.2,45.9,75.8,24293,12.1,42%,62:38:00,2019
 39,39,University of Texas at Austin,United States of America,68.8,38,74.2,94.8,48.7,75.4,48561,17.1,10%,51:49:00,2019
 40,40,Karolinska Institute,Sweden,56.1,77.5,72.1,96.2,68.6,74.8,7898,9.2,19%,68:32:00,2019
-41,41,The Hong Kong University of Science and Technology,Hong Kong S.A.R.,56.8,98,67.6,93.9,65.8,74.5,10394,23.6,31%,,2019
+41,41,The Hong Kong University of Science and Technology,China,56.8,98,67.6,93.9,65.8,74.5,10394,23.6,31%,,2019
 41,41,Paris Sciences et Lettres – PSL Research University Paris,France,74.3,78.3,67.8,82.2,49.8,74.4,20722,11.3,26%,44:56:00,2019
 42,42,The University of Tokyo,Japan,84,35.9,87.2,61.3,67.2,74.1,25828,7.6,11%,,2019
 43,43,University of Wisconsin-Madison,United States of America,70.3,45.6,71,89.9,46.8,74,39193,10.5,12%,,2019
@@ -4739,7 +4739,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 51,51,"Nanyang Technological University, Singapore",Singapore,55.4,95.4,65.8,88.6,83.1,72.2,25738,16.7,28%,48:52:00,2019
 52,52,"University of California, Santa Barbara",United States of America,50.9,67,65,98.8,83.4,71.5,23457,27.9,16%,52:48:00,2019
 53,53,Brown University,United States of America,67.3,60.4,57.3,95.4,36.2,71.4,9082,10.7,21%,,2019
-53,53,Chinese University of Hong Kong,Hong Kong S.A.R.,59.3,98.6,64.9,84.5,54.1,71.4,17883,18.4,33%,,2019
+53,53,Chinese University of Hong Kong,China,59.3,98.6,64.9,84.5,54.1,71.4,17883,18.4,33%,,2019
 54,54,Washington University in St Louis,United States of America,63.1,56.5,56.6,99.1,39.5,70.9,13074,7.3,20%,,2019
 56,56,University of North Carolina at Chapel Hill,United States of America,62.2,36.8,61.4,96.8,42.4,69.9,34226,9.4,8%,57:43:00,2019
 57,57,University of Manchester,United Kingdom,57.7,90.1,62,87.2,45,70,36530,14.5,39%,53:47:00,2019
@@ -4797,7 +4797,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 109,109,Georgetown University,United States of America,56,46.9,36,93.2,64.6,60.7,15801,8.5,17%,54:46:00,2019
 110,110,University of Bern,Switzerland,45.1,86.5,41.7,85.5,83.1,60.3,10967,16.7,15%,56:44:00,2019
 110,110,University of Bonn,Germany,48.4,59.7,40.7,89.9,87.4,60.4,37708,70.2,13%,55:45:00,2019
-110,110,City University of Hong Kong,Hong Kong S.A.R.,43.7,99.8,46.3,80.6,63.2,60.2,9928,11.2,41%,57:43:00,2019
+110,110,City University of Hong Kong,China,43.7,99.8,46.3,80.6,63.2,60.2,9928,11.2,41%,57:43:00,2019
 110,110,University of Pittsburgh-Pittsburgh campus,United States of America,47.8,38.2,44.5,95.9,40.4,60.3,26517,5.9,11%,52:48:00,2019
 114,114,University of Colorado Boulder,United States of America,45,46.4,43.2,96.5,39.2,59.9,31625,15.5,12%,44:56:00,2019
 114,114,Durham University,United Kingdom,44.7,90.9,47,82,37.7,59.9,16565,14.8,30%,54:46:00,2019
@@ -4845,7 +4845,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 156,156,University of Florida,United States of America,55.3,39.9,51.2,66.7,62.6,56.5,46555,17.5,10%,54:46:00,2019
 158,158,University of Aberdeen,United Kingdom,30.5,95,34.7,94.7,46.5,56.3,12211,15.1,38%,55:45:00,2019
 159,159,University of Arizona,United States of America,43.4,44.8,43,85.5,49.4,56.2,39264,13.3,9%,52:48:00,2019
-159,159,Hong Kong Polytechnic University,Hong Kong S.A.R.,42.4,95.7,49,68.3,43.4,56.2,21977,27.8,25%,52:48:00,2019
+159,159,Hong Kong Polytechnic University,China,42.4,95.7,49,68.3,43.4,56.2,21977,27.8,25%,52:48:00,2019
 159,159,University of Würzburg,Germany,38.1,57.9,42.6,87.3,59.8,56.2,22264,30.3,10%,57:43:00,2019
 161,161,Scuola Normale Superiore di Pisa,Italy,57.7,51,37.6,75.7,35.2,56,539,6.7,9%,29 : 71,2019
 161,161,University of Sussex,United Kingdom,33,92.7,37.3,90,35.7,55.9,13891,16.5,39%,55:45:00,2019
@@ -5121,7 +5121,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 450,401–500,Harbin Institute of Technology,China,41.5,35,34,39.5,98.4,39.6,30116,9.9,10%,31 : 69,2019
 450,401–500,Hasselt University,Belgium,30.4,67.6,28.6,55.3,54.1,40.7,5256,32.4,12%,47:53:00,2019
 450,401–500,Hokkaido University,Japan,45,35.3,39.7,34.9,59,40,18114,7.9,10%,30 : 70,2019
-450,401–500,Hong Kong Baptist University,Hong Kong S.A.R.,23.3,98,14.3,64.2,36.6,38.8,10872,10.5,31%,62:38:00,2019
+450,401–500,Hong Kong Baptist University,China,23.3,98,14.3,64.2,36.6,38.8,10872,10.5,31%,62:38:00,2019
 450,401–500,Indian Institute of Technology Bombay,India,44.3,19.6,33,47,71.9,40.6,10001,17.1,1%,0.806944444,2019
 450,401–500,Indian Institute of Technology Roorkee,India,34.9,16.2,29.6,53.4,82.9,38.7,7925,17.4,2%,0.479166667,2019
 450,401–500,JSS Academy of Higher Education and Research,India,37.1,25.7,7.7,80.8,35.1,40.5,5421,8.6,8%,55:45:00,2019
@@ -5978,7 +5978,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 32,32,LMU Munich,Germany,68.4,67.2,77,88.8,100,77.8,34519,34.7,17%,61:39:00,2020
 32,32,University of Melbourne,Australia,65.9,93.1,74.1,89.8,76.3,77.8,47385,26.3,46%,56:44:00,2020
 34,34,University of British Columbia,Canada,61.5,94.4,73.2,92.5,43.8,76.3,52108,18.1,32%,55:45:00,2020
-35,35,University of Hong Kong,Hong Kong S.A.R.,69.5,98.6,77.2,76.6,59.7,75.9,18260,18.2,44%,54:46:00,2020
+35,35,University of Hong Kong,China,69.5,98.6,77.2,76.6,59.7,75.9,18260,18.2,44%,54:46:00,2020
 36,36,King’s College London,United Kingdom,61.3,95.6,68.5,94.8,45.6,75.7,26057,12.5,44%,62:38:00,2020
 36,36,The University of Tokyo,Japan,85.9,38.2,89.6,60.7,77.4,75.7,25913,10.6,12%,,2020
 38,38,École Polytechnique Fédérale de Lausanne,Switzerland,66.6,98.6,66.3,88.3,66.4,75.4,10492,11.4,59%,28 : 72,2020
@@ -5990,7 +5990,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 44,44,Universität Heidelberg,Germany,67.1,67.5,60.3,96.2,54.6,73.5,20800,16.1,18%,54:46:00,2020
 45,45,KU Leuven,Belgium,58.7,71.8,73.9,85.3,99.3,73.2,45049,36.3,15%,50:50:00,2020
 45,45,Paris Sciences et Lettres – PSL Research University Paris,France,71.6,78.7,71.4,77,52.2,73.2,21298,11.5,26%,46:54:00,2020
-47,47,The Hong Kong University of Science and Technology,Hong Kong S.A.R.,57.4,97.7,66.1,89.8,71.9,73.1,10125,22.3,31%,,2020
+47,47,The Hong Kong University of Science and Technology,China,57.4,97.7,66.1,89.8,71.9,73.1,10125,22.3,31%,,2020
 48,48,University of Illinois at Urbana-Champaign,United States of America,63.2,54.3,78,84.4,47.9,73,44916,17.9,24%,47:53:00,2020
 48,48,"Nanyang Technological University, Singapore",Singapore,57.6,95.1,70.4,84.9,76.5,72.9,25088,15.9,27%,48:52:00,2020
 50,50,Australian National University,Australia,54.4,95.5,69.7,88.4,46.4,72.1,17359,17.8,44%,52:48:00,2020
@@ -6001,7 +6001,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 55,55,"University of California, Davis",United States of America,62.4,62.4,66.9,83.2,51.4,69.7,39164,12,14%,58:42:00,2020
 55,55,University of Manchester,United Kingdom,56.9,91,63.8,85.2,44.7,69.7,37038,14.4,40%,53:47:00,2020
 57,57,"University of California, Santa Barbara",United States of America,47.9,68.1,63.6,96.4,84.5,69.6,24089,27.6,16%,52:48:00,2020
-57,57,Chinese University of Hong Kong,Hong Kong S.A.R.,55.8,97.8,62.8,84.5,55.2,69.6,18340,18.6,32%,,2020
+57,57,Chinese University of Hong Kong,China,55.8,97.8,62.8,84.5,55.2,69.6,18340,18.6,32%,,2020
 59,59,Wageningen University & Research,Netherlands,49.3,81.9,57.1,96.1,100,69.4,13914,21.3,27%,53:47:00,2020
 60,60,The University of Sydney,Australia,51,89.2,61.5,90.7,67.7,69.3,45111,20.1,39%,58:42:00,2020
 61,61,Boston University,United States of America,57.3,64.4,55.6,95.7,41.4,68.4,25662,11.6,27%,60:40:00,2020
@@ -6069,7 +6069,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 123,123,Ghent University,Belgium,43.3,59.5,55.5,78.4,80.9,59.6,38080,37,10%,54:46:00,2020
 124,124,University of Colorado Boulder,United States of America,44.8,47.3,45.6,93.1,41.7,59.6,33186,16.3,11%,44:56:00,2020
 125,125,University of Göttingen,Germany,49.6,60.9,48.6,82,37,59.6,30773,29.1,13%,51:49:00,2020
-126,126,City University of Hong Kong,Hong Kong S.A.R.,41,99.6,48.9,77.6,62.4,59.3,9587,11,45%,59:41:00,2020
+126,126,City University of Hong Kong,China,41,99.6,48.9,77.6,62.4,59.3,9587,11,45%,59:41:00,2020
 127,127,Maastricht University,Netherlands,40.2,97.6,48.3,77,82.9,59,16857,18.6,54%,60:40:00,2020
 128,128,Radboud University Nijmegen,Netherlands,36,73,49.9,88.2,46.2,58.9,20024,17.5,14%,55:45:00,2020
 128,128,University of York,United Kingdom,40.3,85.4,46.6,85.1,36.4,58.9,16058,14.9,24%,56:44:00,2020
@@ -6114,7 +6114,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 168,168,University of Aberdeen,United Kingdom,30.4,95.7,33.3,95.2,45.8,56,12399,15.7,39%,57:43:00,2020
 168,168,University of Bologna,Italy,51.5,50.7,34.8,83.8,45.1,56,65819,24,12%,56:44:00,2020
 168,168,Rutgers University – New Brunswick,United States of America,47.8,51.5,48.5,73.9,41.1,56,44801,11.2,17%,52:48:00,2020
-171,171,Hong Kong Polytechnic University,Hong Kong S.A.R.,41,94.1,46.6,71.8,42.3,55.9,20388,23.1,25%,52:48:00,2020
+171,171,Hong Kong Polytechnic University,China,41,94.1,46.6,71.8,42.3,55.9,20388,23.1,25%,52:48:00,2020
 172,172,University of Alabama at Birmingham,United States of America,39.2,37.4,33.6,97.3,74.8,55.7,16927,16.7,6%,62:38:00,2020
 173,173,"Northeastern University, US",United States of America,38,75,27.9,97.5,38,55.6,19575,13.9,35%,49:51:00,2020
 173,173,University of Rochester,United States of America,43.4,67.2,30.3,91.4,40.9,55.6,9824,4.2,31%,49:51:00,2020
@@ -6380,7 +6380,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 450,401–500,Gwangju Institute of Science and Technology (GIST),South Korea,40,33.9,39.3,39.3,57,39.5,2098,12.1,6%,25 : 75,2020
 450,401–500,Harbin Institute of Technology,China,39.5,36.7,36.8,44,99.3,41.3,29603,9.9,12%,32 : 68,2020
 450,401–500,Hokkaido University,Japan,45.7,39.2,40.1,30,58.7,39.1,18225,8.1,11%,31 : 69,2020
-450,401–500,Hong Kong Baptist University,Hong Kong S.A.R.,27.9,97.6,22,58.1,38.4,40.7,8759,11.6,45%,65:35:00,2020
+450,401–500,Hong Kong Baptist University,China,27.9,97.6,22,58.1,38.4,40.7,8759,11.6,45%,65:35:00,2020
 450,401–500,University of Houston,United States of America,33.6,42.5,25.9,58,36.8,39.4,44128,25.7,9%,50:50:00,2020
 450,401–500,Hunan University,China,23.6,22.4,24.1,74.9,52.6,39.8,40715,20.4,2%,46:54:00,2020
 450,401–500,Indian Institute of Technology Bombay,India,44.7,21,39.6,34.9,80.3,39.3,10267,16.1,1%,0.847916667,2020
@@ -7379,7 +7379,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 36,36,Karolinska Institute,Sweden,57.6,87.3,72.2,95.8,71.4,76,7696,8.8,26%,68:32:00,2021
 36,36,The University of Tokyo,Japan,87.9,40.1,90.7,57.7,82.6,76,25935,10.6,13%,,2021
 38,38,Georgia Institute of Technology,United States of America,59.5,78.9,76.8,91.1,65.8,75.8,26043,23.6,27%,33 : 67,2021
-39,39,University of Hong Kong,Hong Kong S.A.R.,67.5,99,73.3,80.3,57.4,75.2,18135,18.2,43%,54:46:00,2021
+39,39,University of Hong Kong,China,67.5,99,73.3,80.3,57.4,75.2,18135,18.2,43%,54:46:00,2021
 40,40,McGill University,Canada,64.2,91.3,73.4,86.4,43.7,75.1,31578,12.8,31%,59:41:00,2021
 41,41,Technical University of Munich,Germany,63.8,74.4,73.6,85,100,74.8,32377,39.8,31%,36 : 64,2021
 42,42,Universität Heidelberg,Germany,67.5,68.4,61.7,96.6,56.9,74.3,20020,14.5,18%,54:46:00,2021
@@ -7396,8 +7396,8 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 53,53,University of Southern California,United States of America,63.8,64.9,58.4,93.1,39.2,70.4,41953,13,23%,49:51:00,2021
 54,54,Boston University,United States of America,58.9,64.9,60.9,94.9,41.7,70.3,26510,11.1,28%,59:41:00,2021
 54,54,Kyoto University,Japan,77.9,37.8,79.9,60.8,74.6,70.3,22935,9.3,11%,25 : 75,2021
-56,56,Chinese University of Hong Kong,Hong Kong S.A.R.,55.7,98.3,59.1,89.4,58.6,70.1,18675,19.3,33%,,2021
-56,56,The Hong Kong University of Science and Technology,Hong Kong S.A.R.,52.1,97.4,63,88.9,63.6,70.1,9976,21.6,30%,,2021
+56,56,Chinese University of Hong Kong,China,55.7,98.3,59.1,89.4,58.6,70.1,18675,19.3,33%,,2021
+56,56,The Hong Kong University of Science and Technology,China,52.1,97.4,63,88.9,63.6,70.1,9976,21.6,30%,,2021
 56,56,University of North Carolina at Chapel Hill,United States of America,60.6,39.7,63.3,96.3,42.5,70.1,30956,8.2,8%,58:42:00,2021
 59,59,Australian National University,Australia,48.5,96.2,68.3,88.4,43,69.9,18801,17.8,47%,53:47:00,2021
 60,60,Seoul National University,South Korea,72.4,37.4,73.8,68.8,97.8,69.8,26757,15.1,11%,,2021
@@ -7466,10 +7466,10 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 121,121,University of Sheffield,United Kingdom,45,87.7,47.4,81.8,46.5,60,26765,15.5,35%,52:48:00,2021
 124,124,University of Arizona,United States of America,47.6,40.4,51.7,85.6,50.3,59.8,39635,18,9%,52:48:00,2021
 124,124,Rice University,United States of America,48,77.3,38.4,89.9,42.9,59.8,6805,9.2,28%,42:58:00,2021
-126,126,City University of Hong Kong,Hong Kong S.A.R.,44.1,99.8,47.2,78.6,50.3,59.7,9510,10.8,51%,54:46:00,2021
+126,126,City University of Hong Kong,China,44.1,99.8,47.2,78.6,50.3,59.7,9510,10.8,51%,54:46:00,2021
 127,127,University of Oslo,Norway,39.5,78.1,44.2,91.5,40.4,59.4,20737,12.2,17%,62:38:00,2021
 127,127,University of Southampton,United Kingdom,39.4,94.5,42.5,89,41.2,59.4,23498,14.3,35%,53:47:00,2021
-129,129,Hong Kong Polytechnic University,Hong Kong S.A.R.,41.1,96.1,47.5,81,41.7,59.1,22778,25.4,27%,51:49:00,2021
+129,129,Hong Kong Polytechnic University,China,41.1,96.1,47.5,81,41.7,59.1,22778,25.4,27%,51:49:00,2021
 130,130,University of Göttingen,Germany,47.6,61.8,48.5,82.1,36.4,59,30894,28,13%,51:49:00,2021
 131,131,University of Alberta,Canada,46.4,88.2,50.4,72.4,60,58.9,32846,21.5,27%,55:45:00,2021
 131,131,University of Colorado Boulder,United States of America,43.8,47.5,45.9,91.3,42,58.9,34481,16.1,11%,44:56:00,2021
@@ -7708,7 +7708,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 375,351–400,Hanyang University,South Korea,40.1,63.3,40.8,42.3,97.6,44.1,20019,15.3,21%,,2021
 375,351–400,Hasselt University,Belgium,29.9,68.4,37.9,59,54.9,44.5,5503,30.9,13%,48:52:00,2021
 375,351–400,Heriot-Watt University,United Kingdom,28.8,94,25,66.8,44.4,44.3,9420,18,36%,41:59:00,2021
-375,351–400,Hong Kong Baptist University,Hong Kong S.A.R.,30.6,98.4,29.8,59.2,38.8,44.2,8224,15.4,51%,71:29:00,2021
+375,351–400,Hong Kong Baptist University,China,30.6,98.4,29.8,59.2,38.8,44.2,8224,15.4,51%,71:29:00,2021
 375,351–400,IMT Atlantique,France,36.4,75.9,33.5,53.6,95.4,45.1,1628,8.6,43%,24 : 76,2021
 375,351–400,Indian Institute of Technology Ropar,India,30.3,19.1,13,100,35.7,45.3,1765,10.9,0%,0.725,2021
 375,351–400,University of Innsbruck,Austria,32.9,95.9,30.7,53.5,51.6,43.6,13492,22.8,42%,54:46:00,2021
@@ -8897,7 +8897,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 28,28,Carnegie Mellon University,United States of America,64.7,80.8,80,99,59,80.6,14163,13.5,47%,43:57:00,2022
 29,29,University of Washington,United States of America,68.8,61.7,78.8,99,46.3,79.8,52059,11.6,17%,54:46:00,2022
 30,30,University of Edinburgh,United Kingdom,66.1,95.2,74.2,95.6,40.2,78.9,31631,12.1,44%,61:39:00,2022
-30,30,University of Hong Kong,Hong Kong S.A.R.,66.2,98.8,72.2,95,58.5,78.9,18037,18.3,43%,54:46:00,2022
+30,30,University of Hong Kong,China,66.2,98.8,72.2,95,58.5,78.9,18037,18.3,43%,54:46:00,2022
 32,32,LMU Munich,Germany,68.1,69.1,77.9,90.3,100,78.6,34274,33.7,18%,61:39:00,2022
 33,33,University of Melbourne,Australia,67.5,94,73.8,88.4,74.9,77.8,52098,26.5,50%,57:43:00,2022
 34,34,"University of California, San Diego",United States of America,60.5,68.1,75.6,97.9,96.6,77.7,36256,12.2,29%,48:52:00,2022
@@ -8915,7 +8915,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 46,46,"Nanyang Technological University, Singapore",Singapore,57.2,93.9,70.3,85.1,87,73,23951,14.7,24%,48:52:00,2022
 47,47,University of Texas at Austin,United States of America,67.9,39.8,71.5,89.4,50.1,72.9,49845,16.7,10%,53:47:00,2022
 48,48,University of Illinois at Urbana-Champaign,United States of America,65.7,55.4,77.3,80.9,50,72.6,47202,18.3,23%,48:52:00,2022
-49,49,Chinese University of Hong Kong,Hong Kong S.A.R.,55.1,95,58.6,95,60.2,71.2,18478,19.1,25%,,2022
+49,49,Chinese University of Hong Kong,China,55.1,95,58.6,95,60.2,71.2,18478,19.1,25%,,2022
 50,50,University of Manchester,United Kingdom,56.4,92.4,65,89.1,45.6,71.2,36543,14.3,43%,54:46:00,2022
 51,51,Washington University in St Louis,United States of America,60.5,62.1,57.5,98.5,44.9,70.7,14243,7.9,22%,,2022
 52,52,University of North Carolina at Chapel Hill,United States of America,62.2,41.1,63.4,95.6,45,70.6,31064,8.1,8%,58:42:00,2022
@@ -8932,7 +8932,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 63,63,University of Southern California,United States of America,62.1,65.5,58.8,90.3,41.2,69.3,42502,13.2,24%,49:51:00,2022
 64,64,Brown University,United States of America,62.2,61.9,56.6,92.9,37.4,69.1,9851,10.6,20%,,2022
 65,65,University of Amsterdam,Netherlands,49,89.8,63.3,91.6,41.6,68.9,25556,13.1,29%,58:42:00,2022
-66,66,The Hong Kong University of Science and Technology,Hong Kong S.A.R.,50.9,97.6,62.1,86.6,65.1,68.8,10147,21.3,31%,,2022
+66,66,The Hong Kong University of Science and Technology,China,50.9,97.6,62.1,86.6,65.1,68.8,10147,21.3,31%,,2022
 67,67,"University of California, Davis",United States of America,58.8,68.9,64.6,81.5,50.7,67.9,37222,13.2,19%,59:41:00,2022
 68,68,"University of California, Santa Barbara",United States of America,45.2,73.6,58.9,96.6,79.8,67.7,25578,28.2,19%,54:46:00,2022
 69,69,Utrecht University,Netherlands,46.6,76.3,63.1,90.1,77,67.6,33569,18.1,11%,59:41:00,2022
@@ -8957,7 +8957,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 88,88,University of Montreal,Canada,50.4,85.7,52.9,81.7,69.5,63.7,36524,19.6,23%,,2022
 88,88,University of Science and Technology of China,China,63.4,34.5,61.5,72.8,70.3,63.7,16718,7.3,5%,,2022
 88,88,Sorbonne University,France,61,70.4,53.6,76.6,38.2,63.6,42330,14.2,21%,58:42:00,2022
-91,91,Hong Kong Polytechnic University,Hong Kong S.A.R.,45.4,97.1,53.9,83.7,46,63.3,21979,26.4,29%,52:48:00,2022
+91,91,Hong Kong Polytechnic University,China,45.4,97.1,53.9,83.7,46,63.3,21979,26.4,29%,52:48:00,2022
 91,91,Institut Polytechnique de Paris,France,57.3,94.5,54.7,69,77.1,63.3,6087,6.9,40%,24 : 76,2022
 92,92,University of Bristol,United Kingdom,40.6,89.1,49.2,94.7,43.7,63.1,24110,14.4,30%,56:44:00,2022
 93,93,"University of Maryland, College Park",United States of America,49.3,42.9,56.8,89.8,39.3,63,34017,16.7,11%,48:52:00,2022
@@ -9017,7 +9017,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 146,146,Trinity College Dublin,Ireland,40.4,95,45,79.5,42.1,57.6,17495,21.2,32%,60:40:00,2022
 146,146,Ulm University,Germany,39.8,56.9,38.6,92.4,85.7,57.6,10284,27.2,13%,50:50:00,2022
 150,150,University of Arizona,United States of America,46.6,41.4,48,82.4,50.5,57.5,39616,17.3,10%,53:47:00,2022
-151,151,City University of Hong Kong,Hong Kong S.A.R.,42.7,99.7,44.3,75.4,46.6,57.4,9506,10.7,56%,54:46:00,2022
+151,151,City University of Hong Kong,China,42.7,99.7,44.3,75.4,46.6,57.4,9506,10.7,56%,54:46:00,2022
 151,151,University of Sussex,United Kingdom,32.2,93.8,37.5,95.1,36.2,57.4,17407,17.6,37%,55:45:00,2022
 151,151,Yonsei University (Seoul campus),South Korea,54.9,58.6,58.2,55.7,96.9,57.5,18521,14.7,21%,49:51:00,2022
 154,154,University of Florida,United States of America,54.5,42.7,58.9,62,58.4,57.3,47007,16.3,9%,56:44:00,2022
@@ -9298,7 +9298,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 450,401–500,University of Genoa,Italy,35.4,44.8,25.5,65.1,45.3,42.3,23225,18.9,9%,56:44:00,2022
 450,401–500,Georgia State University,United States of America,32.9,44.5,25.9,65.8,36,41.6,32290,15.5,6%,59:41:00,2022
 450,401–500,"Goldsmiths, University of London",United Kingdom,28.5,81,27.9,64.7,34.8,43.3,9325,15.6,37%,66:34:00,2022
-450,401–500,Hong Kong Baptist University,Hong Kong S.A.R.,30,98.7,26.5,54.3,37.7,41.6,7075,10.1,58%,67:33:00,2022
+450,401–500,Hong Kong Baptist University,China,30,98.7,26.5,54.3,37.7,41.6,7075,10.1,58%,67:33:00,2022
 450,401–500,Hunan University,China,23.2,25.6,22.4,84.9,54.5,42.4,40198,18.6,3%,48:52:00,2022
 450,401–500,University of Ibadan,Nigeria,23.4,32.2,12.6,91.2,35.3,41.5,35083,22.6,1%,48:52:00,2022
 450,401–500,University of Iceland,Iceland,20.7,62.6,32.8,66.9,69.5,42.6,9023,15.5,11%,67:33:00,2022
@@ -10559,7 +10559,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 28,28,Carnegie Mellon University,United States of America,65.4,80.1,81.8,98.7,55.2,81.2,14305,12.9,47%,44:56:00,2023
 29,29,University of Edinburgh,United Kingdom,66.9,95.6,74.5,97.1,40.9,79.7,32844,11.8,47%,62:38:00,2023
 30,30,Technical University of Munich,Germany,69.8,77.7,82.2,84.5,100,79.3,33960,40.6,36%,37 : 63,2023
-31,31,University of Hong Kong,Hong Kong S.A.R.,65.6,98.7,74.1,92.4,60.6,78.5,18087,18.2,43%,54:46:00,2023
+31,31,University of Hong Kong,China,65.6,98.7,74.1,92.4,60.6,78.5,18087,18.2,43%,54:46:00,2023
 32,32,"University of California, San Diego",United States of America,60.2,67.8,77.2,98.2,93,78.1,37030,11.3,28%,48:52:00,2023
 33,33,LMU Munich,Germany,67.3,70.5,78.3,87.4,100,77.7,35003,34.2,19%,61:39:00,2023
 34,34,University of Melbourne,Australia,67.1,93.6,75.9,85.8,78.1,77.6,49588,23.8,47%,58:42:00,2023
@@ -10573,7 +10573,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 42,42,KU Leuven,Belgium,59.7,76.8,74.9,86.7,99.2,74.6,47663,36.5,18%,51:49:00,2023
 43,43,Universität Heidelberg,Germany,67.2,71.2,61.5,96,55.7,74.1,19347,13.5,21%,55:45:00,2023
 44,44,Monash University,Australia,56.9,91,68.7,90.4,78.4,73.6,58725,42.5,41%,57:43:00,2023
-45,45,Chinese University of Hong Kong,Hong Kong S.A.R.,59.1,92.5,61.1,95.7,60.9,73.2,18468,19,21%,,2023
+45,45,Chinese University of Hong Kong,China,59.1,92.5,61.1,95.7,60.9,73.2,18468,19,21%,,2023
 46,46,McGill University,Canada,62,91,72.4,82.5,43.5,73,32309,12.5,30%,60:40:00,2023
 47,47,Paris Sciences et Lettres – PSL Research University Paris,France,68.2,76.3,73.5,75.5,78.8,72.9,16218,15,22%,51:49:00,2023
 48,48,University of Illinois at Urbana-Champaign,United States of America,67.1,56.2,78.9,78.1,50.1,72.7,48674,17.4,22%,48:52:00,2023
@@ -10586,7 +10586,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 54,54,The University of Sydney,Australia,53.1,90.6,65.8,88.5,73.2,70.8,45853,19,45%,58:42:00,2023
 56,56,Seoul National University,South Korea,75.2,35.9,76.2,67.6,96.6,70.8,26209,15.1,10%,,2023
 57,57,Washington University in St Louis,United States of America,60.3,64,56.8,98.2,47.5,70.6,14420,7.8,24%,53:47:00,2023
-58,58,The Hong Kong University of Science and Technology,Hong Kong S.A.R.,51.4,97.7,63.4,87.7,95,70.5,9864,21,32%,,2023
+58,58,The Hong Kong University of Science and Technology,China,51.4,97.7,63.4,87.7,95,70.5,9864,21,32%,,2023
 59,59,Wageningen University & Research,Netherlands,50.4,88.8,60.2,93.2,100,70.3,15404,18.6,27%,55:45:00,2023
 60,60,University of Amsterdam,Netherlands,48,91.9,64.1,93.3,44.4,69.6,29157,14.5,32%,59:41:00,2023
 61,61,Brown University,United States of America,64.5,63.3,58,89.5,39,69.3,10037,10.1,21%,,2023
@@ -10607,7 +10607,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 76,76,University of Bristol,United Kingdom,43.8,89.4,53.4,98.6,43.5,66.5,25679,14.6,31%,56:44:00,2023
 77,77,Leiden University,Netherlands,43.2,85.4,64.4,86.6,68.4,66.4,33648,19.3,20%,60:40:00,2023
 78,78,Yonsei University (Seoul campus),South Korea,67,52.8,68.9,63.9,94.8,66.3,19481,14.7,17%,50:50:00,2023
-79,79,Hong Kong Polytechnic University,Hong Kong S.A.R.,46.6,97.6,57,86.7,56,65.8,19046,28.9,30%,51:49:00,2023
+79,79,Hong Kong Polytechnic University,China,46.6,97.6,57,86.7,56,65.8,19046,28.9,30%,51:49:00,2023
 80,80,Erasmus University Rotterdam,Netherlands,38.6,89.7,57.1,95.6,64.4,65.7,31668,33.9,22%,53:47:00,2023
 81,81,University of Wisconsin-Madison,United States of America,59.7,51.8,62.9,78.7,48.4,65.5,40701,10,14%,,2023
 82,82,Emory University,United States of America,54.8,59.8,46,98,48.6,65.3,13190,4.2,20%,60:40:00,2023
@@ -10627,7 +10627,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 95,95,Institut Polytechnique de Paris,France,58.5,95.6,58.8,64.8,72.7,63.6,5999,6.7,41%,24 : 76,2023
 95,95,Nanjing University,China,58.4,55.2,58.2,74.3,87.3,63.6,36426,16.5,8%,54:46:00,2023
 98,98,Vanderbilt University,United States of America,49.5,50.6,47.5,96.5,66.7,63.5,12696,3.8,15%,55:45:00,2023
-99,99,City University of Hong Kong,Hong Kong S.A.R.,47.2,99.6,53,79.9,76.6,63.4,9099,12.1,62%,54:46:00,2023
+99,99,City University of Hong Kong,China,47.2,99.6,53,79.9,76.6,63.4,9099,12.1,62%,54:46:00,2023
 99,99,RWTH Aachen University,Germany,56.8,65.1,64.5,66.1,93.8,63.4,39738,50,28%,33 : 67,2023
 101,101,University of Basel,Switzerland,47,96.8,44.1,86.5,99.2,63,8632,10.9,30%,57:43:00,2023
 101,101,King Abdulaziz University,Saudi Arabia,51.7,93.6,36.7,91.9,74.2,63,31545,7.8,22%,54:46:00,2023
@@ -11060,7 +11060,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 550,501–600,Harokopio University,Greece,23.2,43.9,24.2,76.2,43.9,41.5,3125,46.6,3%,53:47:00,2023
 550,501–600,Heriot-Watt University,United Kingdom,31.2,94,31.1,48.3,43,41.3,9733,17.8,37%,40 : 60,2023
 550,501–600,Hokkaido University,Japan,43.1,44,40.8,32.2,65.4,39.8,18263,8.4,11%,30 : 70,2023
-550,501–600,Hong Kong Baptist University,Hong Kong S.A.R.,26.5,98,28.2,57.4,40.1,42,8358,12.4,62%,67:33:00,2023
+550,501–600,Hong Kong Baptist University,China,26.5,98,28.2,57.4,40.1,42,8358,12.4,62%,67:33:00,2023
 550,501–600,University of Hull,United Kingdom,25.3,77.6,24.6,62.1,38.2,40.4,12567,17.2,19%,55:45:00,2023
 550,501–600,University of Iceland,Iceland,18.7,61.6,32,66.3,63.1,41.3,10642,17.9,10%,68:32:00,2023
 550,501–600,Indian Institute of Technology Ropar,India,30.1,19.4,15.4,78.4,42.7,39.7,2339,13.6,0%,0.765972222,2023

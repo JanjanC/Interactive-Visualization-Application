@@ -56,7 +56,7 @@ rankings_year_columns = [times_year_columns,
                          shanghai_year_columns, cwur_year_columns]
 
 token = open("datasets/.mapbox_token").read()
-with open('datasets/countries.json') as f:
+with open('datasets/natural-earth-countries-1_110m@public.geojson') as f:
     countries = geojson.load(f)
 
 # Global Variables for the Selected Data
@@ -87,27 +87,26 @@ btn_univ_cwur_class = deactivated_class
 # Chloropleth Map
 
 
-def load_choropleth_map(university_list, university_rankings, main_year):
-    # print("Start Choro")
-    # current_df = rankings_df[university_rankings.value]
-    # current_df = current_df[current_df['Year'] <= main_year]
-    # country_df = current_df[['Country', 'University']].groupby(['Country'], as_index = False).count()
-    # choropleth_fig = px.choropleth_mapbox(country_df,
-    #                                 geojson = countries,
-    #                                 featureidkey = 'properties.ADMIN',
-    #                                 locations = 'Country',
-    #                                 color = 'University',
-    #                                 zoom = 1,
-    #                                 color_continuous_scale = px.colors.sequential.Blues
-    #                                 )
-    # choropleth_fig.update_layout(height=300, margin={"r":0,"t":0,"l":0,"b":0}, mapbox_accesstoken = token)
+def load_choropleth_map(university_rankings, main_year):
+    current_df = rankings_df[university_rankings.value]
+    current_df = current_df[current_df['Year'] == main_year]
+    country_df = current_df[['Country', 'University']].groupby(['Country'], as_index = False).count()
+    choropleth_fig = px.choropleth_mapbox(country_df,
+                                    geojson = countries,
+                                    featureidkey = 'properties.name_en',
+                                    locations = 'Country',
+                                    color = 'University',
+                                    zoom = 0.2,
+                                    color_continuous_scale = px.colors.sequential.Blues
+                                    )
+    choropleth_fig.update_layout(height=300, margin={"r":0,"t":0,"l":0,"b":0}, mapbox_accesstoken = token)
     
     # print("Done Choro")
     choropleth_fig = go.Figure().add_annotation(text="Select a University from the Table", showarrow=False, font={"size": 20}).update_xaxes(visible=False).update_yaxes(visible=False)
     choropleth_fig.update_layout(height=300)
     return choropleth_fig
 
-choropleth_fig = load_choropleth_map(current_main_university_list, current_main_rankings, current_main_year)
+choropleth_fig = load_choropleth_map(current_main_rankings, current_main_year)
 
 # Bar Chart (Criteria Comparision)
 def load_main_bar_chart(university_list, university_rankings, main_year, values):
@@ -437,7 +436,7 @@ app.layout = dbc.Container([
     Input(component_id='university-table', component_property="derived_virtual_data"),
     Input(component_id='university-table', component_property="derived_virtual_selected_rows"),
     Input(component_id="tab-graphs", component_property="value"),
-    Input(component_id="choropleth_map", component_property="selectedData")
+    Input(component_id="choropleth_map", component_property="clickData")
 )
 def update_main_dashboard(btn_times, btn_shanghai, btn_cwur, slider_value, dropdown_value, rows, selected_rows, tab_value, selected_map):
     # Slider and Dropdown Data
@@ -496,7 +495,7 @@ def update_main_dashboard(btn_times, btn_shanghai, btn_cwur, slider_value, dropd
 
     line_fig = load_main_line_chart(current_main_university_list, current_main_rankings, current_main_year, current_main_criterion)
     
-    choropleth_fig = load_choropleth_map(current_main_university_list, current_main_rankings, current_main_year)
+    choropleth_fig = load_choropleth_map(current_main_rankings, current_main_year)
     
     # style = {'height': 600,'width' : '70%'}
     # if tab_value == "trends-tab":

@@ -97,7 +97,7 @@ def load_choropleth_map(university_list, university_rankings, main_year):
                                     locations = 'Country',
                                     color = 'University',
                                     zoom = 1,
-                                    color_continuous_scale = px.colors.qualitative.Plotly[0]
+                                    color_continuous_scale = px.colors.sequential.Blues
                                     )
     choropleth_fig.update_layout(height=300, margin={"r":0,"t":0,"l":0,"b":0}, mapbox_accesstoken = token)
     
@@ -139,7 +139,7 @@ def load_main_line_chart(university_list, university_rankings, university_year, 
 
         for index, university_name in enumerate(university_list["University"]):
             current_df = rankings_df[university_rankings.value]
-            university_df = current_df[(current_df["University"] == university_name) & (current_df["Year"] <= university_year)].sort_values(by=["Year"], ascending=True)
+            university_df = current_df[(current_df["University"] == university_name)].sort_values(by=["Year"], ascending=True)
             year_list = university_df["Year"].values.tolist()
             criteria_list = university_df[criterion].values.tolist()
 
@@ -293,10 +293,6 @@ main = html.Div([
                         label='Criteria Comparsion', value='criteria-comparison-tab',
                         children=[
                             dcc.Graph(id='main-bar-chart'),
-                            dcc.Checklist(id='bar-chart-checklist', 
-                            options=rankings_complete_columns[0], 
-                            inline=True,
-                            value=rankings_complete_columns[0])
                         ]
                     ),
                 ]),
@@ -404,7 +400,7 @@ app.layout = dbc.Container([
 
 @ app.callback(
     Output(component_id="criteria-dropdown", component_property="options"),
-    Output(component_id="main-bar-chart", component_property="figure", allow_duplicate=True),
+    Output(component_id="main-bar-chart", component_property="figure"),
     Output(component_id="main-line-chart", component_property="figure"),
     Output(component_id="university-table", component_property="data"),
     Output(component_id="university-table", component_property="columns"),
@@ -412,8 +408,6 @@ app.layout = dbc.Container([
     Output(component_id="btn-times-main", component_property="className"),
     Output(component_id="btn-shanghai-main", component_property="className"),
     Output(component_id="btn-cwur-main", component_property="className"),
-    Output(component_id='bar-chart-checklist', component_property="options"),
-    Output(component_id='bar-chart-checklist', component_property="value"),
     Output(component_id="tab-container", component_property="style"),
     Input(component_id="btn-times-main", component_property="n_clicks"),
     Input(component_id="btn-shanghai-main", component_property="n_clicks"),
@@ -423,10 +417,9 @@ app.layout = dbc.Container([
     Input(component_id='university-table', component_property="derived_virtual_data"),
     Input(component_id='university-table', component_property="derived_virtual_selected_rows"),
     Input(component_id="tab-graphs", component_property="value"),
-    Input(component_id="choropleth_map", component_property="selectedData"),
-    prevent_initial_call=True
+    Input(component_id="choropleth_map", component_property="selectedData")
 )
-def update_main_dashboard(btn_times, btn_shanghai, btn_cwur, slider_value, dropdown_value, rows, selected_rows, tab_val, selected_map):
+def update_main_dashboard(btn_times, btn_shanghai, btn_cwur, slider_value, dropdown_value, rows, selected_rows, tab_value, selected_map):
     # Slider and Dropdown Data
     global current_main_year
     global current_main_criterion
@@ -485,7 +478,7 @@ def update_main_dashboard(btn_times, btn_shanghai, btn_cwur, slider_value, dropd
     choropleth_fig = load_choropleth_map(current_main_university_list, current_main_rankings, current_main_year)
     
     style = {'height': 600,'width' : '70%'}
-    if tab_val == "trends-tab":
+    if tab_value == "trends-tab":
         style = {'height': height,'width' : '70%'}    
     
     return (
@@ -498,8 +491,6 @@ def update_main_dashboard(btn_times, btn_shanghai, btn_cwur, slider_value, dropd
         btn_main_times_class,
         btn_main_shanghai_class,
         btn_main_cwur_class,
-        checklist_options,
-        checklist_value,
         style
     )
 
@@ -568,12 +559,5 @@ def open_university_overview(active_cell, rows, is_open, btn_times, btn_shanghai
         btn_univ_cwur_class
     )
 
-@app.callback(
-        Output(component_id="main-bar-chart", component_property="figure"),
-        Input(component_id='bar-chart-checklist', component_property="value")
-)
-def update_bar_chart(values):
-    return load_main_bar_chart(current_main_university_list, current_main_rankings, current_main_year, values)
-
 if __name__ == '__main__':
-    app.run_server(debug=True)  # run server
+    app.run_server()  # run server

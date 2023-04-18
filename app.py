@@ -8,7 +8,6 @@ from dash import Dash, dcc, html, dash_table, Input, Output, ctx
 import dash_bootstrap_components as dbc
 import pandas as pd
 import numpy as np
-import geopandas as gpd
 import geojson
 import enum
 
@@ -420,6 +419,7 @@ app.layout = dbc.Container([
     Output(component_id="university-table", component_property="data"),
     Output(component_id="university-table", component_property="columns"),
     Output(component_id='university-table', component_property="selected_rows"),
+    Output(component_id="university-table", component_property="filter_query"),
     Output(component_id="university-table", component_property="style_cell_conditional"),
     Output(component_id="btn-times-main", component_property="className"),
     Output(component_id="btn-shanghai-main", component_property="className"),
@@ -431,10 +431,11 @@ app.layout = dbc.Container([
     Input(component_id="criteria-dropdown", component_property="value"),
     Input(component_id='university-table', component_property="derived_virtual_data"),
     Input(component_id='university-table', component_property="derived_virtual_selected_rows"),
+    Input(component_id="university-table", component_property="filter_query"),
     Input(component_id="tab-graphs", component_property="value"),
     Input(component_id="choropleth_map", component_property="clickData")
 )
-def update_main_dashboard(btn_times, btn_shanghai, btn_cwur, slider_value, dropdown_value, rows, selected_rows, tab_value, selected_map):
+def update_main_dashboard(btn_times, btn_shanghai, btn_cwur, slider_value, dropdown_value, rows, selected_rows, filter_query, tab_value, selected_map):
     # Slider and Dropdown Data
     global current_main_year
     global current_main_criterion
@@ -481,10 +482,18 @@ def update_main_dashboard(btn_times, btn_shanghai, btn_cwur, slider_value, dropd
     data = df.to_dict('records')
     columns=[{"name": name, "id": name} for name in [current_main_criterion, "University", 'Country', '']]
 
+    if filter_query is None:
+        filter_query = ''
+    
+    print('filter_query', filter_query)
+
     if selected_rows is None:
         selected_rows = []
     # update the index of the currently selected universities
-    university_names = [] if rows is None else pd.DataFrame(rows).iloc[selected_rows]['University']  # currently selected universities
+    print("rows", rows)
+
+    university_names = [] if rows is None else pd.DataFrame(rows)
+    university_names = university_names if university_names.empty else university_names.iloc[selected_rows]['University']  # currently selected universities
     selected_index = df[df["University"].isin(university_names)].index.tolist()  # update the index
 
      # update the university list based on the new data and index
@@ -505,7 +514,13 @@ def update_main_dashboard(btn_times, btn_shanghai, btn_cwur, slider_value, dropd
         },
     ]
 
-    print(selected_map)
+    print("selected_map", selected_map)
+    if selected_map is not None:
+        country = selected_map['points'][0]['location']
+        print("country", country)
+        filter_query = "{Country}  =" + country
+    
+    print('new filter', filter_query)
 
     return (
         options,
@@ -514,6 +529,7 @@ def update_main_dashboard(btn_times, btn_shanghai, btn_cwur, slider_value, dropd
         data,
         columns,
         selected_index,
+        filter_query,
         style_cell_conditional,
         btn_main_times_class,
         btn_main_shanghai_class,

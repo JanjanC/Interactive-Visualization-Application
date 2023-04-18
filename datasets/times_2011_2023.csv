@@ -1703,7 +1703,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 288,276-300,University of Fribourg,Switzerland,29.2,84.4,19.7,58.6,48.2,39.8,,,,,2015
 288,276-300,Panjab University,India,23.7,29.2,10.5,84.4,28.3,38.5,,,,,2015
 288,276-300,Lappeenranta-Lahti University of Technology LUT,Finland,25.2,59.1,25.5,59.9,73.8,39.5,,,,,2015
-288,276-300,University of Macau,Macao S.A.R,17.1,73.3,20.3,68.1,33.6,38,,,,,2015
+288,276-300,University of Macau,China,17.1,73.3,20.3,68.1,33.6,38,,,,,2015
 325,301-350,University of Southern Denmark,Denmark,19.5,67.1,20.5,61.2,72.6,37.2,,,,,2015
 325,301-350,University of Stirling,United Kingdom,21.5,66.9,25.1,49.9,30.7,34.7,,,,,2015
 325,301-350,Illinois Institute of Technology,United States of America,40.2,59.4,17.3,50.3,,,,,,,2015
@@ -2253,7 +2253,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 450,401-500,Kyushu University,Japan,36.5,26.4,27.5,31.8,83.2,32.8,18925,6.7,8%,28 : 72,2016
 450,401-500,Lehigh University,United States of America,23.9,36,15,58.2,38.9,32.8,6300,11.3,15%,44:56:00,2016
 450,401-500,Louisiana State University,United States of America,26.8,26.1,27.7,37.8,0,29.6,28116,20.1,5%,52:48:00,2016
-450,401-500,University of Macau,Macao S.A.R,18.5,98.4,17,49.7,34.9,33.8,8521,14.9,31%,58:42:00,2016
+450,401-500,University of Macau,China,18.5,98.4,17,49.7,34.9,33.8,8521,14.9,31%,58:42:00,2016
 450,401-500,Marche Polytechnic University,Italy,15.2,27.3,11,80.2,28,34.7,16589,23,4%,45:55:00,2016
 450,401-500,"University of Maryland, Baltimore County",United States of America,21.3,28.2,18.2,61.3,31.7,33.1,13908,18.1,7%,46:54:00,2016
 450,401-500,Murdoch University,Australia,18.7,88.3,19.6,51.2,36.5,34.4,16606,32.8,43%,59:41:00,2016
@@ -2424,7 +2424,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 700,601-800,Austral University of Chile,Chile,16.7,45.2,9.7,14.2,41.1,16.6,13794,17.8,1%,47:53:00,2016
 700,601-800,Beijing Institute of Technology,China,25.9,16.9,21.7,9.1,87.6,20.5,25983,12.6,3%,35 : 65,2016
 700,601-800,Belarusian State University,Belarus,20.2,48.2,8.7,6,28,14.8,29303,10.6,6%,69:31:00,2016
-700,601-800,University of Belgrade,Republic of Serbia,20.4,30.5,13.2,14,45.6,17.7,96968,28.3,4%,60:40:00,2016
+700,601-800,University of Belgrade,Serbia,20.4,30.5,13.2,14,45.6,17.7,96968,28.3,4%,60:40:00,2016
 700,601-800,"Birla Institute of Technology and Science, Pilani",India,18.3,13.7,8.3,17.4,29.6,15,11837,19.5,0%,0.970833333,2016
 700,601-800,University of Bradford,United Kingdom,18.7,79.1,15.9,22.7,32.7,23.9,11065,20.5,32%,53:47:00,2016
 700,601-800,University of Brasília,Brazil,21.9,24.1,7.4,10.4,0,13.7,45880,14.5,2%,52:48:00,2016
@@ -2980,7 +2980,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 375,351-400,Kyushu University,Japan,41.9,31.2,35.1,35.7,70.8,37.9,18650,6.6,11%,29 : 71,2017
 375,351-400,La Trobe University,Australia,26.7,78.7,29.7,49,45.5,38.7,22422,29.6,25%,63:37:00,2017
 375,351-400,Leibniz University Hannover,Germany,37.4,44.5,37.1,43.2,62,40.2,23126,61.9,12%,41:59:00,2017
-375,351-400,University of Macau,Macao S.A.R,21.5,98.8,22,53.3,46.3,37.6,8981,14.6,33%,58:42:00,2017
+375,351-400,University of Macau,China,21.5,98.8,22,53.3,46.3,37.6,8981,14.6,33%,58:42:00,2017
 375,351-400,Autonomous University of Madrid,Spain,32.3,51.6,28.3,57.4,35.8,40.2,26969,12.4,16%,60:40:00,2017
 375,351-400,University of Milan-Bicocca,Italy,25.5,42.2,22.7,70.8,43.9,40,32892,65.8,6%,62:38:00,2017
 375,351-400,Mizzou - University of Missouri,United States of America,30.9,34,19.3,67,33.8,38.6,30535,11.3,6%,53:47:00,2017
@@ -3422,7 +3422,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 801,801+,Bahauddin Zakariya University,Pakistan,13.2,25.8,10.1,24,0,16.1,21433,30.2,0%,47:53:00,2017
 801,801+,Bandung Institute of Technology (ITB),Indonesia,19,28,11.1,1.9,84.4,13.8,19757,13.9,1%,41:59:00,2017
 801,801+,Belarusian State University,Belarus,20.1,52.3,9,11,32.1,16.8,28822,10,6%,69:31:00,2017
-801,801+,University of Belgrade,Republic of Serbia,17.4,32.2,12.5,20.7,36.7,18.5,99335,25.4,4%,60:40:00,2017
+801,801+,University of Belgrade,Serbia,17.4,32.2,12.5,20.7,36.7,18.5,99335,25.4,4%,60:40:00,2017
 801,801+,University of Bucharest,Romania,22.3,25.5,7.4,9.4,32.2,14.4,31305,23.5,2%,70:30:00,2017
 801,801+,Cairo University,Egypt,18.2,30.6,11.8,15.8,33.4,16.9,256470,46.3,2%,48:52:00,2017
 801,801+,Central South University,China,23.7,14.6,11.3,18.5,48.7,18.4,55100,17,1%,40 : 60,2017
@@ -3961,7 +3961,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 375,351–400,La Trobe University,Australia,27.1,79.5,33,49.8,58.1,40.4,20343,34.5,26%,63:37:00,2018
 375,351–400,Leibniz University Hannover,Germany,37.3,43.7,36.9,47.1,56.3,41.1,25162,65.3,12%,41:59:00,2018
 375,351–400,Linköping University,Sweden,23.4,63.1,14.9,78.4,41.9,40.8,18740,8.1,11%,53:47:00,2018
-375,351–400,University of Macau,Macao S.A.R,22,98.7,26.5,56.7,42,40,9230,14.5,33%,58:42:00,2018
+375,351–400,University of Macau,China,22,98.7,26.5,56.7,42,40,9230,14.5,33%,58:42:00,2018
 375,351–400,University of Malaya,Malaysia,31.2,77,26.6,54.4,49.5,40.7,21990,10.9,18%,66:34:00,2018
 375,351–400,Montpellier University,France,34.8,58.7,16.7,68.7,35.2,41.3,39828,19.9,14%,53:47:00,2018
 375,351–400,Örebro University,Sweden,18.6,44.4,19.7,83.3,33.1,40.6,8800,16.4,2%,61:39:00,2018
@@ -5065,7 +5065,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 375,351–400,University of Kent,United Kingdom,23.7,90.8,23.4,69.8,34.4,42.7,17369,13.1,30%,53:47:00,2019
 375,351–400,Kyung Hee University,South Korea,33.9,64.7,38.3,50.3,86.9,43.8,22013,16.9,23%,45:55:00,2019
 375,351–400,Linköping University,Sweden,24.1,64,19.2,79.1,43.8,42.6,18221,8.2,11%,55:45:00,2019
-375,351–400,University of Macau,Macao S.A.R,26.2,99.3,29.8,60.3,45.4,43.5,9893,15.2,36%,58:42:00,2019
+375,351–400,University of Macau,China,26.2,99.3,29.8,60.3,45.4,43.5,9893,15.2,36%,58:42:00,2019
 375,351–400,Maynooth University,Ireland,20.8,78.9,27.7,73.1,37.1,43.3,8768,27.6,12%,56:44:00,2019
 375,351–400,University of Modena and Reggio Emilia,Italy,31.3,39.2,19.3,78.4,41.3,42.7,16137,22.2,6%,53:47:00,2019
 375,351–400,Nankai University,China,38.2,32.3,20.8,75.1,43.1,43.7,28336,13.7,6%,,2019
@@ -5513,7 +5513,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 900,801–1000,Beijing Jiaotong University,China,22.9,26.4,21.7,15.4,66.6,21.6,25110,13.4,7%,,2019
 900,801–1000,University of Béjaïa,Algeria,11.7,43,7.1,47.1,34,23.8,42689,25.8,0%,61:39:00,2019
 900,801–1000,Belgorod State National Research University,Russia,18.8,41.1,9.3,28.5,41.2,21.1,13883,12.9,15%,67:33:00,2019
-900,801–1000,University of Belgrade,Republic of Serbia,19.7,36.8,18.1,30.1,40.1,24.1,99760,21.1,5%,61:39:00,2019
+900,801–1000,University of Belgrade,Serbia,19.7,36.8,18.1,30.1,40.1,24.1,99760,21.1,5%,61:39:00,2019
 900,801–1000,"Birla Institute of Technology and Science, Pilani",India,18,16.4,9.3,29.4,34.9,19.1,12612,17.2,0%,0.847916667,2019
 900,801–1000,University of Brasília,Brazil,22.3,30.3,13,25.8,37.6,21.5,52039,18.4,2%,51:49:00,2019
 900,801–1000,Brno University of Technology,Czech Republic,17.3,49.4,14.7,24.9,41.3,21.8,21522,20.8,21%,28 : 72,2019
@@ -6217,7 +6217,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 275,251–300,University of Kiel,Germany,30.6,54.9,27.5,86.8,34.4,48.4,26412,22.2,8%,53:47:00,2020
 275,251–300,La Trobe University,Australia,27.1,83.8,33.1,73.3,51.3,47.6,22292,33.9,29%,64:36:00,2020
 275,251–300,Université Laval,Canada,40.1,69.2,31.8,67.6,59.6,48.5,29250,17.3,13%,57:43:00,2020
-275,251–300,Macau University of Science and Technology,Macao S.A.R,27.1,99.6,22.4,83,34.8,48.1,9924,24.4,79%,56:44:00,2020
+275,251–300,Macau University of Science and Technology,China,27.1,99.6,22.4,83,34.8,48.1,9924,24.4,79%,56:44:00,2020
 275,251–300,Medical University of Innsbruck,Austria,30.5,93.9,14.2,89.1,51.5,48.5,2966,4.3,44%,52:48:00,2020
 275,251–300,University of Galway,Ireland,27.1,79.8,29.9,76.3,42.4,47,13911,26.6,17%,58:42:00,2020
 275,251–300,University of Navarra,Spain,30.4,65.1,27.9,80.3,85.5,48.6,10833,13,22%,53:47:00,2020
@@ -6264,7 +6264,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 325,301–350,University of Klagenfurt,Austria,25.3,87.3,16.5,86.5,37.2,46,3639,10.8,22%,69:31:00,2020
 325,301–350,Kyung Hee University,South Korea,33.8,62.6,40.5,56.4,84.9,46,22102,17.3,22%,51:49:00,2020
 325,301–350,University of Liège,Belgium,27.6,70.6,38.2,60.5,95.9,45.6,20888,27,21%,56:44:00,2020
-325,301–350,University of Macau,Macao S.A.R,32.3,98.5,32.6,61.9,41,46.5,9340,14.4,37%,57:43:00,2020
+325,301–350,University of Macau,China,32.3,98.5,32.6,61.9,41,46.5,9340,14.4,37%,57:43:00,2020
 325,301–350,University of Malaya,Malaysia,41.6,81.6,30.5,56.6,48.1,45.9,15140,8,20%,63:37:00,2020
 325,301–350,University of Marburg,Germany,33.8,53.6,29.1,73.4,39.1,45.9,25541,34.7,12%,55:45:00,2020
 325,301–350,Maynooth University,Ireland,20.3,78.2,29.8,80.3,37.3,45.9,9291,28.3,12%,55:45:00,2020
@@ -7614,7 +7614,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 275,251–300,University of Konstanz,Germany,39,69.6,44.4,59.9,69.6,49.9,11553,51.1,13%,55:45:00,2021
 275,251–300,Kyung Hee University,South Korea,37,63.5,41.4,63.9,85.3,49.6,20862,17.5,23%,54:46:00,2021
 275,251–300,Université Laval,Canada,39.4,69.8,33.5,71.4,63.9,50.1,28874,17.2,13%,58:42:00,2021
-275,251–300,Macau University of Science and Technology,Macao S.A.R,29.7,100,23.6,86.3,40.3,50.4,10596,24.9,84%,56:44:00,2021
+275,251–300,Macau University of Science and Technology,China,29.7,100,23.6,86.3,40.3,50.4,10596,24.9,84%,56:44:00,2021
 275,251–300,University of Navarra,Spain,29,69.5,27.9,83.3,63.4,48.9,11329,14.9,24%,54:46:00,2021
 275,251–300,University of Newcastle,Australia,26.2,84.2,30.5,80.7,53,48.9,23221,21.7,18%,55:45:00,2021
 275,251–300,University of New Mexico (Main campus),United States of America,39.8,33.5,30.2,82.3,42.3,49.3,18277,16.3,5%,56:44:00,2021
@@ -7658,7 +7658,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 325,301–350,University of Kent,United Kingdom,26.4,91.1,30,73.7,33.8,46.7,17843,19.3,30%,53:47:00,2021
 325,301–350,University of Klagenfurt,Austria,30.4,88.2,17.7,85.5,34.8,47.6,3361,10.1,23%,69:31:00,2021
 325,301–350,Kurdistan University of Medical Sciences,Iran,39.8,19.1,9.7,100,35.8,47.2,2927,11,1%,51:49:00,2021
-325,301–350,University of Macau,Macao S.A.R,30,99.3,35.5,64.8,40.9,47.6,9343,14,36%,56:44:00,2021
+325,301–350,University of Macau,China,30,99.3,35.5,64.8,40.9,47.6,9343,14,36%,56:44:00,2021
 325,301–350,University of Malaya,Malaysia,39.3,83.7,31.5,60,44.4,46.6,15794,8.3,20%,65:35:00,2021
 325,301–350,University of Marburg,Germany,34.4,53.4,29,72.6,39.1,45.8,24527,32.6,12%,55:45:00,2021
 325,301–350,Montpellier University,France,36.8,61.9,29.7,67.5,36.9,45.8,39703,19.7,15%,53:47:00,2021
@@ -7959,7 +7959,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 700,601–800,University of the Balearic Islands,Spain,17.6,49.2,14.5,62.5,33.4,32.9,11133,11.8,7%,59:41:00,2021
 700,601–800,Banaras Hindu University,India,30.5,18.2,15,53.2,33.5,31.8,15121,11.4,3%,0.479166667,2021
 700,601–800,University of Beira Interior,Portugal,17.7,56.5,17.6,50.8,34.6,30.9,7180,16.1,18%,52:48:00,2021
-700,601–800,University of Belgrade,Republic of Serbia,19.5,40.1,26.9,45.2,39.3,31.5,95099,19,5%,61:39:00,2021
+700,601–800,University of Belgrade,Serbia,19.5,40.1,26.9,45.2,39.3,31.5,95099,19,5%,61:39:00,2021
 700,601–800,University of Bergamo,Italy,18,36.5,21.4,59.6,39.8,33.4,20565,60,7%,61:39:00,2021
 700,601–800,Bilkent University,Turkey,24.5,63.9,21.6,50.3,53.6,35.1,10093,14.2,9%,46:54:00,2021
 700,601–800,Birmingham City University,United Kingdom,16.9,63.9,10.6,62.4,33.7,32.6,20817,18,24%,62:38:00,2021
@@ -8673,7 +8673,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 1001,1001+,"University of the North, Colombia",Colombia,15,52.6,10.7,21.5,35.1,19,14861,20.4,4%,50:50:00,2021
 1001,1001+,North-Eastern Federal University,Russia,20.6,33.9,8.8,9.8,36.6,15.2,12806,11.2,5%,54:46:00,2021
 1001,1001+,Northwest University,China,20.4,23.9,11.8,37.6,40.7,23.8,23351,13.4,5%,56:44:00,2021
-1001,1001+,University of Novi Sad,Republic of Serbia,16.1,34,9.5,13.6,35.6,15.2,48101,14.9,3%,55:45:00,2021
+1001,1001+,University of Novi Sad,Serbia,16.1,34,9.5,13.6,35.6,15.2,48101,14.9,3%,55:45:00,2021
 1001,1001+,Novosibirsk State Technical University,Russia,19.9,35.9,12.5,9.9,36,16.3,11589,11.4,21%,52:48:00,2021
 1001,1001+,Oakland University,United States of America,27.2,30.8,13.9,27.5,33.8,23.7,15441,18.1,4%,57:43:00,2021
 1001,1001+,Obafemi Awolowo University,Nigeria,17.7,33.3,9.3,13.7,36.3,15.6,29423,23.5,0%,49:51:00,2021
@@ -9088,7 +9088,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 225,201–250,KTH Royal Institute of Technology,Sweden,38.8,90.2,44.7,56,69.8,50.4,13422,16.7,21%,34 : 66,2022
 225,201–250,La Trobe University,Australia,27.6,89.8,34,86.3,46.7,52.3,26097,33.8,39%,60:40:00,2022
 225,201–250,Université Libre de Bruxelles,Belgium,32.5,88.9,42.1,78.6,43.8,53.7,25743,44.8,31%,57:43:00,2022
-225,201–250,University of Macau,Macao S.A.R,30.2,99.4,39.3,71.2,45.7,50.8,9874,15.1,38%,56:44:00,2022
+225,201–250,University of Macau,China,30.2,99.4,39.3,71.2,45.7,50.8,9874,15.1,38%,56:44:00,2022
 225,201–250,University of Massachusetts,United States of America,36.5,64.4,29.4,90.2,52.6,53,62595,13.2,15%,49:51:00,2022
 225,201–250,Medical University of Innsbruck,Austria,31,87.2,28.6,88.4,91.4,53.2,3168,12.1,43%,54:46:00,2022
 225,201–250,Medical University of Vienna,Austria,34.6,79.8,26.9,92.7,61.9,53.8,7232,8.9,30%,54:46:00,2022
@@ -9145,7 +9145,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 275,251–300,Université Laval,Canada,38.9,71,34.8,67.7,66.4,49.4,28662,17.1,14%,58:42:00,2022
 275,251–300,Linköping University,Sweden,24.8,69,38.4,77.9,60.7,49,15873,14.6,14%,52:48:00,2022
 275,251–300,University of Luxembourg,Luxembourg,33,99.5,39.2,65.7,47.3,50,4890,19.1,52%,53:47:00,2022
-275,251–300,Macau University of Science and Technology,Macao S.A.R,30.3,99.9,22.8,82.3,46.4,49.3,11113,25.7,88%,57:43:00,2022
+275,251–300,Macau University of Science and Technology,China,30.3,99.9,22.8,82.3,46.4,49.3,11113,25.7,88%,57:43:00,2022
 275,251–300,University of Navarra,Spain,28.7,71.7,29.3,85.1,65.9,50,11545,14.7,26%,54:46:00,2022
 275,251–300,University of Newcastle,Australia,27.1,85.6,33.2,78.9,61.4,49.7,23706,29,19%,56:44:00,2022
 275,251–300,University of New Mexico (Main campus),United States of America,39.4,34.1,29.1,80.1,42.8,48.2,19227,17.5,5%,56:44:00,2022
@@ -9310,7 +9310,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 450,401–500,Jordan University of Science and Technology,Jordan,16.5,58.3,10.2,99.2,43.3,43.2,22656,14.5,13%,57:43:00,2022
 450,401–500,Justus Liebig University Giessen,Germany,32.1,52.8,35.3,59.1,42.4,43,27666,42.8,10%,63:37:00,2022
 450,401–500,University of Kansas,United States of America,36.4,48.7,25,67.3,45.7,43.4,24581,9.6,9%,53:47:00,2022
-450,401–500,University of Kragujevac,Republic of Serbia,18.2,33.9,9.4,97.9,35.6,41.1,15717,12.5,0%,54:46:00,2022
+450,401–500,University of Kragujevac,Serbia,18.2,33.9,9.4,97.9,35.6,41.1,15717,12.5,0%,54:46:00,2022
 450,401–500,Leibniz University Hannover,Germany,36.8,54.2,33.9,50.1,52.4,41.6,21640,41.9,18%,42:58:00,2022
 450,401–500,Institut Agro,France,34.4,60.8,24.5,60.9,46.6,41.7,2221,11.3,17%,62:38:00,2022
 450,401–500,Liverpool John Moores University,United Kingdom,20.9,75.6,18.6,78.7,35.3,42,20662,16.9,16%,53:47:00,2022
@@ -9686,7 +9686,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 900,801–1000,Bauman Moscow State Technical University,Russia,40.7,43.4,18,26.6,78,30.8,18011,6.5,13%,34 : 66,2022
 900,801–1000,Baylor University,United States of America,32.4,34.6,18.1,42.4,35.3,31.3,18242,15.6,7%,59:41:00,2022
 900,801–1000,University of Bedfordshire,United Kingdom,18.4,79.2,14.9,39.6,35.2,28.7,10426,21.9,48%,61:39:00,2022
-900,801–1000,University of Belgrade,Republic of Serbia,20.1,41.7,27.5,40.8,40.9,30.7,94316,19.1,5%,62:38:00,2022
+900,801–1000,University of Belgrade,Serbia,20.1,41.7,27.5,40.8,40.9,30.7,94316,19.1,5%,62:38:00,2022
 900,801–1000,Ben-Gurion University of the Negev,Israel,28.1,37.3,32.1,31.9,50,31.7,16252,20.2,2%,52:48:00,2022
 900,801–1000,Benha University,Egypt,15.5,43.7,7.9,54.6,35.4,27.6,115000,22.2,4%,39 : 61,2022
 900,801–1000,Beni-Suef University,Egypt,14.9,44.6,8.1,68.9,34.8,31.8,80402,29,1%,47:53:00,2022
@@ -10360,7 +10360,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 1201,1201+,North-Eastern Federal University,Russia,21,32.2,9.6,9.3,38.6,15.3,12498,11.6,5%,56:44:00,2022
 1201,1201+,Nosov Magnitogorsk State Technical University,Russia,16.8,17.7,10.4,13.4,39.7,14.5,8505,14.7,4%,45:55:00,2022
 1201,1201+,Universidade Nove de Julho (Uninove),Brazil,16.8,20.9,7.7,9.8,35.3,12.7,84156,21.1,1%,58:42:00,2022
-1201,1201+,University of Novi Sad,Republic of Serbia,17,34.1,11.4,16.5,42,17.1,48529,16.3,2%,56:44:00,2022
+1201,1201+,University of Novi Sad,Serbia,17,34.1,11.4,16.5,42,17.1,48529,16.3,2%,56:44:00,2022
 1201,1201+,Novosibirsk State Technical University,Russia,20.2,37.5,12.9,7,38.7,15.8,11426,10.7,22%,50:50:00,2022
 1201,1201+,Obafemi Awolowo University,Nigeria,17.7,33.2,10.4,18.4,34.8,17.3,32830,24.8,0%,44:56:00,2022
 1201,1201+,Ochanomizu University,Japan,26,24.7,13,11.1,38,17.8,2778,15.1,5%,100:00:00,2022
@@ -10747,8 +10747,8 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 225,201–250,Korea University,South Korea,46.8,55.8,48.7,61.5,95.3,53.7,22507,15.8,27%,,2023
 225,201–250,Université Libre de Bruxelles,Belgium,32.6,88.9,44.1,77.3,44.8,54,28290,49.3,31%,57:43:00,2023
 225,201–250,University of Luxembourg,Luxembourg,38.2,99.4,39.8,64.5,51.2,51.5,5185,19.3,51%,53:47:00,2023
-225,201–250,University of Macau,Macao S.A.R,31.6,99.3,36,78.5,44.2,52.4,10460,15.4,39%,55:45:00,2023
-225,201–250,Macau University of Science and Technology,Macao S.A.R,35.4,99.7,30.7,79.2,50.1,52.3,11993,38.1,91%,57:43:00,2023
+225,201–250,University of Macau,China,31.6,99.3,36,78.5,44.2,52.4,10460,15.4,39%,55:45:00,2023
+225,201–250,Macau University of Science and Technology,China,35.4,99.7,30.7,79.2,50.1,52.3,11993,38.1,91%,57:43:00,2023
 225,201–250,Medical University of Innsbruck,Austria,29.9,88.4,30.2,88.8,95.3,53.7,3244,12.9,43%,54:46:00,2023
 225,201–250,Moscow Institute of Physics and Technology (MIPT),Russia,55.7,62.2,46.8,51.4,99.1,53.3,6083,11.5,20%,,2023
 225,201–250,University of Newcastle,Australia,30,84.3,35.8,79.3,61.9,51.4,24363,29.5,18%,57:43:00,2023
@@ -11078,7 +11078,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 550,501–600,Keele University,United Kingdom,21.1,73.1,24.8,68.4,37.5,40.7,9172,15.3,16%,59:41:00,2023
 550,501–600,University of Kentucky,United States of America,36.1,39,27.3,59.2,40.4,40.7,27216,11.2,4%,57:43:00,2023
 550,501–600,Kermanshah University of Medical Sciences,Iran,20.8,39.3,10.3,95,37.3,41.7,5759,9.6,12%,53:47:00,2023
-550,501–600,University of Kragujevac,Republic of Serbia,21.5,33.3,8.3,96,39.3,41.2,16679,15.8,1%,57:43:00,2023
+550,501–600,University of Kragujevac,Serbia,21.5,33.3,8.3,96,39.3,41.2,16679,15.8,1%,57:43:00,2023
 550,501–600,Kyushu University,Japan,46,43.6,42.5,34.8,71,42,18568,7.8,14%,29 : 71,2023
 550,501–600,Lebanese American University,Lebanon,29.4,86.5,11.9,69.5,37,40.7,7057,10.1,19%,52:48:00,2023
 550,501–600,University of Lille,France,30.7,62.5,21.5,59.5,42.2,39.3,75291,29.6,14%,60:40:00,2023
@@ -11351,7 +11351,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 900,801–1000,University of the Basque Country,Spain,21.5,44.5,21.8,51.7,39.6,32.8,43018,15.4,6%,55:45:00,2023
 900,801–1000,University of Bedfordshire,United Kingdom,17.9,79.2,15.2,49.7,37.1,31.7,13173,29.7,59%,59:41:00,2023
 900,801–1000,University of Beira Interior,Portugal,17.8,58.1,20.9,50.6,38.4,32.1,7861,17,22%,53:47:00,2023
-900,801–1000,University of Belgrade,Republic of Serbia,21.1,43.4,33,44.5,42.9,33.9,93251,18.9,5%,62:38:00,2023
+900,801–1000,University of Belgrade,Serbia,21.1,43.4,33,44.5,42.9,33.9,93251,18.9,5%,62:38:00,2023
 900,801–1000,Beni-Suef University,Egypt,17.9,45.9,8.7,67.8,36.9,32.7,82124,28.3,1%,50:50:00,2023
 900,801–1000,University of Bergamo,Italy,18.2,35.5,22.4,51.5,41.2,31.3,22115,60.9,7%,62:38:00,2023
 900,801–1000,Bharathiar University,India,36.6,23.7,27.6,30.4,37.5,31.1,4097,18.8,0%,63:37:00,2023
@@ -12225,7 +12225,7 @@ World Rank Order,World Rank,University,Country,Teaching,International,Research,C
 1501,1501+,North-Western State Medical University named after I.I. Mechnikov,Russia,22.1,25.1,8.3,1.3,36.9,12.3,6392,5.8,10%,,2023
 1501,1501+,Nosov Magnitogorsk State Technical University,Russia,15.9,17.7,10.3,5.5,38.7,11.8,8128,14.4,3%,45:55:00,2023
 1501,1501+,Universidade Nove de Julho (Uninove),Brazil,18.4,22.2,7.7,11.7,37.9,14,79285,25.4,1%,58:42:00,2023
-1501,1501+,University of Novi Sad,Republic of Serbia,16.7,35.8,11.1,15.7,42.2,16.8,47669,15.3,1%,57:43:00,2023
+1501,1501+,University of Novi Sad,Serbia,16.7,35.8,11.1,15.7,42.2,16.8,47669,15.3,1%,57:43:00,2023
 1501,1501+,Novosibirsk State Technical University,Russia,20.1,36.9,13,5.5,40.5,15.4,11566,10.7,22%,45:55:00,2023
 1501,1501+,Nueva Granada Military University,Colombia,18,27.3,7.7,2.9,37,11.6,17620,10.4,0%,46:54:00,2023
 1501,1501+,Ochanomizu University,Japan,28.6,26.8,13.9,7.7,39.4,18.1,2743,14.9,6%,100:00:00,2023

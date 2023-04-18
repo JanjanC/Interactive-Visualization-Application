@@ -515,6 +515,12 @@ def update_main_dashboard(btn_times, btn_shanghai, btn_cwur, slider_value, dropd
     ]
 
     print("selected_map", selected_map)
+    if selected_map is not None:
+        country = selected_map['points'][0]['location']
+        print("country", country)
+        filter_query = "{Country}  =" + country
+    
+    print('new filter', filter_query)
 
     return (
         options,

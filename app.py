@@ -114,10 +114,11 @@ def load_main_bar_chart(university_list, university_rankings, main_year):
             xaxis_title="Score", 
             yaxis_title="University Name"
         )
+        return fig
     else:
         fig = go.Figure().add_annotation(text="Select a University from the Table", showarrow=False, font={"size": 20}).update_xaxes(visible=False).update_yaxes(visible=False)
-    
-    return fig
+        fig.update_layout(width=800, height=600)
+        return fig
 
 main_trend_fig = load_main_bar_chart(current_main_university_list, current_main_rankings, current_main_year)
 
@@ -164,39 +165,44 @@ def load_university_line_chart(university_rankings, university_name):
     fig = make_subplots(rows=math.ceil(len(criteria) / 2), cols=2, subplot_titles=criteria)
     current_df_conditions = (current_df["University"] == university_name)
     current_df = current_df[current_df_conditions].sort_values(by=["Year"], ascending=True)
-    for index, criterion in enumerate(criteria):
-        year_list = current_df["Year"].values.tolist()
+    if not current_df.empty:
+        for index, criterion in enumerate(criteria):
+            year_list = current_df["Year"].values.tolist()
 
-        if criterion == "World Rank":
-            criteria_list = current_df["World Rank Order"].values.tolist()
-            fig.add_trace(
-                go.Scatter(
-                    x=year_list, y=criteria_list, name=criterion, mode='markers+lines',
-                    meta=criterion,
-                    customdata=current_df["World Rank"].values.tolist(),
-                    marker=dict(color=px.colors.qualitative.Plotly[(index-2) % 10]),
-                    hovertemplate="<b>Year</b>: %{x}<br><b>%{meta}</b>: %{customdata}<extra></extra>"
-                ),
-                row=index // 2 + 1,
-                col=index % 2 + 1
-            )
-        else:
-            criteria_list = current_df[criterion].values.tolist()
-            fig.add_trace(
-                go.Scatter(
-                    x=year_list, y=criteria_list, name=criterion, mode='markers+lines',
-                    meta=criterion,
-                    marker=dict(color=px.colors.qualitative.Plotly[(index-2) % 10]),
-                    hovertemplate="<b>Year</b>: %{x}<br><b>%{meta}</b>: %{y}<extra></extra>"
-                ),
-                row=index // 2 + 1,
-                col=index % 2 + 1
-            )
+            if criterion == "World Rank":
+                criteria_list = current_df["World Rank Order"].values.tolist()
+                fig.add_trace(
+                    go.Scatter(
+                        x=year_list, y=criteria_list, name=criterion, mode='markers+lines',
+                        meta=criterion,
+                        customdata=current_df["World Rank"].values.tolist(),
+                        marker=dict(color=px.colors.qualitative.Plotly[(index-2) % 10]),
+                        hovertemplate="<b>Year</b>: %{x}<br><b>%{meta}</b>: %{customdata}<extra></extra>"
+                    ),
+                    row=index // 2 + 1,
+                    col=index % 2 + 1
+                )
+            else:
+                criteria_list = current_df[criterion].values.tolist()
+                fig.add_trace(
+                    go.Scatter(
+                        x=year_list, y=criteria_list, name=criterion, mode='markers+lines',
+                        meta=criterion,
+                        marker=dict(color=px.colors.qualitative.Plotly[(index-2) % 10]),
+                        hovertemplate="<b>Year</b>: %{x}<br><b>%{meta}</b>: %{y}<extra></extra>"
+                    ),
+                    row=index // 2 + 1,
+                    col=index % 2 + 1
+                )
 
-    fig.update_yaxes(autorange="reversed", row=1, col=1)
-    fig.update_layout(height=600, width=1200, title_text="Historical Performance of <b>{}</b> in the <b>{}</b>".format(university_name, rankings_names[university_rankings.value]))
-    fig.update_layout(showlegend=False)
-    return fig
+        fig.update_yaxes(autorange="reversed", row=1, col=1)
+        fig.update_layout(height=600, width=1200, title_text="Historical Performance of <b>{}</b> in the <b>{}</b>".format(university_name, rankings_names[university_rankings.value]))
+        fig.update_layout(showlegend=False)
+        return fig
+    else:
+        fig = go.Figure().add_annotation(text="No Data", showarrow=False, font={"size": 20}).update_xaxes(visible=False).update_yaxes(visible=False)
+        fig.update_layout(height=600, width=1200)
+        return fig
 
 
 university_trend_fig = load_university_line_chart(current_university_rankings, current_university_name)
@@ -491,22 +497,21 @@ def update_main_dashboard(btn_times, btn_shanghai, btn_cwur, slider_value, dropd
         },
     ]
 
-    # print("selected_map", selected_map)
+    print('selected_map', selected_map)
     if selected_map is not None:
         country = selected_map['points'][0]['location']
-        # print("country", country)
-        if "{Country}" in filter_query: #{Country} exists
-            filter_split = filter_query.split(" && ")
+        # print('country', country)
+        if '{Country}' in filter_query: #{Country} exists
+            filter_split = filter_query.split(' && ')
             for i in range(len(filter_split)):
-                if "{Country}" in filter_split[i]: #replace {Country}
-                    filter_split[i] = "{Country} =" + country
-            filter_query = " && ".join(filter_split)
+                if '{Country}' in filter_split[i]: #replace {Country}
+                    filter_split[i] = '{Country} ="' + country + '"'
+            filter_query = ' && '.join(filter_split)
         else:
-            if filter_query == "":
-                filter_query = "{Country} =" + country
+            if filter_query == '':
+                filter_query = '{Country} ="' + country + '"'
             else:
-                filter_query = filter_query + " && {Country} =" + country
-    
+                filter_query = filter_query + ' && {Country} ="' + country + '"'
 
     return (
         options,

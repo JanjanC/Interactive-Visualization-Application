@@ -151,8 +151,6 @@ def load_main_line_chart(university_list, university_rankings, criterion):
         fig.update_layout(
             title_text="<b>{}</b> Trend in the <b>{}</b>".format(criterion, rankings_names[university_rankings.value]),
             title_x=0.5,
-            xaxis_title="Year", 
-            yaxis_title="Score"
         )
         
         return fig
@@ -203,7 +201,11 @@ def load_university_line_chart(university_rankings, university_name):
                 )
 
         fig.update_yaxes(autorange="reversed", row=1, col=1)
-        fig.update_layout(height=300, width=1200, title_text="Historical Performance of <b>{}</b> in the <b>{}</b>".format(university_name, rankings_names[university_rankings.value]))
+        fig.update_layout(height=300, width=1200)
+        fig.update_layout(
+            title_text="Historical Performance of <b>{}</b> in the <b>{}</b>".format(university_name, rankings_names[university_rankings.value]),
+            title_x=0.5,
+        )
         fig.update_layout(showlegend=False)
         return fig
     else:
@@ -262,12 +264,6 @@ def load_university_radar_chart(university_name, university_year):
         fig = go.Figure().add_annotation(text="No Data", showarrow=False, font={"size": 20}).update_xaxes(visible=False).update_yaxes(visible=False)
         fig.update_layout(height=300, width=1200)
         return fig
-
-
-
-    
-    
-
 
 radar_fig = load_university_radar_chart(current_university_name, current_university_year)
 

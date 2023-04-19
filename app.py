@@ -215,39 +215,57 @@ def load_university_line_chart(university_rankings, university_name):
 university_trend_fig = load_university_line_chart(current_university_rankings, current_university_name)
 
 # Radar Charts
-
 def load_university_radar_chart(university_name, university_year):
-    fig = make_subplots(
-        rows=1, 
-        cols=3, 
-        specs=[[{"type": "polar"}, {"type": "polar"}, {"type": "polar"}]], 
-        subplot_titles=["{} {}".format(university_year, university_rankings) for university_rankings in rankings_names]
-    )
 
-    for index, university_rankings in enumerate(Rankings):
+    radar_fig_list = []
+    radar_names_list = []
+    for university_rankings in Rankings:
         current_df = rankings_df[university_rankings.value]
         current_university = current_df[(current_df["University"] == university_name) & (current_df["Year"] == university_year)].squeeze()
         current_year_columns = rankings_year_columns[university_rankings.value][str(university_year)]
         current_year_columns = current_year_columns + [current_year_columns[0]]
         current_university.name = rankings_names[university_rankings.value]
-        fig.add_trace(
-            go.Scatterpolar(
-                r=current_university[current_year_columns],
-                theta=current_year_columns,
-                name=rankings_names[university_rankings.value],
-                hovertemplate="<b>%{theta}</b>: %{r}<extra></extra>",
-                marker=dict(color=px.colors.qualitative.Plotly[0])
-            ),
-            row=1,
-            col=index+1
-        )
+        if not current_university.empty:
+            radar_fig_list.append(
+                go.Scatterpolar(
+                    r=current_university[current_year_columns],
+                    theta=current_year_columns,
+                    name=rankings_names[university_rankings.value],
+                    hovertemplate="<b>%{theta}</b>: %{r}<extra></extra>",
+                    marker=dict(color=px.colors.qualitative.Plotly[0]),
+                    fill='toself'
+                )
+            )
+            radar_names_list.append(rankings_names[university_rankings.value])
 
-    fig.update_annotations(yshift=20)
-    fig.update_layout(polar=dict(radialaxis=dict(visible=True, range=[0, 100])), showlegend=True)
-    fig.update_layout(showlegend=False)
-    fig.update_traces(fill='toself')
+    if len(radar_fig_list) > 0:
+        fig = make_subplots(
+            rows=1, 
+            cols=len(radar_fig_list), 
+            specs=[[{"type": "polar"}] * len(radar_fig_list)], 
+            subplot_titles=["{} {}".format(university_year, university_rankings) for university_rankings in radar_names_list]
+        )
+        for index, radar in enumerate(radar_fig_list):
+            fig.add_trace(
+                radar,
+                row=1,
+                col=index+1
+            )
+            
+
+        fig.update_annotations(yshift=20)
+        fig.update_layout(polar=dict(radialaxis=dict(visible=True, range=[0, 100])))
+        fig.update_layout(showlegend=False)
+        return fig
+    else:
+        fig = go.Figure().add_annotation(text="No Data", showarrow=False, font={"size": 20}).update_xaxes(visible=False).update_yaxes(visible=False)
+        fig.update_layout(height=600, width=1200)
+        return fig
+
+
+
     
-    return fig
+    
 
 
 radar_fig = load_university_radar_chart(current_university_name, current_university_year)
@@ -328,7 +346,7 @@ main = html.Div([
            children= [
                 dcc.Graph(id='choropleth_map', figure = choropleth_mapbox, config={'displayModeBar': False}, animate = False),
                 html.Div([
-                    html.Div(children=[html.H5("Criteria:")], className="col-2"),
+                    html.Div(children=[html.Span("Criteria:")], className="col-2"),
                     html.Div(
                         children = [
                             dcc.Dropdown(
@@ -341,7 +359,7 @@ main = html.Div([
                         ],
                         className="col-10"
                     ),
-                ], className="row"),
+                ], className="row align-items-center"),
                 university_table,
             ], 
         ),

@@ -493,14 +493,11 @@ def update_main_dashboard(btn_times, btn_shanghai, btn_cwur, slider_value, dropd
 
     if filter_query is None:
         filter_query = ''
-    
-    # print('filter_query', filter_query)
 
     if selected_rows is None:
         selected_rows = []
-    # update the index of the currently selected universities
-    # print("rows", rows)
 
+    # update the index of the currently selected universities
     university_names = [] if rows is None else pd.DataFrame(rows)
     university_names = university_names if len(university_names) == 0 else university_names.iloc[selected_rows]['University']  # currently selected universities
     selected_index = df[df["University"].isin(university_names)].index.tolist()  # update the index
@@ -521,10 +518,8 @@ def update_main_dashboard(btn_times, btn_shanghai, btn_cwur, slider_value, dropd
         },
     ]
 
-    print('selected_map', selected_map)
     if selected_map is not None:
         country = selected_map['points'][0]['location']
-        # print('country', country)
         if '{Country}' in filter_query: #{Country} exists
             filter_split = filter_query.split(' && ')
             for i in range(len(filter_split)):

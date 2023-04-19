@@ -261,6 +261,7 @@ university_table = dash_table.DataTable(
     columns=[{"name": name, "id": name} for name in [current_main_criterion, "University", 'Country', '']],
     sort_action='native',
     filter_action='native',
+    filter_options={"case": "insensitive"},
     row_selectable='multi',
     page_size=5,
     style_cell_conditional=[
@@ -485,12 +486,12 @@ def update_main_dashboard(btn_times, btn_shanghai, btn_cwur, slider_value, dropd
     if filter_query is None:
         filter_query = ''
     
-    print('filter_query', filter_query)
+    # print('filter_query', filter_query)
 
     if selected_rows is None:
         selected_rows = []
     # update the index of the currently selected universities
-    print("rows", rows)
+    # print("rows", rows)
 
     university_names = [] if rows is None else pd.DataFrame(rows)
     university_names = university_names if university_names.empty else university_names.iloc[selected_rows]['University']  # currently selected universities
@@ -514,13 +515,25 @@ def update_main_dashboard(btn_times, btn_shanghai, btn_cwur, slider_value, dropd
         },
     ]
 
-    print("selected_map", selected_map)
+    # print("selected_map", selected_map)
     if selected_map is not None:
         country = selected_map['points'][0]['location']
-        print("country", country)
-        filter_query = "{Country}  =" + country
+        # print("country", country)
+        if "{Country}" in filter_query: #{Country} exists
+            filter_split = filter_query.split(" && ")
+            for i in range(len(filter_split)):
+                if "{Country}" in filter_split[i]: #replace {Country}
+                    filter_split[i] = "{Country} =" + country
+            filter_query = " && ".join(filter_split)
+        else:
+            if filter_query == "":
+                filter_query = "{Country} =" + country
+            else:
+                filter_query = filter_query + " && {Country} =" + country
     
-    print('new filter', filter_query)
+    
+    
+    # print('new filter', filter_query)
 
     return (
         options,

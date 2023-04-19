@@ -11,15 +11,15 @@ import numpy as np
 import geojson
 import enum
 
-times_df = pd.read_csv('datasets/times_2011_2023.csv')
+times_df = pd.read_csv('datasets/times.csv')
 times_complete_columns = ['Teaching', 'International', 'Research', 'Citations', 'Income']
 times_year_columns = {'{}'.format(i): times_complete_columns for i in range(2011, 2024)}
 
-shanghai_df = pd.read_csv('datasets/shanghai_2012_2022.csv', encoding='cp1252')
+shanghai_df = pd.read_csv('datasets/shanghai.csv', encoding='cp1252')
 shanghai_complete_columns = ['Alumni', 'Award', 'HiCi', 'N&S', 'PUB', 'PCP']
 shanghai_year_columns = {'{}'.format(i): shanghai_complete_columns for i in range(2012, 2023)}
 
-cwur_df = pd.read_csv('datasets/cwur_2012_2022.csv')
+cwur_df = pd.read_csv('datasets/cwur.csv')
 cwur_complete_columns = ['Quality of Education', 'Alumni Employment', 'Quality of Faculty', 'Publications', 'Influence', 'Citations', 'Broad Impact', 'Patents', 'Research Output', 'Research Performance']
 cwur_year_columns = {
     '2012': ['Quality of Education', 'Alumni Employment', 'Quality of Faculty', 'Publications', 'Influence', 'Citations', 'Patents'],
@@ -255,7 +255,7 @@ def load_university_radar_chart(university_name, university_year):
             )
             
         fig.update_annotations(yshift=20)
-        fig.update_annotations(font_size=12)
+        fig.update_annotations(font_size=14)
         fig.update_layout(polar=dict(radialaxis=dict(visible=False, range=[0, 100])))
         fig.update_layout(showlegend=False)
         fig.update_layout(height=300, width=1200)
@@ -322,7 +322,7 @@ main = html.Div([
     html.Div([
         html.Div(
             children = [
-                dcc.Tabs(id="tab-graphs", value='criteria-comparison-tab', children=[
+                dcc.Tabs(id="tab-graphs", value='trends-tab', children=[
                     dcc.Tab(
                         label='Trends', 
                         value='trends-tab',
@@ -379,13 +379,14 @@ modal_body = html.Div([
         html.Button(children='Center for World University Rankings',
                     id='btn-cwur-university', 
                     className='btn btn-secondary mx-3'),
-    ], className='py-3 d-flex justify-content-center'),
+    ], className='d-flex justify-content-center'),
 
     html.Div([
         html.Div([dcc.Graph(id='university-line-chart', figure=university_trend_fig)], className='col-12'),
     ], className='row'),
 
     html.Div([
+        html.Hr(),
         dcc.Slider(
             min=2012,
             max=2022,
@@ -614,4 +615,4 @@ def open_university_overview(active_cell, rows, is_open, btn_times, btn_shanghai
     )
 
 if __name__ == '__main__':
-    app.run_server(debug=True)  # run server
+    app.run_server()  # run server

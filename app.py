@@ -169,7 +169,7 @@ main_line_fig = load_main_line_chart(current_main_university_list, current_main_
 def load_university_line_chart(university_rankings, university_name):
     current_df = rankings_df[university_rankings.value]
     criteria = ["World Rank", "Overall Score"] + rankings_complete_columns[university_rankings.value]
-    fig = make_subplots(rows=math.ceil(len(criteria) / 2), cols=2, subplot_titles=criteria)
+    fig = make_subplots(rows=math.ceil(len(criteria) / 4), cols=4, subplot_titles=criteria)
     current_df_conditions = (current_df["University"] == university_name)
     current_df = current_df[current_df_conditions].sort_values(by=["Year"], ascending=True)
     if not current_df.empty:
@@ -186,8 +186,8 @@ def load_university_line_chart(university_rankings, university_name):
                         marker=dict(color=px.colors.qualitative.Plotly[(index-2) % 10]),
                         hovertemplate="<b>Year</b>: %{x}<br><b>%{meta}</b>: %{customdata}<extra></extra>"
                     ),
-                    row=index // 2 + 1,
-                    col=index % 2 + 1
+                    row=index // 4 + 1,
+                    col=index % 4 + 1
                 )
             else:
                 criteria_list = current_df[criterion].values.tolist()
@@ -198,17 +198,17 @@ def load_university_line_chart(university_rankings, university_name):
                         marker=dict(color=px.colors.qualitative.Plotly[(index-2) % 10]),
                         hovertemplate="<b>Year</b>: %{x}<br><b>%{meta}</b>: %{y}<extra></extra>"
                     ),
-                    row=index // 2 + 1,
-                    col=index % 2 + 1
+                    row=index // 4 + 1,
+                    col=index % 4 + 1
                 )
 
         fig.update_yaxes(autorange="reversed", row=1, col=1)
-        fig.update_layout(height=600, width=1200, title_text="Historical Performance of <b>{}</b> in the <b>{}</b>".format(university_name, rankings_names[university_rankings.value]))
+        fig.update_layout(height=300, width=1200, title_text="Historical Performance of <b>{}</b> in the <b>{}</b>".format(university_name, rankings_names[university_rankings.value]))
         fig.update_layout(showlegend=False)
         return fig
     else:
         fig = go.Figure().add_annotation(text="No Data", showarrow=False, font={"size": 20}).update_xaxes(visible=False).update_yaxes(visible=False)
-        fig.update_layout(height=600, width=1200)
+        fig.update_layout(height=300, width=1200)
         return fig
 
 
@@ -252,14 +252,15 @@ def load_university_radar_chart(university_name, university_year):
                 col=index+1
             )
             
-
         fig.update_annotations(yshift=20)
-        fig.update_layout(polar=dict(radialaxis=dict(visible=True, range=[0, 100])))
+        fig.update_annotations(font_size=12)
+        fig.update_layout(polar=dict(radialaxis=dict(visible=False, range=[0, 100])))
         fig.update_layout(showlegend=False)
+        fig.update_layout(height=300, width=1200)
         return fig
     else:
         fig = go.Figure().add_annotation(text="No Data", showarrow=False, font={"size": 20}).update_xaxes(visible=False).update_yaxes(visible=False)
-        fig.update_layout(height=600, width=1200)
+        fig.update_layout(height=300, width=1200)
         return fig
 
 

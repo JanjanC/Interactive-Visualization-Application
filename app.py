@@ -51,7 +51,7 @@ rankings_year_columns = [times_year_columns,
                          shanghai_year_columns, cwur_year_columns]
 
 token = open("datasets/.mapbox_token").read()
-with open('datasets/natural-earth-countries-1_110m@public.geojson') as f:
+with open('datasets/countries.geojson') as f:
     countries = geojson.load(f)
 
 # Global Variables for the Selected Data

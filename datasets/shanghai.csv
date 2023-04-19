@@ -16,13 +16,13 @@ World Rank Order,World Rank,University,National Rank,Overall Score,Alumni,Award,
 15,15,"University of California, San Diego",13,49.6,20.3,36.6,60.3,52.8,64,34.1,2012,United States of America
 16,16,University of Washington,14,48.4,22.4,32.5,55.1,51.2,71.3,27.2,2012,United States of America
 17,17,Johns Hopkins University,15,47.4,39.9,34.6,42.2,49.9,69.5,28.3,2012,United States of America
-18,18,"University of California, San Francisco",16,46.6,0,41.2,53.7,54.1,60.6,33.1,2012,
+18,18,"University of California, San Francisco",16,46.6,0,41.2,53.7,54.1,60.6,33.1,2012,United States of America
 19,19,University of Wisconsin-Madison,17,45.4,32.5,35.9,52.1,39.8,64.2,24.7,2012,United States of America
 20,20,University of Tokyo,1,43.8,32.5,14.6,42.5,52,73.7,27.7,2012,Japan
 21,21,University College London,3,43.7,29.7,30.4,39.6,44.6,67.1,30.8,2012,United Kingdom
-22,22,University of Michigan - Ann Arbor,18,43.4,33.9,0,60.5,44.6,76.2,24.8,2012,
-23,23,Swiss Federal Institute of Technology Zurich,1,43.3,31.2,36.6,36.7,44.6,53.9,45.6,2012,
-24,24,The Imperial College of Science,4,42.4,15.3,36.9,41.6,39.6,62.5,35.6,2012,
+22,22,University of Michigan - Ann Arbor,18,43.4,33.9,0,60.5,44.6,76.2,24.8,2012,United States of America
+23,23,Swiss Federal Institute of Technology Zurich,1,43.3,31.2,36.6,36.7,44.6,53.9,45.6,2012,Switzerland
+24,24,The Imperial College of Science,4,42.4,15.3,36.9,41.6,39.6,62.5,35.6,2012,United Kingdom
 25,25,University of Illinois at Urbana-Champaign,19,41.9,31.6,37.4,43.3,36.9,56.1,27.8,2012,United States of America
 26,26,Kyoto University,2,41.3,31.2,35.1,38.9,36.4,63,23,2012,Japan
 27,27,New York University,20,40.8,29.7,32.9,42.2,41,55.7,22.6,2012,United States of America
@@ -30,12 +30,12 @@ World Rank Order,World Rank,University,National Rank,Overall Score,Alumni,Award,
 29,29,University of Minnesota,21,39.7,27.7,16.8,51.1,33.5,65,24.9,2012,United States of America
 30,30,Northwestern University,22,38.8,16.3,22.8,48.5,37.9,58.1,26.4,2012,United States of America
 31,31,Washington University in St Louis,23,37.6,19.6,25.7,39,43.7,52.1,24.7,2012,United States of America
-32,32,Rockefeller University,24,37,18,61.6,28.9,41.8,20.2,36,2012,
+32,32,Rockefeller University,24,37,18,61.6,28.9,41.8,20.2,36,2012,United States of America
 33,33,University of Colorado Boulder,25,36.6,13.3,31.6,39.6,39.9,44.1,31.8,2012,United States of America
 34,34,"University of California, Santa Barbara",26,36.5,15.3,36.2,42.7,32.4,40,37,2012,United States of America
 35,35,University of Texas at Austin,27,35.8,17.1,16.8,45.7,34.6,56,24.9,2012,United States of America
 36,36,Duke University,28,35.2,16.3,0,46.5,42.1,62.7,22.3,2012,United States of America
-37,37,University of Paris Sud (Paris 11),1,34.9,32.1,55.9,16.2,20,48.8,25.4,2012,
+37,37,University of Paris Sud (Paris 11),1,34.9,32.1,55.9,16.2,20,48.8,25.4,2012,France
 38,38,"University of Maryland, College Park",29,34.7,20.3,20.6,41.5,31.9,51.7,25.9,2012,United States of America
 39,39,University of British Columbia,2,34.6,16.3,19.4,32.4,32.6,64.2,22.8,2012,Canada
 40,40,University of Manchester,5,33.9,19.6,33.6,27.7,25.3,56.5,23.7,2012,United Kingdom
@@ -516,12 +516,12 @@ World Rank Order,World Rank,University,National Rank,Overall Score,Alumni,Award,
 15,15,University of Pennsylvania,13,49.6,33,34.1,57.9,47.4,66.7,37.7,2013,United States of America
 16,16,University of Washington,14,48.3,22,31.8,55.1,52.3,70.8,27.9,2013,United States of America
 17,17,Johns Hopkins University,15,46.9,39.3,33.9,42.2,49.7,68.8,27.4,2013,United States of America
-18,18,"University of California, San Francisco",16,46.2,0,40.2,53.7,54.1,59.3,34.1,2013,
+18,18,"University of California, San Francisco",16,46.2,0,40.2,53.7,54.1,59.3,34.1,2013,United States of America
 19,19,University of Wisconsin-Madison,17,44.9,32.1,35,52.1,39.3,63.3,25.1,2013,United States of America
-20,20,Swiss Federal Institute of Technology Zurich,1,43.5,30.7,35.8,36.7,46.6,54.7,44.4,2013,
+20,20,Swiss Federal Institute of Technology Zurich,1,43.5,30.7,35.8,36.7,46.6,54.7,44.4,2013,Switzerland
 21,21,University of Tokyo,1,43,32.1,14.2,42.5,50,72.2,27.8,2013,Japan
 21,21,University College London,3,43,29.3,29.7,39.6,42.1,67.5,31.3,2013,United Kingdom
-23,23,University of Michigan - Ann Arbor,18,42.6,33.4,0,60.5,42,75.7,24.7,2013,
+23,23,University of Michigan - Ann Arbor,18,42.6,33.4,0,60.5,42,75.7,24.7,2013,United States of America
 24,24,"The Imperial College of Science, Technology and Medicine",4,41.6,15.1,36.1,41.6,39,60.4,35.7,2013,
 25,25,University of Illinois at Urbana-Champaign,19,41.1,31.2,36.5,43.3,35.9,54.2,28.4,2013,United States of America
 26,26,Kyoto University,2,40.8,30.7,37.5,38.9,35.1,60.2,23.2,2013,Japan
@@ -532,12 +532,12 @@ World Rank Order,World Rank,University,National Rank,Overall Score,Alumni,Award,
 31,31,Duke University,23,38.1,16,15,46.5,42.8,61.6,22.5,2013,United States of America
 32,32,Washington University in St Louis,24,37.5,19.3,25.1,39,44.2,52.1,24.9,2013,United States of America
 33,33,University of Colorado Boulder,25,37.3,13.1,34.3,39.6,39.2,45,33.6,2013,United States of America
-34,34,Rockefeller University,26,37.1,17.7,60.2,28.9,43.1,20.4,38.1,2013,
+34,34,Rockefeller University,26,37.1,17.7,60.2,28.9,43.1,20.4,38.1,2013,United States of America
 35,35,"University of California, Santa Barbara",27,35.9,15.1,35.4,42.7,30.9,39.3,37.2,2013,United States of America
 36,36,University of Texas at Austin,28,35.4,16.9,16.4,45.7,34.9,54.2,25.5,2013,United States of America
 37,37,Pierre and Marie  Curie University - Paris 6,1,35.3,35.1,27.6,25.1,30.8,59.1,22.8,2013,
 38,38,"University of Maryland, College Park",29,34.7,20,20.1,41.5,31.5,52.6,26.3,2013,United States of America
-39,39,University of Paris Sud (Paris 11),2,34.5,31.6,54.7,16.2,19.7,48.7,25.7,2013,
+39,39,University of Paris Sud (Paris 11),2,34.5,31.6,54.7,16.2,19.7,48.7,25.7,2013,France
 40,40,University of British Columbia,2,34.2,16,19,32.4,31.9,63.6,22.9,2013,Canada
 41,41,University of Manchester,5,34,19.3,32.8,27.7,26,57,24.4,2013,United Kingdom
 42,42,University of Copenhagen,1,33.8,22.7,19,25.9,30.3,60.2,35,2013,Denmark
@@ -1016,8 +1016,8 @@ World Rank Order,World Rank,University,National Rank,Overall Score,Alumni,Award,
 15,15,University of Washington,13,48.1,21.7,31.6,53,53.1,71.6,29,2014,United States of America
 16,16,University of Pennsylvania,14,47.1,32.4,33.8,49.6,44.6,66.9,37.3,2014,United States of America
 17,17,Johns Hopkins University,15,47,38.7,33.6,44,47.8,70.2,28.7,2014,United States of America
-18,18,"University of California, San Francisco",16,45.2,0,39.9,46.8,56.5,59.9,34.9,2014,
-19,19,Swiss Federal Institute of Technology Zurich,1,43.9,30.2,35.5,38.4,46.7,55.6,45.8,2014,
+18,18,"University of California, San Francisco",16,45.2,0,39.9,46.8,56.5,59.9,34.9,2014,United States of America
+19,19,Swiss Federal Institute of Technology Zurich,1,43.9,30.2,35.5,38.4,46.7,55.6,45.8,2014,Switzerland
 20,20,University College London,3,43.3,28.8,29.5,39.2,40.7,71.6,31.5,2014,United Kingdom
 21,21,University of Tokyo,1,43.2,31.6,14.1,40.6,52.6,73,29.2,2014,Japan
 22,22,"The Imperial College of Science, Technology and Medicine",4,42.3,14.9,35.8,43.7,38,62.5,38,2014,
@@ -1031,7 +1031,7 @@ World Rank Order,World Rank,University,National Rank,Overall Score,Alumni,Award,
 30,30,"University of Minnesota, Twin Cities",22,39.3,30.2,16.3,47.3,34.5,65.1,26.2,2014,
 31,31,Duke University,23,38.4,15.8,14.9,50.2,40.6,61.9,23.7,2014,United States of America
 32,32,Washington University in St Louis,24,37.8,19,24.9,40.7,44.2,52.1,26.1,2014,United States of America
-33,33,Rockefeller University,25,37.6,17.5,59.8,30.3,44.2,20.8,38.9,2014,
+33,33,Rockefeller University,25,37.6,17.5,59.8,30.3,44.2,20.8,38.9,2014,United States of America
 34,34,University of Colorado Boulder,26,37.2,12.9,34.1,37.1,40.1,46.1,34.8,2014,United States of America
 35,35,Pierre and Marie  Curie University - Paris 6,1,35.4,34.5,27.4,25.8,30.2,60,23.8,2014,
 36,36,University of North Carolina at Chapel Hill,27,35.2,9.1,16.3,40.4,36.3,61.1,25.6,2014,United States of America
@@ -1040,7 +1040,7 @@ World Rank Order,World Rank,University,National Rank,Overall Score,Alumni,Award,
 39,39,University of Texas at Austin,28,34.5,16.6,16.3,38.6,36.3,55.7,26,2014,United States of America
 39,39,University of Copenhagen,1,34.5,22.3,18.8,27.1,32,61.1,36.2,2014,Denmark
 41,41,"University of California, Santa Barbara",29,34.3,14.9,35.1,38.7,28.8,38.6,36.9,2014,United States of America
-42,42,University of Paris Sud (Paris 11),2,34.2,31.1,54.3,16.8,18.5,48.4,26.5,2014,
+42,42,University of Paris Sud (Paris 11),2,34.2,31.1,54.3,16.8,18.5,48.4,26.5,2014,France
 43,43,"University of Maryland, College Park",30,32.7,19.7,20,31.9,32.5,52.5,26,2014,United States of America
 44,44,The University of Melbourne,1,32.6,17.5,13.3,29.3,26.7,65.9,29.7,2014,
 45,45,University of Edinburgh,6,32.5,21.1,24.9,25.8,32.5,51.8,25.8,2014,United Kingdom
@@ -1517,8 +1517,8 @@ World Rank Order,World Rank,University,National Rank,Overall Score,Alumni,Award,
 16,16,Johns Hopkins University,14,46.3,37.7,33.6,44,44.9,70.2,28.8,2015,United States of America
 17,17,University of Pennsylvania,15,46.1,31.6,33.8,49.6,39.6,67.7,37.4,2015,United States of America
 18,18,University College London,3,44.5,28.1,36.2,38.5,40.6,71.7,32.7,2015,United Kingdom
-18,18,"University of California, San Francisco",16,44.5,0,39.9,46.8,53.5,59.5,34.9,2015,
-20,20,Swiss Federal Institute of Technology Zurich,1,43.7,29.5,35.5,38.4,45.9,55.7,46.3,2015,
+18,18,"University of California, San Francisco",16,44.5,0,39.9,46.8,53.5,59.5,34.9,2015,United States of America
+20,20,Swiss Federal Institute of Technology Zurich,1,43.7,29.5,35.5,38.4,45.9,55.7,46.3,2015,Switzerland
 21,21,University of Tokyo,1,42,30.8,14.1,41.9,48.6,70.8,28.8,2015,Japan
 22,22,University of Michigan-Ann Arbor,17,41.7,34.4,0,56.2,41.3,75.9,25.6,2015,
 23,23,"The Imperial College of Science, Technology and Medicine",4,41.5,14.5,35.8,44.2,34.5,62,38,2015,
@@ -1531,7 +1531,7 @@ World Rank Order,World Rank,University,National Rank,Overall Score,Alumni,Award,
 30,30,"University of Minnesota, Twin Cities",22,38.5,29.5,16.3,47.3,32.5,64,26.2,2015,
 31,31,Duke University,23,38,15.4,14.9,50.2,39,61.7,23.9,2015,United States of America
 32,32,Washington University in St Louis,24,37.4,22.9,24.9,40.7,41.8,50.5,26,2015,United States of America
-33,33,Rockefeller University,25,36.5,17,59.8,30.3,40.9,19,39.6,2015,
+33,33,Rockefeller University,25,36.5,17,59.8,30.3,40.9,19,39.6,2015,United States of America
 34,34,University of Colorado Boulder,26,36,12.6,34.1,37.1,36,45,34.2,2015,United States of America
 35,35,University of Copenhagen,1,35.7,21.8,18.8,28,34,63.2,39.2,2015,Denmark
 36,36,Pierre and Marie Curie University - Paris 6,1,35,33.6,27.4,25.8,29.8,59.2,23.9,2015,
@@ -2017,9 +2017,9 @@ World Rank Order,World Rank,University,National Rank,Overall Score,Alumni,Award,
 16,16,Johns Hopkins University,14,46,37.7,33.6,38.4,47,71.9,31.1,2016,United States of America
 17,17,University College London,3,45.3,28.1,36.2,39.7,41.6,73.9,32.2,2016,United Kingdom
 18,18,University of Pennsylvania,15,44.5,31.6,33.8,42.3,39.4,67.7,37.8,2016,United States of America
-19,19,Swiss Federal Institute of Technology Zurich,1,43.8,29.5,35.5,35.5,50.2,55.6,46.1,2016,
+19,19,Swiss Federal Institute of Technology Zurich,1,43.8,29.5,35.5,35.5,50.2,55.6,46.1,2016,Switzerland
 20,20,University of Tokyo,1,42.2,36.3,25.3,30.8,47.5,70,29.7,2016,Japan
-21,21,"University of California, San Francisco",16,41.9,0,39.9,37,52.1,59.3,33.5,2016,
+21,21,"University of California, San Francisco",16,41.9,0,39.9,37,52.1,59.3,33.5,2016,United States of America
 22,22,"The Imperial College of Science, Technology and Medicine",4,41.6,14.5,35.8,43.5,32.9,64,39.9,2016,
 23,23,University of Michigan-Ann Arbor,17-18,40.8,34.4,0,51.3,41.6,76.6,25.8,2016,
 23,23,Washington University in St Louis,17-18,40.8,22.9,24.9,51.3,42,51.7,37.2,2016,United States of America
@@ -2035,7 +2035,7 @@ World Rank Order,World Rank,University,National Rank,Overall Score,Alumni,Award,
 34,34,University of British Columbia,2,36.7,15.4,18.8,42.3,32.7,64.5,27.2,2016,Canada
 35,35,University of Manchester,5,36.4,18.5,32.6,37,26.4,58.4,29,2016,United Kingdom
 35,35,University of North Carolina at Chapel Hill,25,36.4,8.9,23.7,39.7,32.6,60.8,33.8,2016,United States of America
-37,37,Rockefeller University,26,36.1,17,59.8,27.1,41.8,19.3,40,2016,
+37,37,Rockefeller University,26,36.1,17,59.8,27.1,41.8,19.3,40,2016,United States of America
 38,38,University of Colorado Boulder,27,35.1,12.6,34.1,30.8,36.8,46.2,35.1,2016,United States of America
 39,39,Pierre and Marie  Curie University - Paris 6,1,34.5,33.6,27.4,20.5,29.7,61.9,25.3,2016,
 40,40,The University of Melbourne,1,33.9,17,13.3,35.5,24.8,67.9,32.2,2016,
@@ -2517,9 +2517,9 @@ World Rank Order,World Rank,University,National Rank,Overall Score,Alumni,Award,
 16,16,University College London,3,47.1,27.8,35.8,47.6,39.6,77,33.5,2017,United Kingdom
 17,17,University of Pennsylvania,14,46,31.3,33.4,50,38.7,68,39.5,2017,United States of America
 18,18,Johns Hopkins University,15,45.7,37.3,33.2,40.8,42.8,73.3,30,2017,United States of America
-19,19,Swiss Federal Institute of Technology Zurich,1,44.1,29.2,35.1,36.2,49.5,56.9,47.4,2017,
+19,19,Swiss Federal Institute of Technology Zurich,1,44.1,29.2,35.1,36.2,49.5,56.9,47.4,2017,Switzerland
 20,20,Washington University in St Louis,16,43.3,22.7,24.6,60.7,43.3,52,40,2017,United States of America
-21,21,"University of California, San Francisco",17,42.4,0,39.4,39.3,50.8,61.4,33.3,2017,
+21,21,"University of California, San Francisco",17,42.4,0,39.4,39.3,50.8,61.4,33.3,2017,United States of America
 22,22,Northwestern University,18,41.9,15.2,27.6,59.8,34.1,59.3,34.3,2017,United States of America
 23,23,University of Toronto,1,41.6,19.7,17,40.8,39.6,80.6,31.7,2017,Canada
 24,24,University of Tokyo,1,41.5,38.3,25,28.9,45.2,70.3,29.5,2017,Japan
@@ -2534,7 +2534,7 @@ World Rank Order,World Rank,University,National Rank,Overall Score,Alumni,Award,
 33,33,University of North Carolina at Chapel Hill,23,36.9,8.8,23.4,42.3,31.8,61.5,35.2,2017,United States of America
 34,34,"University of Minnesota, Twin Cities",24,36.8,29.2,16.1,39.3,33.1,65.2,24.1,2017,
 35,35,Kyoto University,2,36.7,31.3,36.7,24.4,31.8,59.3,23.8,2017,Japan
-36,36,Rockefeller University,25,36.6,16.8,59,30.9,41.1,19.6,40.5,2017,
+36,36,Rockefeller University,25,36.6,16.8,59,30.9,41.1,19.6,40.5,2017,United States of America
 37,37,University of Illinois at Urbana-Champaign,26,36.2,29.6,35.8,24.4,30.8,57.4,28.1,2017,United States of America
 38,38,University of Manchester,6,36.1,18.3,32.2,32.7,28.7,59.7,28.8,2017,United Kingdom
 39,39,The University of Melbourne,1,35.9,16.8,13.1,45,22.8,69.7,33.9,2017,
@@ -3317,9 +3317,9 @@ World Rank Order,World Rank,University,National Rank,Overall Score,Alumni,Award,
 16,16,University of Pennsylvania,14,46.4,31.3,33.4,46.9,41.7,69.7,39.7,2018,United States of America
 17,17,University College London,3,46.1,27.8,35.8,41.8,39,78.8,32.6,2018,United Kingdom
 18,18,Johns Hopkins University,15,45.4,37.3,33.2,37.1,43.4,75.7,28.7,2018,United States of America
-19,19,Swiss Federal Institute of Technology Zurich,1,43.9,29.2,35.1,33.2,49.9,58.7,47.5,2018,
+19,19,Swiss Federal Institute of Technology Zurich,1,43.9,29.2,35.1,33.2,49.9,58.7,47.5,2018,Switzerland
 20,20,Washington University in St Louis,16,42.1,22.7,24.6,55,42.3,53.8,38.6,2018,United States of America
-21,21,"University of California, San Francisco",17,41.9,0,39.4,35.8,50.9,63.2,32,2018,
+21,21,"University of California, San Francisco",17,41.9,0,39.4,35.8,50.9,63.2,32,2018,United States of America
 22,22,University of Tokyo,1,41.5,38.3,25,25.3,46,72.8,29.8,2018,Japan
 23,23,University of Toronto,1,40.9,19.7,17,35.8,38.9,83.1,31.7,2018,Canada
 24,24,Imperial College London,4,40.1,14.4,35.4,35.8,31,67.7,39.1,2018,United Kingdom
@@ -3328,7 +3328,7 @@ World Rank Order,World Rank,University,National Rank,Overall Score,Alumni,Award,
 27,27,University of Michigan-Ann Arbor,20,39.4,34.1,0,41.8,41,80.8,25,2018,
 28,28,University of Wisconsin-Madison,21,38.9,32.5,34.3,30.3,32.3,65,24.3,2018,United States of America
 29,29,University of Copenhagen,1,38.7,21.5,18.6,33.2,37.6,67.8,42.9,2018,Denmark
-30,30,Rockefeller University,22-23,37.9,16.8,61.4,33.2,42.4,19.5,41.5,2018,
+30,30,Rockefeller University,22-23,37.9,16.8,61.4,33.2,42.4,19.5,41.5,2018,United States of America
 30,30,University of North Carolina at Chapel Hill,22-23,37.9,8.8,23.4,45.9,30.2,64.7,34.4,2018,United States of America
 32,32,New York University,24,37.2,29.6,31.5,25.3,39.5,60.6,20.8,2018,United States of America
 32,32,University of Edinburgh,5,37.2,27.3,24.6,42.8,30.9,55.9,28.7,2018,United Kingdom
@@ -4317,8 +4317,8 @@ World Rank Order,World Rank,University,National Rank,Overall Score,Alumni,Award,
 16,16,Johns Hopkins University,13,47.6,36.8,33.2,46.9,43.4,76.3,28.9,2019,United States of America
 17,17,University of Pennsylvania,14,47.3,31.2,33.4,49.2,41.5,72.3,39.1,2019,United States of America
 18,18,"University of California, San Diego",15,47.1,19.4,35.1,50.8,51.6,66.4,34,2019,United States of America
-19,19,Swiss Federal Institute of Technology Zurich,1,46.1,28.6,45.7,31.1,51.2,58.8,48.3,2019,
-20,20,"University of California, San Francisco",16-17,42.2,0,39.4,38.8,49.2,63.6,31,2019,
+19,19,Swiss Federal Institute of Technology Zurich,1,46.1,28.6,45.7,31.1,51.2,58.8,48.3,2019,Switzerland
+20,20,"University of California, San Francisco",16-17,42.2,0,39.4,38.8,49.2,63.6,31,2019,United States of America
 20,20,University of Michigan-Ann Arbor,16-17,42.2,33.6,10.4,44.6,41.4,80.6,24.6,2019,
 22,22,Washington University in St Louis,18,41.7,22.4,24.6,52.4,42.2,54.6,37.8,2019,United States of America
 23,23,Imperial College London,4,41.6,13.7,35.4,39.5,35.1,67,38.8,2019,United Kingdom
@@ -4333,7 +4333,7 @@ World Rank Order,World Rank,University,National Rank,Overall Score,Alumni,Award,
 32,32,Kyoto University,2,37,33.6,42.2,19.4,29.7,60.8,23.9,2019,Japan
 33,33,University of Manchester,6,36.9,15.9,32.2,35.9,28.6,61.4,28.6,2019,United Kingdom
 33,33,University of North Carolina at Chapel Hill,23,36.9,7.9,23.4,42.8,28.2,64.9,34.8,2019,United States of America
-35,35,Rockefeller University,24,36.2,16.8,61.4,26.4,41.4,19.8,39.7,2019,
+35,35,Rockefeller University,24,36.2,16.8,61.4,26.4,41.4,19.8,39.7,2019,United States of America
 35,35,University of British Columbia,2,36.2,14.8,18.6,42.1,26.8,68.4,27.3,2019,Canada
 37,37,University of Paris-Sud (Paris 11),1,36.1,29.4,53.6,25.4,17.6,48.5,33.3,2019,
 38,38,Karolinska Institute,1,35.8,24.4,26.3,31.1,24.5,56.3,49.2,2019,Sweden
@@ -5319,7 +5319,7 @@ World Rank Order,World Rank,University,National Rank,Overall Score,Alumni,Award,
 18,18,"University of California, San Diego",14,46.3,18.8,34.3,51.4,48,66.9,33,2020,United States of America
 19,19,University of Pennsylvania,15,46.2,33.5,32.7,43.2,42.7,71.6,38.2,2020,United States of America
 20,20,ETH Zurich,1,46.1,27.7,44.8,31.3,53.5,57.9,48.5,2020,
-21,21,"University of California, San Francisco",16,42.8,0,38.6,42,49.7,64.2,30.5,2020,
+21,21,"University of California, San Francisco",16,42.8,0,38.6,42,49.7,64.2,30.5,2020,United States of America
 22,22,University of Michigan-Ann Arbor,17,41,32.6,10.2,40.2,40.1,81.7,24.2,2020,
 23,23,University of Toronto,1,40.9,17.2,16.6,36.4,38.3,85.3,30,2020,Canada
 23,23,Washington University in St Louis,18,40.9,21.7,24.1,51.9,39.6,54.9,37.6,2020,United States of America
@@ -5341,7 +5341,7 @@ World Rank Order,World Rank,University,National Rank,Overall Score,Alumni,Award,
 40,40,"University of Minnesota, Twin Cities",24,35,27.2,15.8,36.4,26.8,67.6,22.9,2020,
 41,41,University of Texas at Austin,25,34.9,24.3,22.9,32.1,30.2,59.6,27.9,2020,United States of America
 42,42,University of Edinburgh,6,34.7,26.6,24.1,32.8,28.8,58.3,25.6,2020,United Kingdom
-43,43,Rockefeller University,26,34.4,16.3,60.1,27.1,40.3,17.1,31.5,2020,
+43,43,Rockefeller University,26,34.4,16.3,60.1,27.1,40.3,17.1,31.5,2020,United States of America
 44,44,University of Colorado Boulder,27,34.2,12.1,32.9,26.2,37.3,48.6,32.9,2020,United States of America
 45,45,Karolinska Institute,1,33.9,23.7,25.7,23.2,24.1,56.5,49.1,2020,Sweden
 45,45,University of Illinois at Urbana-Champaign,28,33.9,26.6,35,15.7,31.3,57.2,26.7,2020,United States of America
@@ -6318,13 +6318,13 @@ World Rank Order,World Rank,University,National Rank,Overall Score,Alumni,Award,
 17,17,University College London,3,47.3,27.7,35,46.7,37.4,82.2,33.1,2021,United Kingdom
 18,18,"University of California, San Diego",14,46.3,18.5,34.3,54.6,47.2,65.6,32.3,2021,United States of America
 19,19,University of Washington,15,46.2,23.3,36.7,42.5,47.6,74.3,27.5,2021,United States of America
-20,20,"University of California, San Francisco",16,44.6,0,38.6,49.5,52.1,63.1,30.9,2021,
+20,20,"University of California, San Francisco",16,44.6,0,38.6,49.5,52.1,63.1,30.9,2021,United States of America
 21,21,ETH Zurich,1,44.4,27.2,44.8,27.3,52,56.6,47,2021,
 22,22,University of Toronto,1,41.3,16.9,16.6,37.2,39.1,84.7,32.7,2021,Canada
 23,23,Washington University in St Louis,17,40.7,21.4,24.1,53.6,38.1,54.2,37.7,2021,United States of America
 24,24,University of Tokyo,1,40.6,35.8,24.5,27.3,43.7,70.9,29.2,2021,Japan
 25,25,Imperial College London,4,40.5,13.1,34.6,37.2,35,66.1,38.3,2021,United Kingdom
-26,26,University of Michigan - Ann Arbor,18,40.1,34.6,10.2,37.9,39.7,79.9,23.7,2021,
+26,26,University of Michigan - Ann Arbor,18,40.1,34.6,10.2,37.9,39.7,79.9,23.7,2021,United States of America
 27,27,New York University,19,39.6,27.2,36.9,35.7,35.6,61.9,21.1,2021,United States of America
 28,28,Tsinghua University,1,39.5,9.2,0,54.1,42.9,78.2,27.2,2021,China
 29,29,University of North Carolina at Chapel Hill,20,38.1,7.5,22.9,47.8,32.1,63.2,33.8,2021,United States of America
@@ -6341,7 +6341,7 @@ World Rank Order,World Rank,University,National Rank,Overall Score,Alumni,Award,
 40,40,"University of Minnesota, Twin Cities",24,35.1,26.7,15.8,39.9,25.1,66.4,23,2021,
 41,41,University of Texas at Austin,25,34.8,23.9,22.9,34.2,29.4,58,28.6,2021,United States of America
 42,42,Karolinska Institute,1,34.6,23.3,25.7,26.3,24.6,55.9,50.8,2021,Sweden
-42,42,Rockefeller University,26,34.6,16,62.3,26.3,40.3,16.5,32.3,2021,
+42,42,Rockefeller University,26,34.6,16,62.3,26.3,40.3,16.5,32.3,2021,United States of America
 42,42,University of British Columbia,2,34.6,14.1,18.2,37.9,25.7,67.7,26.7,2021,Canada
 45,45,Peking University,2,34.5,10.7,0,35.7,35.8,79.3,25.7,2021,China
 46,46,University of Colorado Boulder,27,33.8,11.9,32.9,26.3,36.6,47.5,32.6,2021,United States of America
@@ -7317,7 +7317,7 @@ World Rank Order,World Rank,University,National Rank,Overall Score,Alumni,Award,
 16,16,Paris-Saclay University,1,47,27.9,73.1,32.1,30.5,64.4,32.1,2022,
 17,17,University of Washington,14,46.8,23.3,36.5,43.2,49.7,74.2,27.3,2022,United States of America
 18,18,University College London,3,46.6,27.7,32.9,42.1,38.8,83.2,33.8,2022,United Kingdom
-19,19,"University of California, San Francisco",15,45.9,0,43.8,47.9,53.5,63.4,32.2,2022,
+19,19,"University of California, San Francisco",15,45.9,0,43.8,47.9,53.5,63.4,32.2,2022,United States of America
 20,20,ETH Zurich,1,45.6,27.2,44.1,31.3,52.9,55.9,50,2022,
 21,21,"University of California, San Diego",16,45.5,18.5,33.8,51.2,47.3,64.5,32.9,2022,United States of America
 22,22,University of Toronto,1,40.5,16.9,13.6,35.5,37.7,85.6,34,2022,Canada
@@ -7342,7 +7342,7 @@ World Rank Order,World Rank,University,National Rank,Overall Score,Alumni,Award,
 41,41,Karolinska Institute,1,34.2,23.3,24.9,23.7,24.5,56,53.3,2022,Sweden
 41,41,Kyoto University,2,34.2,34.6,40.6,15.3,26,57,22.1,2022,Japan
 43,43,Sorbonne University,3,33.9,37.1,24.4,18.1,29.6,61.8,26.9,2022,
-44,44,Rockefeller University,25-26,33.8,16,60.2,20.5,43.4,16.6,33.2,2022,
+44,44,Rockefeller University,25-26,33.8,16,60.2,20.5,43.4,16.6,33.2,2022,United States of America
 44,44,University of British Columbia,2,33.8,14.1,18,34.2,24.8,68.8,24.5,2022,Canada
 44,44,"University of Minnesota, Twin Cities",25-26,33.8,26.7,15.7,35.5,23.7,65.3,23.2,2022,
 47,47,The University of Queensland,2,33.6,11.9,0,45.3,25.4,68.4,38.1,2022,Australia

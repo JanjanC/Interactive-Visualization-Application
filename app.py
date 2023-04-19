@@ -12,19 +12,15 @@ import geojson
 import enum
 
 times_df = pd.read_csv('datasets/times_2011_2023.csv')
-times_complete_columns = ['Teaching',
-                          'International', 'Research', 'Citations', 'Income']
-times_year_columns = {'{}'.format(
-    i): times_complete_columns for i in range(2011, 2024)}
+times_complete_columns = ['Teaching', 'International', 'Research', 'Citations', 'Income']
+times_year_columns = {'{}'.format(i): times_complete_columns for i in range(2011, 2024)}
 
 shanghai_df = pd.read_csv('datasets/shanghai_2012_2022.csv', encoding='cp1252')
 shanghai_complete_columns = ['Alumni', 'Award', 'HiCi', 'N&S', 'PUB', 'PCP']
-shanghai_year_columns = {'{}'.format(
-    i): shanghai_complete_columns for i in range(2012, 2023)}
+shanghai_year_columns = {'{}'.format(i): shanghai_complete_columns for i in range(2012, 2023)}
 
 cwur_df = pd.read_csv('datasets/cwur_2012_2022.csv')
-cwur_complete_columns = ['Quality of Education', 'Alumni Employment', 'Quality of Faculty', 'Publications',
-                         'Influence', 'Citations', 'Broad Impact', 'Patents', 'Research Output', 'Research Performance']
+cwur_complete_columns = ['Quality of Education', 'Alumni Employment', 'Quality of Faculty', 'Publications', 'Influence', 'Citations', 'Broad Impact', 'Patents', 'Research Output', 'Research Performance']
 cwur_year_columns = {
     '2012': ['Quality of Education', 'Alumni Employment', 'Quality of Faculty', 'Publications', 'Influence', 'Citations', 'Patents'],
     '2013': ['Quality of Education', 'Alumni Employment', 'Quality of Faculty', 'Publications', 'Influence', 'Citations', 'Patents'],
@@ -64,6 +60,7 @@ current_main_rankings = Rankings.times
 current_main_university_list = pd.DataFrame()
 current_main_criterion = "Overall Score"
 current_main_year = 2012
+
 # University Overview Page
 current_university_rankings = Rankings.times
 current_university_name = "Harvard University"
@@ -77,15 +74,15 @@ deactivated_class = 'btn btn-secondary mx-3'
 btn_main_times_class = activated_class
 btn_main_shanghai_class = deactivated_class
 btn_main_cwur_class = deactivated_class
+
 # University Overview Buttons
 btn_univ_times_class = activated_class
 btn_univ_shanghai_class = deactivated_class
 btn_univ_cwur_class = deactivated_class
 
 # Main Dashboard
+
 # Chloropleth Map
-
-
 def load_choropleth_map(university_rankings, main_year):
     current_df = rankings_df[university_rankings.value]
     current_df = current_df[current_df['Year'] == main_year]
@@ -105,10 +102,9 @@ def load_choropleth_map(university_rankings, main_year):
 choropleth_mapbox = load_choropleth_map(current_main_rankings, current_main_year)
 
 # Bar Chart (Criteria Comparision)
-def load_main_bar_chart(university_list, university_rankings, main_year, values):
+def load_main_bar_chart(university_list, university_rankings, main_year):
     if not university_list.empty:
-        criteria = ["University"] + values
-        
+        criteria = ["University"] + rankings_complete_columns[university_rankings.value]
         current_df = university_list[criteria]
         fig = px.bar(current_df, x=criteria, y="University", barmode='group', labels=criteria)
         fig.update_layout(width=800, height=600)
@@ -124,12 +120,10 @@ def load_main_bar_chart(university_list, university_rankings, main_year, values)
     
     return fig
 
-
-# main_trend_fig = load_main_bar_chart(
-#     current_main_university_list, current_main_rankings, current_main_year)
+main_trend_fig = load_main_bar_chart(current_main_university_list, current_main_rankings, current_main_year)
 
 # Line Chart(Trend)
-def load_main_line_chart(university_list, university_rankings, university_year, criterion):
+def load_main_line_chart(university_list, university_rankings, criterion):
     if not university_list.empty:
         fig = make_subplots(rows=len(university_list), cols=1, subplot_titles=university_list["University"].values.tolist())
 
@@ -161,12 +155,10 @@ def load_main_line_chart(university_list, university_rankings, university_year, 
         return fig
 
 
-main_line_fig = load_main_line_chart(current_main_university_list, current_main_rankings, current_main_year, current_main_criterion)
+main_line_fig = load_main_line_chart(current_main_university_list, current_main_rankings, current_main_criterion)
 
 # University Page
 # Line Charts
-
-
 def load_university_line_chart(university_rankings, university_name, university_range):
     current_df = rankings_df[university_rankings.value]
     criteria = ["World Rank", "Overall Score"] + rankings_complete_columns[university_rankings.value]
@@ -468,8 +460,6 @@ def update_main_dashboard(btn_times, btn_shanghai, btn_cwur, slider_value, dropd
         btn_main_times_class = deactivated_class
         btn_main_shanghai_class = deactivated_class
         btn_main_cwur_class = activated_class
-    
-    checklist_options = checklist_value = rankings_complete_columns[current_main_rankings.value]
  
     # Dropdown Data
     options = ['World Rank', 'Overall Score'] + rankings_year_columns[current_main_rankings.value][str(current_main_year)]
@@ -500,8 +490,6 @@ def update_main_dashboard(btn_times, btn_shanghai, btn_cwur, slider_value, dropd
 
      # update the university list based on the new data and index
     current_main_university_list = pd.DataFrame() if rows is None else pd.DataFrame(data).iloc[selected_index]
-
-    line_fig = load_main_line_chart(current_main_university_list, current_main_rankings, current_main_year, current_main_criterion)
     
     choropleth_mapbox = load_choropleth_map(current_main_rankings, current_main_year)
     
@@ -532,14 +520,11 @@ def update_main_dashboard(btn_times, btn_shanghai, btn_cwur, slider_value, dropd
             else:
                 filter_query = filter_query + " && {Country} =" + country
     
-    
-    
-    # print('new filter', filter_query)
 
     return (
         options,
-        load_main_bar_chart(current_main_university_list, current_main_rankings, current_main_year, checklist_value),
-        line_fig,
+        load_main_bar_chart(current_main_university_list, current_main_rankings, current_main_year),
+        load_main_line_chart(current_main_university_list, current_main_rankings, current_main_criterion),
         choropleth_mapbox,
         data,
         columns,

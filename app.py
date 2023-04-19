@@ -110,9 +110,10 @@ def load_main_bar_chart(university_list, university_rankings, main_year):
         fig.update_layout(yaxis=dict(autorange="reversed"))
         fig.update_layout(dict(template="plotly_white"))
         fig.update_layout(
-            title="<b>{} {}</b> University Criteria".format(main_year, rankings_names[university_rankings.value]), 
+            title="<b>{} {}</b> University Criteria".format(main_year, rankings_names[university_rankings.value]),
+            title_x=0.5,
             xaxis_title="Score", 
-            yaxis_title="University Name"
+            yaxis_title="University"
         )
         return fig
     else:
@@ -146,7 +147,13 @@ def load_main_line_chart(university_list, university_rankings, criterion):
             )
 
         fig.update_layout(showlegend=False)
-        fig.update_layout(width=800, height=600, title_text="<b>{}</b> Trend in the <b>{}</b>".format(criterion, rankings_names[university_rankings.value]))
+        fig.update_layout(width=800, height=600)
+        fig.update_layout(
+            title_text="<b>{}</b> Trend in the <b>{}</b>".format(criterion, rankings_names[university_rankings.value]),
+            title_x=0.5,
+            xaxis_title="Year", 
+            yaxis_title="Score"
+        )
         
         return fig
     else:

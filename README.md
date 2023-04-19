@@ -13,6 +13,7 @@
 2. Launch the web application by running `python app.py`
 
 ## About the Web Application
+The World University Rankings Dashboard is an interactive visualization application that displays key metrics related to the performance of a university. The dashboard is designed to provide administrators with easy access to important data that can inform decision-making and track progress towards goals.
 
-
-## Datasets
+## Data
+The data in the University Performance Dashboard is based on the rankings from three ranking organizations: Times Higher Education, the Center for World University Rankings, and the Academic Ranking of World Universities (also known as the Shanghai Ranking).

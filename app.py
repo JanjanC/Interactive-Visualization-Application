@@ -415,6 +415,7 @@ app.layout = dbc.Container([
     Output(component_id='university-table', component_property="selected_rows"),
     Output(component_id="university-table", component_property="filter_query"),
     Output(component_id="university-table", component_property="style_cell_conditional"),
+    Output(component_id="choropleth_map", component_property="clickData"),
     Output(component_id="btn-times-main", component_property="className"),
     Output(component_id="btn-shanghai-main", component_property="className"),
     Output(component_id="btn-cwur-main", component_property="className"),
@@ -530,10 +531,10 @@ def update_main_dashboard(btn_times, btn_shanghai, btn_cwur, slider_value, dropd
         selected_index,
         filter_query,
         style_cell_conditional,
+        None,
         btn_main_times_class,
         btn_main_shanghai_class,
         btn_main_cwur_class,
-        # style
     )
 
 @ app.callback(

@@ -17,7 +17,7 @@ times_complete_columns = ['Teaching',
 times_year_columns = {'{}'.format(
     i): times_complete_columns for i in range(2011, 2024)}
 
-shanghai_df = pd.read_csv('datasets/shanghai_2012_2022.csv')
+shanghai_df = pd.read_csv('datasets/shanghai_2012_2022.csv', encoding='cp1252')
 shanghai_complete_columns = ['Alumni', 'Award', 'HiCi', 'N&S', 'PUB', 'PCP']
 shanghai_year_columns = {'{}'.format(
     i): shanghai_complete_columns for i in range(2012, 2023)}
@@ -102,7 +102,7 @@ def load_choropleth_map(university_rankings, main_year):
     
     return choropleth_fig
 
-choropleth_fig = load_choropleth_map(current_main_rankings, current_main_year)
+choropleth_mapbox = load_choropleth_map(current_main_rankings, current_main_year)
 
 # Bar Chart (Criteria Comparision)
 def load_main_bar_chart(university_list, university_rankings, main_year, values):
@@ -322,7 +322,7 @@ main = html.Div([
 
         html.Div(
            children= [
-                dcc.Graph(id='choropleth_map', figure=choropleth_fig),
+                dcc.Graph(id='choropleth_map', figure = choropleth_mapbox, config={'displayModeBar': False}, animate = False),
                 html.Div([
                     html.Div(children=[html.H5("Criteria:")], className="col-2"),
                     html.Div(
@@ -494,7 +494,7 @@ def update_main_dashboard(btn_times, btn_shanghai, btn_cwur, slider_value, dropd
     # print("rows", rows)
 
     university_names = [] if rows is None else pd.DataFrame(rows)
-    university_names = university_names if university_names.empty else university_names.iloc[selected_rows]['University']  # currently selected universities
+    university_names = university_names if len(university_names) == 0 else university_names.iloc[selected_rows]['University']  # currently selected universities
     selected_index = df[df["University"].isin(university_names)].index.tolist()  # update the index
 
      # update the university list based on the new data and index
@@ -502,7 +502,7 @@ def update_main_dashboard(btn_times, btn_shanghai, btn_cwur, slider_value, dropd
 
     line_fig = load_main_line_chart(current_main_university_list, current_main_rankings, current_main_year, current_main_criterion)
     
-    choropleth_fig = load_choropleth_map(current_main_rankings, current_main_year)
+    choropleth_mapbox = load_choropleth_map(current_main_rankings, current_main_year)
     
     style_cell_conditional=[
         {
@@ -549,7 +549,6 @@ def update_main_dashboard(btn_times, btn_shanghai, btn_cwur, slider_value, dropd
         btn_main_cwur_class,
         # style
     )
-
 
 @ app.callback(
     Output("university-modal", "is_open"),

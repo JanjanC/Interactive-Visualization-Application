@@ -59,12 +59,12 @@ with open('datasets/natural-earth-countries-1_110m@public.geojson') as f:
 current_main_rankings = Rankings.times
 current_main_university_list = pd.DataFrame()
 current_main_criterion = "Overall Score"
-current_main_year = 2012
+current_main_year = 2022
 
 # University Overview Page
 current_university_rankings = Rankings.times
 current_university_name = "Harvard University"
-current_university_year = 2012
+current_university_year = 2022
 
 activated_class = 'btn btn-primary mx-3'
 deactivated_class = 'btn btn-secondary mx-3'
@@ -285,7 +285,7 @@ main = html.Div([
             min=2012,
             max=2022,
             step=1,
-            value=2012,
+            value=2022,
             marks={i: '{}'.format(i) for i in range(2012, 2023)},
             id='main-slider'
         ),
@@ -362,7 +362,7 @@ modal_body = html.Div([
             min=2012,
             max=2022,
             step=1,
-            value=2012,
+            value=2022,
             marks={i: '{}'.format(i) for i in range(2012, 2023)},
             id='university-year-slider'
         ),
